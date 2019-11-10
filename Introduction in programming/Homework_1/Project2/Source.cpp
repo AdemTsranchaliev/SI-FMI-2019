@@ -3,7 +3,7 @@
 using namespace std;
 
 int InputAndValidation();
-
+void ConvertToHexAndPrint(int);
 
 int main()
 {
@@ -18,67 +18,72 @@ int main()
 		firstNum = firstHexNumber - '0';
 
 	}
-	else if (secondHexNumber >= 65 && secondHexNumber <= 70)
+	else if (firstHexNumber >= 65 && firstHexNumber <= 70)
 	{
 		firstNum = (firstHexNumber - 'A')+10;
 	}
 	if (secondHexNumber >= 48 && secondHexNumber <= 59)
 	{
-		secondNum = firstHexNumber - '0';
+		secondNum = secondHexNumber - '0';
 
 	}
 	else if (secondHexNumber >= 65 && secondHexNumber <= 70)
 	{
-		secondNum = (firstHexNumber - 'A') + 10;
+		secondNum = (secondHexNumber - 'A') + 10;
 	}
 
+	int result = 0;
 
 	if (command=='+')
 	{
-
+		result = firstNum + secondNum;
 	}
 	else if (command == '-')
 	{
-
+		result = firstNum - secondNum;
 	}
 	else if (command == '/')
 	{
-
+		result = firstNum / secondNum;
 	}
 	else if (command == '*')
 	{
-
+		result = firstNum * secondNum;
 	}
 	else if (command == '%')
 	{
-
+		result = firstNum % secondNum;
 	}
+	
+	ConvertToHexAndPrint(result);
+	system("PAUSE");
 
 }
 
-
-int InputAndValidation()
+void ConvertToHexAndPrint(int result)
 {
-	int input = 0;
-	cout << "Enter number: ";
-	cin >> input;
-
-	int isValid = 1;
-	while (isValid == 1)
+	if (result==0)
 	{
-		if (cin.fail())
-		{
-			cin.clear();
-			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
-			cout << "Invalid input! Please try again." << endl;
-			cout << "Enter number: ";
-			cin >> input;
-		}
-		else
-		{
-			isValid = 0;
-		}
+		return;
+	}
+	ConvertToHexAndPrint(abs(result / 16));
+	int res = abs(result % 16);
+	if (result<=0)
+	{
+		cout << "-";
+	}
+	if (res>=0&&res<=9)
+	{
+		char temp = '0';
+		cout << (char)(temp + res);
+	}
+	else if (res>=10&&res<=15)
+	{
+		char temp = 'A';
+		cout << (char)(temp + (res-10));
 	}
 
-	return input;
+	
+
 }
+
