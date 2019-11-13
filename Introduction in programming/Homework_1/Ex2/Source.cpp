@@ -10,18 +10,22 @@ int main()
 
 	days = InputAndValidation();
 	int yearCounter = 0;
-	for (int i = days-1; i > 0; i-=365)
+
+	int i = days-1;
+
+	while (i>=0)
 	{
-		yearCounter++;
-		if (yearCounter%4==0)
+		i -= 365;
+		if (yearCounter % 4 == 0)
 		{
 			if (!(yearCounter % 100 == 0) || (yearCounter % 400 == 0))
 			{
 				i -= 1;
 			}
 		}
-	
+		yearCounter++;
 	}
+
 	cout <<"The year is "<< yearCounter<<endl;
 	system("Pause");
 }
@@ -30,7 +34,7 @@ int main()
 int InputAndValidation()
 {
 	int input = 0;
-	cout << "Enter number: ";
+	cout << "Enter days: ";
 	cin >> input;
 
 	int isValid = 1;
@@ -41,7 +45,7 @@ int InputAndValidation()
 			cin.clear();
 			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 			cout << "Invalid input! Please try again." << endl;
-			cout << "Enter number: ";
+			cout << "Enter days: ";
 			cin >> input;
 		}
 		else

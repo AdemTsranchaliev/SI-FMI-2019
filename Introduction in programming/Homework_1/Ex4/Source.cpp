@@ -13,15 +13,15 @@ int main()
 
 	for (int i = input; i >= 0; i--)
 	{
-		for (long j = 1; j < 2000000000; j++);
+		for (long j = 1; j < 200000000; j++);
 		
 		system("cls");
-		cout << i;
+		cout << i<<endl;
 	}
-
+	cout << "Timer ended";
+	system("PAUSE");
 	return 0;
 }
-
 
 
 int InputAndValidation()

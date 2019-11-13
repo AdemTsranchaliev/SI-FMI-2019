@@ -2,14 +2,48 @@
 
 using namespace std;
 
-int InputAndValidation();
+
 void ConvertToHexAndPrint(int);
 
 int main()
 {
 	char command, firstHexNumber, secondHexNumber;
+	cout << "Enter command, first digit and second digit"<<endl;
+	
 
-	cin >> command >> firstHexNumber >> secondHexNumber;
+	while (true)
+	{
+		cin >> command >> firstHexNumber >> secondHexNumber;
+		bool check1 = 1;
+		bool check2 = 1;
+		bool check3 = 1;
+		if (!(command == '+'|| command == '-'|| command == '*'|| command == '/'|| command == '%'))
+		{
+			check1 = 0;
+		}
+
+		if (!(firstHexNumber >='0'&& firstHexNumber<='9'|| (firstHexNumber >= 'A'&& firstHexNumber <= 'F')))
+		{
+			check2 = 0;
+		}
+
+		if (!(secondHexNumber >= '0'&& secondHexNumber <= '9' || secondHexNumber >= 'A'&& secondHexNumber <= 'F'))
+		{
+			check3 = 0;
+		}
+
+		if (!(check1&&check2&&check3))
+		{
+			cout << "Invalid input please try again:" << endl << "Enter command, first digit and second digit" << endl;
+
+		}
+		else
+		{
+			break;
+		}
+		
+		
+	}
 
 	int firstNum = 0;
 	int secondNum = 0;
