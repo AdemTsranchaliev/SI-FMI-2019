@@ -1,3 +1,16 @@
+/**
+*
+* Solution to homework assignment 1
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2019/2020
+*
+* @author Adem Tsranchaliev
+* @idnumber 62409
+* @task 6
+* @compiler VC
+*
+*/
 #include <iostream>
 #include <cmath>  
 
@@ -10,7 +23,7 @@ int main() {
 	cin >> x >> y;
 
 	int isValid = 1;
-	while ((isValid == 1) )
+	while ((isValid == 1))
 	{
 		if (cin.fail())
 		{
@@ -18,7 +31,7 @@ int main() {
 			cin.ignore(numeric_limits<std::streamsize>::max(), '\n');
 			cout << "Invalid input! Please try again." << endl;
 			cout << "Insert x and y: ";
-			cin >> x>>y;
+			cin >> x >> y;
 		}
 		else
 		{
@@ -28,22 +41,22 @@ int main() {
 	}
 
 	double distanceToPoint = sqrt(x*x + y + y);
-
-	if ((x >= -1 && x <= 1) && y >= -1 && y <= 1)
+	//Check if the point is on the border of circle and square
+	if (distanceToPoint == 2 || distanceToPoint == 3 || (x == 1 && (y >= -1 && y <= 1)) || (x == -1 && (y >= -1 && y <= 1)) || (y == -1 && (x >= -1 && x <= 1)) || (y == 1 && (x >= -1 && x <= 1)))
 	{
-		cout << "Black";
+		cout << "Undefined" << endl;
 	}
-	else if (distanceToPoint > 2 && distanceToPoint < 3)
+	else if ((x > -1 && x < 1) && y > -1 && y < 1) //Check if the point is the square
 	{
-		cout << "Black";
+		cout << "Black" << endl;
 	}
-	else if (distanceToPoint < 2)
+	else if (distanceToPoint > 2 && distanceToPoint < 3)//Check if the point is in the black circle
 	{
-		cout << "White";
+		cout << "Black" << endl;
 	}
-	else if (distanceToPoint == 2 || distanceToPoint == 3 || (x == 1 && y == 1) || (x == 1 && y == -1) || (x == -1 && y == 1) || (x == -1 && y == -1))
+	else if (distanceToPoint < 2)//Check if the point is on the white side
 	{
-		cout << "Undefined";
+		cout << "White" << endl;
 	}
 	else
 	{

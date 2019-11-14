@@ -1,3 +1,15 @@
+/**
+*
+* Solution to homework assignment 1
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2019/2020
+*
+* @author Adem Tsranchaliev
+* @task 4
+* @compiler VC
+*
+*/
 #include <iostream>
 
 using namespace std;
@@ -7,16 +19,16 @@ int InputAndValidation();
 int main()
 {
 
-	int input=0;
+	int input = 0;
 
 	input = InputAndValidation();
 
 	for (int i = input; i >= 0; i--)
 	{
 		for (long j = 1; j < 200000000; j++);
-		
+
 		system("cls");
-		cout << i<<endl;
+		cout << "Time left: " << i << endl;
 	}
 	cout << "Timer ended";
 	system("PAUSE");

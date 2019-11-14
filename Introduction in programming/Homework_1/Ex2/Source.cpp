@@ -1,3 +1,15 @@
+/**
+*
+* Solution to homework assignment 1
+* Introduction to programming course
+* Faculty of Mathematics and Informatics of Sofia University
+* Winter semester 2019/2020
+*
+* @author Adem Tsranchaliev
+* @task 2
+* @compiler VC
+*
+*/
 #include <iostream>
 
 using namespace std;
@@ -6,14 +18,14 @@ int InputAndValidation();
 
 int main()
 {
-	int days=0;
+	int days = 0;
 
 	days = InputAndValidation();
 	int yearCounter = 0;
 
-	int i = days-1;
+	int i = days;
 
-	while (i>=0)
+	while (i >= 0)
 	{
 		i -= 365;
 		if (yearCounter % 4 == 0)
@@ -26,7 +38,7 @@ int main()
 		yearCounter++;
 	}
 
-	cout <<"The year is "<< yearCounter<<endl;
+	cout << "The year is " << yearCounter << endl;
 	system("Pause");
 }
 
@@ -38,7 +50,7 @@ int InputAndValidation()
 	cin >> input;
 
 	int isValid = 1;
-	while ((isValid == 1)||!(input>=0&& input<=1000000))
+	while ((isValid == 1) || !(input >= 0 && input <= 1000000))
 	{
 		if (cin.fail() || !(input >= 0 && input <= 1000000))
 		{
