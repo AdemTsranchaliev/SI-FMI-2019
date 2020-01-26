@@ -82,9 +82,9 @@ int main()
 			else
 			{
 				cout << "Please enter the word you want to search:" << endl;
-				cin.ignore();
+				cin.clear();
 				cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-				cin.getline(arr2, 200);
+				cin.get(arr2, 200);
 
 				int startIndex = SearchForWord(str, sybmolCount, arr2);
 
@@ -200,7 +200,7 @@ void AddWordOrSentenceOnPosition(char* arr)
 	cin >> position;
 	cin.ignore();
 	cout << "Please enter the word(sentence) you want to add:" << endl;
-	cin.getline(arr2, 200);
+	cin.get(arr2, 200);
 
 	int countOfArr1 = CountSymbols(arr);
 	int countOfArr2 = CountSymbols(arr2);
@@ -221,7 +221,7 @@ int Replace(char* arr)
 	char arr2[200];
 	cin.ignore();
 	cout << "Please enter the words you want to replace and the word to replace separated with space:" << endl;
-	cin.getline(arr2, 200);
+	cin.get(arr2, 200);
 
 	int countRepSymbols = CountSymbols(arr2);
 
