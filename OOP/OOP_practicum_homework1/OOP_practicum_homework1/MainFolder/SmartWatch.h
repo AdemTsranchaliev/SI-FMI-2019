@@ -11,7 +11,7 @@ private:
 public:
 
 	SmartWatch();
-	SmartWatch(char*,char*,char*, int, char*, double);
+	SmartWatch(char* style,char* operatingSystem,char* typeDisplay, int id, char* name , double price);
 
 	void setStyle(char*);
 	char* getStyle();
@@ -19,4 +19,6 @@ public:
 	char* getOperatingSystem();
 	void setTypeDisplay(char*);
 	char* getTypeDisplay();
+
+	void addSmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price);
 };

@@ -12,7 +12,7 @@ public:
 
 	Laptop();
 
-	Laptop(char*,int,char*, int, char*, double);
+	Laptop(char* processor,int ramMemory,char* videoCart, int id, char* name, double price);
 
 	void setProcessor(char*);
 	char* getProcessor();
@@ -20,5 +20,8 @@ public:
 	int getRamMemory();
 	void setVideoCart(char*);
 	char* getVideoCart();
+
+	void print();
+	void addLaptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price);
 };
 

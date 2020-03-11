@@ -13,7 +13,7 @@ public:
 	Product(int, double,const char*);
 
 
-	void setId( int);
+	void setId(int);
 	int getId();
 	void setPrice( double);
 	double getPrice();

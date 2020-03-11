@@ -8,7 +8,9 @@ Laptop::Laptop() {}
 
 Laptop::Laptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price)
 {
-	Product(id,price,name);
+	this->setId(id);
+	this->setName(name);
+	this->setPrice(price);
 
 	this->ramMemory = ramMemory;
 	strcpy_s(this->processor,processor);
@@ -46,6 +48,17 @@ char* Laptop::getVideoCart()
 	return this->videoCard;
 }
 
+void Laptop::addLaptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price)
+{
+	this->setId(id);
+	this->setName(name);
+	this->setPrice(price);
+
+	this->ramMemory = ramMemory;
+	strcpy_s(this->processor, processor);
+	strcpy_s(this->videoCard, videoCard);
+	this->ramMemory = ramMemory;
+}
 
 
 

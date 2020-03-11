@@ -9,7 +9,9 @@ SmartWatch::SmartWatch() {}
 
 SmartWatch::SmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price)
 {
-	Product(id, price, name);
+	this->setId(id);
+	this->setName(name);
+	this->setPrice(price);
 	strcpy_s(this->style, style);
 	strcpy_s(this->operatingSystem, operatingSystem);
 	strcpy_s(this->typeDisplay, typeDisplay);
@@ -42,4 +44,15 @@ void SmartWatch::setTypeDisplay(char* typeDispaly)
 char* SmartWatch::getTypeDisplay()
 {
 	return this->typeDisplay;
+}
+
+
+void SmartWatch::addSmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price)
+{
+	this->setId(id);
+	this->setName(name);
+	this->setPrice(price);
+	strcpy_s(this->style, style);
+	strcpy_s(this->operatingSystem, operatingSystem);
+	strcpy_s(this->typeDisplay, typeDisplay);
 }

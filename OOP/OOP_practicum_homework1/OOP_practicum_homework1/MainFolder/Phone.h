@@ -11,12 +11,15 @@ private:
 public:
 
 	Phone();
-	Phone(char*, char*, int,int,char*,double);
-
-	void setModel(char* model);
+	Phone(const char* model,const char* color, int yearOfProduction,int id ,const char* name,double price);
+	Phone(Phone&);
+	void setModel(const char* model);
 	char* getModel();
-	void setColor(char* color);
+	void setColor(const char* color);
 	char* getColor();
 	void setYearOfProduction(int year);
 	int getYearOfProduction();
+
+	void print();
+	void addPhone(const char* model, const char* color, int yearOfProduction, int id, const char* name, double price);
 };
