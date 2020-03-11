@@ -41,7 +41,7 @@ int main()
 			cout << "To go back in main page PRESS 'b'"<<endl;
 			cout << "To see you shopping cart 'PRESS 's'" << endl;
 			cout << "To add product in shopping cart PRESS 'add_?', where '?' is the code of the product you want to add" << endl;
-			cout << "============================================================================================================";
+			cout << "============================================================================================================"<<endl;
 			cout << "Laptos"<<endl;
 			cout << "No | Name | Color | Model | Year of production | Price"<<endl;
 			cout << "-----------------------------------------------------------" << endl;
@@ -49,6 +49,7 @@ int main()
 			{
 				phones[i].print();
 			}
+			cin >> num;
 
 		}
 		else if (num==3)
