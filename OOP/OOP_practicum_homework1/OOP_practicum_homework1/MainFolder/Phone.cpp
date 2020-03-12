@@ -69,5 +69,5 @@ void Phone::addPhone(const char* color, const char* model, int yearOfProduction,
 
 void Phone::print()
 {
-	cout << this->getId() << " | " << this->getName() << " | " << this->getModel() << " | " << this->getColor() << " | " << this->getYearOfProduction() << " | " << this->getPrice()<<endl;
+	cout << this->getId() << " | " << this->getName() << " | " << this->getModel() << " | " << this->getColor() << " | " << this->getYearOfProduction() << " | " << this->getPrice()<<" leva"<<endl;
 }

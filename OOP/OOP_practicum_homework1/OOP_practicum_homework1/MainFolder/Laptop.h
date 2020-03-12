@@ -2,7 +2,7 @@
 
 #include "Product.h"
 
-class Laptop:Product
+class Laptop:public Product
 {
 private:
 	char processor[50];
@@ -23,5 +23,6 @@ public:
 
 	void print();
 	void addLaptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price);
+
 };
 

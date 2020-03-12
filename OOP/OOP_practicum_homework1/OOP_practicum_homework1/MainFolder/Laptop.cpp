@@ -57,8 +57,15 @@ void Laptop::addLaptop(char* processor, int ramMemory, char* videoCart, int id, 
 	this->ramMemory = ramMemory;
 	strcpy_s(this->processor, processor);
 	strcpy_s(this->videoCard, videoCard);
-	this->ramMemory = ramMemory;
 }
+
+void Laptop::print()
+{
+	cout << this->getId() << " | " << this->getName() << " | " << this->getRamMemory() << " | " << this->getProcessor() << " | " << this->getVideoCart() << " | " << this->getPrice() << endl;
+}
+
+
+
 
 
 

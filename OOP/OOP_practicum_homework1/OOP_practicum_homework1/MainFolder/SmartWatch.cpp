@@ -56,3 +56,8 @@ void SmartWatch::addSmartWatch(char* style, char* operatingSystem, char* typeDis
 	strcpy_s(this->operatingSystem, operatingSystem);
 	strcpy_s(this->typeDisplay, typeDisplay);
 }
+
+void SmartWatch::print()
+{
+	cout << this->getId() << " | " << this->getName() << " | " << this->getStyle() << " | " << this->getOperatingSystem() << " | " << this->getTypeDisplay() << " | " << this->getPrice() << endl;
+}

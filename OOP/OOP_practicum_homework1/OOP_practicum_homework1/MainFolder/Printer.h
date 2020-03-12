@@ -2,7 +2,7 @@
 #include "Product.h"
 
 
-class Printer:Product
+class Printer:public Product
 {
 private:
 	char printingTechnology[50];
@@ -21,5 +21,6 @@ public:
 	void setOneOrManyColors(bool);
 	bool getOneOrManyColors();
 
+	void print();
 	void addPrinter(char* printingTechnology, char* mainPrintingFormat, bool oneOrManyColor, int id, char* name, double price);
 };

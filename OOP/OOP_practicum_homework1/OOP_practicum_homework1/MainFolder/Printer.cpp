@@ -48,6 +48,19 @@ bool Printer::getOneOrManyColors()
 	return this->oneOrManyColor;
 }
 
+void Printer::print()
+{
+	if (this->getOneOrManyColors()==true)
+	{
+		cout << this->getId() << " | " << this->getName() << " | " << this->getPrintingTechnology() << " | white and black | " << this->getPrice() << endl;
+	}
+	else
+	{
+		cout << this->getId() << " | " << this->getName() << " | " << this->getPrintingTechnology() << " | " << this->getMainPrintingFormat() << " | many colors | " << this->getPrice() << endl;
+
+	}
+}
+
 void Printer::addPrinter(char* printingTechnology, char* mainPrintingFormat, bool oneOrManyColor, int id, char* name, double price)
 {
 

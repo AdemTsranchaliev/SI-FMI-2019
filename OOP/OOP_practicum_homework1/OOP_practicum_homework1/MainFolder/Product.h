@@ -20,4 +20,6 @@ public:
 	void setName(const char*);
 	char* getName();
 
+
+
 };

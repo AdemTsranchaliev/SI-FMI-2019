@@ -1,7 +1,7 @@
 #pragma once
 #include "Product.h"
 
-class SmartWatch:Product
+class SmartWatch:public Product
 {
 private:
 	char style[50];//woman man or unisex
@@ -20,5 +20,6 @@ public:
 	void setTypeDisplay(char*);
 	char* getTypeDisplay();
 
+	void print();
 	void addSmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price);
 };
