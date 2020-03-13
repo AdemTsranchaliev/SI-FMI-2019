@@ -110,7 +110,7 @@ int main()
 		else
 		{
 			system("cls");
-			cout << "Invalid input! Enter any key to go back in categories and try again!"<<endl;
+			cout << "Invalid input! Enter any key to go back in categories and try again!" << endl;
 			cin.clear();
 			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 			cin.get(command, 50);
@@ -165,6 +165,8 @@ int main()
 					{
 						isFound = false;
 						shoppingCart[i].setQuantity(shoppingCart[i].getQuantity() + 1);
+						cout << "The product was sucessfuly added to shopping cart!" << endl;
+
 						break;
 					}
 				}
@@ -188,7 +190,7 @@ int main()
 					}
 					else
 					{
-						cout << "In " << categorySelected << "wasn't found product with given index!" << endl;
+						cout << "In " << categorySelected << "s wasn't found product with given index!" << endl;
 					}
 				}
 			}
@@ -201,6 +203,8 @@ int main()
 					{
 						isFound = false;
 						shoppingCart[i].setQuantity(shoppingCart[i].getQuantity() + 1);
+						cout << "The product was sucessfuly added to shopping cart!" << endl;
+
 						break;
 					}
 				}
@@ -225,7 +229,7 @@ int main()
 					}
 					else
 					{
-						cout << "In " << categorySelected << "wasn't found product with given index. Press any key to continiue" << endl;
+						cout << "In " << categorySelected << "s wasn't found product with given index." << endl;
 					}
 				}
 			}
@@ -238,6 +242,8 @@ int main()
 					{
 						isFound = false;
 						shoppingCart[i].setQuantity(shoppingCart[i].getQuantity() + 1);
+						cout << "The product was sucessfuly added to shopping cart!" << endl;
+
 						break;
 					}
 				}
@@ -260,11 +266,25 @@ int main()
 					}
 					else
 					{
-						cout << "In " << categorySelected << "wasn't found product with given index. Press any key to continiue" << endl;
+						cout << "In " << categorySelected << "s wasn't found product with given index." << endl;
 					}
 				}
 			}
 			else if (strcmp(categorySelected, "SmartWatch") == 0)
+			{
+			bool isFound = true;
+			for (int i = 0; i < firstFreeIndex; i++)
+			{
+				if (shoppingCart[i].getProductId() == productId)
+				{
+					isFound = false;
+					shoppingCart[i].setQuantity(shoppingCart[i].getQuantity() + 1);
+					cout << "The product was sucessfuly added to shopping cart!" << endl;
+
+					break;
+				}
+			}
+			if (isFound)
 			{
 				bool isProductIdExist = false;
 				int productIndex = 0;
@@ -283,8 +303,9 @@ int main()
 				}
 				else
 				{
-					cout << "In " << categorySelected << "wasn't found product with given index. Press any key to continiue" << endl;
+					cout << "In " << categorySelected << "s wasn't found product with given index." << endl;
 				}
+			}
 			}
 
 			cout << "Press any key to continiue to categories" << endl;
@@ -295,6 +316,18 @@ int main()
 			cin.clear();
 			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 		}
+		else if (strcmp(command, "sort") == 0)
+		{
+			SortAndPrint(categorySelected);
+			cout << "Press any key to continiue to categories" << endl;
+			cin.clear();
+			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+			cin.get(command, 50);
+			system("cls");
+			cin.clear();
+			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		}
+
 
 	}
 	system("pause");
@@ -372,31 +405,100 @@ void ShowShoppingCart()
 }
 void SortAndPrint(char* category)
 {
+	system("cls");
+	cout << "SORTED"<<endl;
 	if (strcmp(category, "Phone") == 0)
 	{
 		int i, j;
-		for (i = 0; i < 4; i++) {
+		for (i = 0; i < 4 - 1; i++) {
 
-			for (j = 0; j < 4 - 1; j++)
+			for (j = 0; j < 4 - i - 1; j++)
 			{
-				if (phones[j].getPrice() > phones[j].getPrice())
+				if (phones[j].getPrice() > phones[j + 1].getPrice())
 				{
-
+					Phone temp = phones[j];
+					phones[j] = phones[j + 1];
+					phones[j + 1] = temp;
 				}
 			}
 		}
+		cout << "Phones" << endl;
+		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "-----------------------------------------------------------" << endl;
+		for (int i = 0; i < 4; i++)
+		{
+			phones[i].print();
+		}
+
 	}
 	else if (strcmp(category, "Printer") == 0)
 	{
+		int i, j;
+		for (i = 0; i < 4 - 1; i++) {
 
+			for (j = 0; j < 4 - i - 1; j++)
+			{
+				if (printers[j].getPrice() > printers[j + 1].getPrice())
+				{
+					Printer temp = printers[j];
+					printers[j] = printers[j + 1];
+					printers[j + 1] = temp;
+				}
+			}
+		}
+		cout << "Phones" << endl;
+		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "-----------------------------------------------------------" << endl;
+		for (int i = 0; i < 4; i++)
+		{
+			phones[i].print();
+		}
 	}
 	else if (strcmp(category, "SmartWatch") == 0)
 	{
+		int i, j;
+		for (i = 0; i < 2 - 1; i++) {
 
+			for (j = 0; j < 2 - i - 1; j++)
+			{
+				if (smarthWatches[j].getPrice() > smarthWatches[j + 1].getPrice())
+				{
+					SmartWatch temp = smarthWatches[j];
+					smarthWatches[j] = smarthWatches[j + 1];
+					smarthWatches[j + 1] = temp;
+				}
+			}
+		}
+		cout << "Phones" << endl;
+		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "-----------------------------------------------------------" << endl;
+		for (int i = 0; i < 4; i++)
+		{
+			phones[i].print();
+		}
 	}
 	else if (strcmp(category, "Laptop") == 0)
 	{
+		int i, j;
+		for (i = 0; i < 4 - 1; i++) {
 
+			for (j = 0; j < 4 - i - 1; j++)
+			{
+				if (laptops[j].getPrice() > laptops[j + 1].getPrice())
+				{
+					Laptop temp = laptops[j];
+					laptops[j] = laptops[j + 1];
+					laptops[j + 1] = temp;
+				}
+			}
+		}
+		cout << "Phones" << endl;
+		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "-----------------------------------------------------------" << endl;
+		for (int i = 0; i < 4; i++)
+		{
+			phones[i].print();
+		}
 	}
 }
 

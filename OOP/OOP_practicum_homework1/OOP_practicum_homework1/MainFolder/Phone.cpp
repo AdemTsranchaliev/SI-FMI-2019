@@ -71,3 +71,19 @@ void Phone::print()
 {
 	cout << this->getId() << " | " << this->getName() << " | " << this->getModel() << " | " << this->getColor() << " | " << this->getYearOfProduction() << " | " << this->getPrice()<<" leva"<<endl;
 }
+
+Phone& Phone::operator=(Phone& phon)
+{
+	if (this != &phon)
+	{
+		this->setId(phon.getId());
+		this->setName(phon.getName());
+		this->setPrice(phon.getPrice());
+
+		this->yearOfProduction = phon.getYearOfProduction();
+		strcpy_s(this->color, phon.getColor());
+		strcpy_s(this->model, phon.getModel());
+
+		return *this;
+	}
+}

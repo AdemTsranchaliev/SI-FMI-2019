@@ -64,6 +64,22 @@ void Laptop::print()
 	cout << this->getId() << " | " << this->getName() << " | " << this->getRamMemory() << " | " << this->getProcessor() << " | " << this->getVideoCart() << " | " << this->getPrice() << endl;
 }
 
+Laptop& Laptop::operator=(Laptop& lap)
+{
+	if (this != &lap)
+	{
+		this->setId(lap.getId());
+		this->setName(lap.getName());
+		this->setPrice(lap.getPrice());
+
+		this->ramMemory = lap.getRamMemory();
+		strcpy_s(this->processor, lap.getProcessor());
+		strcpy_s(this->videoCard, lap.getVideoCart());
+
+		return *this;
+	}
+}
+
 
 
 

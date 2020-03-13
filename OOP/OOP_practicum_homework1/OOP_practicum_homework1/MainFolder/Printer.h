@@ -21,6 +21,8 @@ public:
 	void setOneOrManyColors(bool);
 	bool getOneOrManyColors();
 
+	Printer& operator=(Printer&);
+
 	void print();
 	void addPrinter(char* printingTechnology, char* mainPrintingFormat, bool oneOrManyColor, int id, char* name, double price);
 };

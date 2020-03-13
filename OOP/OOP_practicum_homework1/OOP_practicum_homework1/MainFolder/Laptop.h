@@ -11,7 +11,6 @@ private:
 public:
 
 	Laptop();
-
 	Laptop(char* processor,int ramMemory,char* videoCart, int id, char* name, double price);
 
 	void setProcessor(char*);
@@ -20,6 +19,8 @@ public:
 	int getRamMemory();
 	void setVideoCart(char*);
 	char* getVideoCart();
+
+	Laptop& operator=(Laptop&);
 
 	void print();
 	void addLaptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price);

@@ -25,8 +25,9 @@ public:
 	void setName(char*);
 	char* getName();
 
+	ShoppingCart& operator=(ShoppingCart&);
+
 	void print();
 
-	ShoppingCart& operator=(ShoppingCart&);
 
 };

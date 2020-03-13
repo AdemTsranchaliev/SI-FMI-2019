@@ -20,6 +20,8 @@ public:
 	void setTypeDisplay(char*);
 	char* getTypeDisplay();
 
+	SmartWatch& operator=(SmartWatch&);
+
 	void print();
 	void addSmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price);
 };

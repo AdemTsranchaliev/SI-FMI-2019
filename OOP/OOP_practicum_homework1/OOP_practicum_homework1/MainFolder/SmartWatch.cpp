@@ -61,3 +61,19 @@ void SmartWatch::print()
 {
 	cout << this->getId() << " | " << this->getName() << " | " << this->getStyle() << " | " << this->getOperatingSystem() << " | " << this->getTypeDisplay() << " | " << this->getPrice() << endl;
 }
+
+SmartWatch& SmartWatch::operator=(SmartWatch& smwt)
+{
+	if (this != &smwt)
+	{
+		this->setId(smwt.getId());
+		this->setName(smwt.getName());
+		this->setPrice(smwt.getPrice());
+
+		strcpy_s(this->style, smwt.getStyle());
+		strcpy_s(this->operatingSystem, smwt.getOperatingSystem());
+		strcpy_s(this->typeDisplay, smwt.getTypeDisplay());
+
+		return *this;
+	}
+}

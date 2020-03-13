@@ -8,6 +8,8 @@ private:
 	char password[50];
 	char role[50];
 public:
+	User();
+	User(int id,char* username,char* password,char* role);
 
 	void setId(int id);
 	int getId();

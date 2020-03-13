@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{840191F1-E537-4E31-A949-AD7B698554F0}</ProjectGuid>
-    <RootNamespace>MainFolder</RootNamespace>
+    <ProjectGuid>{1BE5C03B-C090-4205-B3AC-34366ADAA7E7}</ProjectGuid>
+    <RootNamespace>Ex1</RootNamespace>
     <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -115,23 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Laptop.cpp" />
-    <ClCompile Include="Phone.cpp" />
-    <ClCompile Include="Printer.cpp" />
-    <ClCompile Include="Product.cpp" />
-    <ClCompile Include="ShoppingCart.cpp" />
-    <ClCompile Include="SmartWatch.cpp" />
     <ClCompile Include="Source.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="Laptop.h" />
-    <ClInclude Include="Order.hpp" />
-    <ClInclude Include="Phone.h" />
-    <ClInclude Include="Printer.h" />
-    <ClInclude Include="Product.h" />
-    <ClInclude Include="ShoppingCart.h" />
-    <ClInclude Include="SmartWatch.h" />
-    <ClInclude Include="User.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

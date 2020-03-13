@@ -72,3 +72,19 @@ void Printer::addPrinter(char* printingTechnology, char* mainPrintingFormat, boo
 	strcpy_s(this->mainPrintingFormat, mainPrintingFormat);
 	this->oneOrManyColor = oneOrManyColor;
 }
+
+Printer& Printer::operator=(Printer& print)
+{
+	if (this != &print)
+	{
+		this->setId(print.getId());
+		this->setName(print.getName());
+		this->setPrice(print.getPrice());
+
+		strcpy_s(this->printingTechnology, print.getPrintingTechnology());
+		strcpy_s(this->mainPrintingFormat, print.getMainPrintingFormat());
+		this->oneOrManyColor = print.getOneOrManyColors();
+
+		return *this;
+	}
+}
