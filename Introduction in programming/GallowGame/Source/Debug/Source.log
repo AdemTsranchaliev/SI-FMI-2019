@@ -1,0 +1,3 @@
+﻿  Source.cpp
+d:\si-fmi-2019\introduction in programming\gallowgame\source\source.cpp(91): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+  Source.vcxproj -> D:\SI-FMI-2019\Introduction in programming\GallowGame\Debug\Source.exe
