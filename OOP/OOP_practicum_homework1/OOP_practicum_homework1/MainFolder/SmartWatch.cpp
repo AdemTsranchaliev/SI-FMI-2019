@@ -1,13 +1,13 @@
 #include <iostream>
 
-#include "SmartWatch.h"
+#include "SmartWatch.hpp"
 
 
 using namespace std;
 
 SmartWatch::SmartWatch() {}
 
-SmartWatch::SmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price)
+SmartWatch::SmartWatch(const char* style, const char* operatingSystem, const char* typeDisplay, int id, const char* name, double price)
 {
 	this->setId(id);
 	this->setName(name);
@@ -18,7 +18,7 @@ SmartWatch::SmartWatch(char* style, char* operatingSystem, char* typeDisplay, in
 }
 
 
-void SmartWatch::setStyle(char* style)
+void SmartWatch::setStyle(const char* style)
 {
 	strcpy_s(this->style, style);
 }
@@ -27,7 +27,7 @@ char* SmartWatch::getStyle()
 {
 	return this->style;
 }
-void SmartWatch::setOperatingSystem(char* operatingSystem)
+void SmartWatch::setOperatingSystem(const char* operatingSystem)
 {
 	strcpy_s(this->operatingSystem, operatingSystem);
 }
@@ -36,7 +36,7 @@ char* SmartWatch::getOperatingSystem()
 {
 	return this->operatingSystem;
 }
-void SmartWatch::setTypeDisplay(char* typeDispaly)
+void SmartWatch::setTypeDisplay(const char* typeDispaly)
 {
 	strcpy_s(this->typeDisplay, typeDispaly);
 }
@@ -47,7 +47,7 @@ char* SmartWatch::getTypeDisplay()
 }
 
 
-void SmartWatch::addSmartWatch(char* style, char* operatingSystem, char* typeDisplay, int id, char* name, double price)
+void SmartWatch::addSmartWatch(const char* style, const char* operatingSystem, const char* typeDisplay, int id, const char* name, double price)
 {
 	this->setId(id);
 	this->setName(name);

@@ -1,13 +1,13 @@
 #include <iostream>
-#include <string>
+
 
 using namespace std;
 
-#include "Phone.h"
-#include "Laptop.h"
-#include "Printer.h"
-#include "SmartWatch.h"
-#include "ShoppingCart.h"
+#include "Phone.hpp"
+#include "Laptop.hpp"
+#include "Printer.hpp"
+#include "SmartWatch.hpp"
+#include "ShoppingCart.hpp"
 
 
 Laptop laptops[4];
@@ -64,9 +64,10 @@ int main()
 			cout << "Laptops" << endl;
 			cout << "No | Name | Ram memory | Processor | Video cart | Price" << endl;
 			cout << "-----------------------------------------------------------" << endl;
+			
 			for (int i = 0; i < 4; i++)
 			{
-				phones[i].print();
+				laptops[i].print();
 			}
 			strcpy_s(categorySelected, "Laptop");
 		}
@@ -88,7 +89,7 @@ int main()
 			cout << "Printers" << endl;
 			cout << "No | Name | Printing technology | Main format | Printning colors | Price" << endl;
 			cout << "-----------------------------------------------------------" << endl;
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < 2; i++)
 			{
 				printers[i].print();
 			}
@@ -251,7 +252,7 @@ int main()
 				{
 					bool isProductIdExist = false;
 					int productIndex = 0;
-					for (int i = 0; i < 4; i++)
+					for (int i = 0; i < 2; i++)
 					{
 						if (printers[i].getId() == productId)
 						{
@@ -263,6 +264,7 @@ int main()
 					{
 						ShoppingCart cart = ShoppingCart(categorySelected, productId, 1, printers[productIndex].getPrice(), printers[productIndex].getName());
 						shoppingCart[firstFreeIndex] = cart;
+						cout << "The product was sucessfuly added to shopping cart!" << endl;
 					}
 					else
 					{
@@ -300,6 +302,7 @@ int main()
 				{
 					ShoppingCart cart = ShoppingCart(categorySelected, productId, 1, smarthWatches[productIndex].getPrice(), smarthWatches[productIndex].getName());
 					shoppingCart[firstFreeIndex] = cart;
+					cout << "The product was sucessfuly added to shopping cart!" << endl;
 				}
 				else
 				{
@@ -337,17 +340,21 @@ int main()
 
 
 
-void InsertData()
+static void InsertData()
 {
 	phones[0].addPhone("X", "Black", 2019, 1, "Iphone", 1100);
 	phones[1].addPhone("Galaxy S4", "White", 2016, 2, "Samsung", 700);
-	phones[2].addPhone("PRO 20", "Black", 2017, 3, "Huawei", 450);
-	phones[3].addPhone("4", "Pink", 2011, 4, "Iphone", 200);
+	phones[2].addPhone("PRO 20", "Black", 2017, 3, "Huawei", 200);
+	phones[3].addPhone("4", "Pink", 2011, 4, "Iphone", 450);
+
+	printers[0].addPrinter("RA", "A", true, 5, "ASUS", 200);
+	printers[1].addPrinter("Laser", "B", true, 6, "HP", 220);
+
 
 
 }
 
-void InitialiseShoppingCart()
+ void InitialiseShoppingCart()
 {
 	for (int i = 0; i < 40; i++)
 	{
@@ -434,9 +441,9 @@ void SortAndPrint(char* category)
 	else if (strcmp(category, "Printer") == 0)
 	{
 		int i, j;
-		for (i = 0; i < 4 - 1; i++) {
+		for (i = 0; i < 2 - 1; i++) {
 
-			for (j = 0; j < 4 - i - 1; j++)
+			for (j = 0; j < 2- i - 1; j++)
 			{
 				if (printers[j].getPrice() > printers[j + 1].getPrice())
 				{
@@ -446,12 +453,12 @@ void SortAndPrint(char* category)
 				}
 			}
 		}
-		cout << "Phones" << endl;
-		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "Printers" << endl;
+		cout << "No | Name | Printing technology | Main format | Printning colors | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 2; i++)
 		{
-			phones[i].print();
+			printers[i].print();
 		}
 	}
 	else if (strcmp(category, "SmartWatch") == 0)
@@ -469,12 +476,12 @@ void SortAndPrint(char* category)
 				}
 			}
 		}
-		cout << "Phones" << endl;
-		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "Smart Watches" << endl;
+		cout << "No | Name | Style | Operating system | Display type | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < 4; i++)
+		for (int i = 0; i < 2; i++)
 		{
-			phones[i].print();
+			smarthWatches[i].print();
 		}
 	}
 	else if (strcmp(category, "Laptop") == 0)
@@ -492,12 +499,13 @@ void SortAndPrint(char* category)
 				}
 			}
 		}
-		cout << "Phones" << endl;
-		cout << "No | Name | Color | Model | Year of production | Price" << endl;
+		cout << "Laptops" << endl;
+		cout << "No | Name | Ram memory | Processor | Video cart | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
+
 		for (int i = 0; i < 4; i++)
 		{
-			phones[i].print();
+			laptops[i].print();
 		}
 	}
 }

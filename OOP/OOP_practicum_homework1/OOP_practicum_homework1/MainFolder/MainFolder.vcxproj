@@ -116,22 +116,24 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Laptop.cpp" />
+    <ClCompile Include="Order.cpp" />
     <ClCompile Include="Phone.cpp" />
     <ClCompile Include="Printer.cpp" />
     <ClCompile Include="Product.cpp" />
     <ClCompile Include="ShoppingCart.cpp" />
     <ClCompile Include="SmartWatch.cpp" />
     <ClCompile Include="Source.cpp" />
+    <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Laptop.h" />
+    <ClInclude Include="Laptop.hpp" />
     <ClInclude Include="Order.hpp" />
-    <ClInclude Include="Phone.h" />
-    <ClInclude Include="Printer.h" />
-    <ClInclude Include="Product.h" />
-    <ClInclude Include="ShoppingCart.h" />
-    <ClInclude Include="SmartWatch.h" />
-    <ClInclude Include="User.h" />
+    <ClInclude Include="Phone.hpp" />
+    <ClInclude Include="Printer.hpp" />
+    <ClInclude Include="Product.hpp" />
+    <ClInclude Include="ShoppingCart.hpp" />
+    <ClInclude Include="SmartWatch.hpp" />
+    <ClInclude Include="User.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "Phone.h"
+#include "Phone.hpp"
 
 using namespace std;
 
@@ -16,16 +16,7 @@ Phone::Phone(const char* color,const char* model, int yearOfProduction, int id,c
 	strcpy_s(this->color,color);
 	strcpy_s(this->model, model);
 }
-Phone::Phone(Phone& phone)
-{
-	this->setId(phone.getId());
-	this->setName(phone.getName());
-	this->setPrice(phone.getPrice());
 
-	this->yearOfProduction = phone.yearOfProduction;
-	strcpy_s(this->color, phone.color);
-	strcpy_s(this->model, phone.model);
-}
 
 void Phone::setYearOfProduction(int year)
 {

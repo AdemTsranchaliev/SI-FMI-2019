@@ -15,15 +15,15 @@ public:
 
 	void setName(char*);
 	char* getName();
-	void setSurname();
+	void setSurname(char*);
 	char* getSurname();
-	void setPhoneNumber();
+	void setPhoneNumber(char*);
 	char* getPhoneNumber();
-	void setAddressToDelivery();
+	void setAddressToDelivery(char*);
 	char* getAddressToDelivery();
-	void setPopulatedPlace();
+	void setPopulatedPlace(char*);
 	char* getPopulatedPlace();
-	void setEmail();
+	void setEmail(char*);
 	char* getEmail();
 
 

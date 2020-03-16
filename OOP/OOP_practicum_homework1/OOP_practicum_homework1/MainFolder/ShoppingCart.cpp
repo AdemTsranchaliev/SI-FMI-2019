@@ -1,6 +1,6 @@
 #include <iostream>
 
-#include "ShoppingCart.h";
+#include "ShoppingCart.hpp";
 using namespace std;
 
 ShoppingCart::ShoppingCart(){}

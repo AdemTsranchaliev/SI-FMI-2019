@@ -2,14 +2,14 @@
 #include <iostream>
 #include <cstring>
 
-#include "Printer.h"
+#include "Printer.hpp"
 
 using namespace std;
 
 
 Printer::Printer() {}
 
-Printer::Printer(char* printingTechnology, char* mainPrintingFormat, bool oneOrManyColor, int id, char* name, double price)
+Printer::Printer(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price)
 {
 
 	this->setId(id);
@@ -21,7 +21,7 @@ Printer::Printer(char* printingTechnology, char* mainPrintingFormat, bool oneOrM
 	this->oneOrManyColor = oneOrManyColor;
 }
 
-void Printer::setPrintingTechnology(char* printingTechnology)
+void Printer::setPrintingTechnology(const char* printingTechnology)
 {
 	strcpy_s(this->printingTechnology, printingTechnology);
 }
@@ -30,7 +30,7 @@ char* Printer::getPrintingTechnology()
 	return this->printingTechnology;
 }
 
-void Printer::setMainPrintingFormat(char* mainPrintingFormat)
+void Printer::setMainPrintingFormat(const char* mainPrintingFormat)
 {
 	strcpy_s(this->mainPrintingFormat, mainPrintingFormat);
 }
@@ -61,13 +61,12 @@ void Printer::print()
 	}
 }
 
-void Printer::addPrinter(char* printingTechnology, char* mainPrintingFormat, bool oneOrManyColor, int id, char* name, double price)
+void Printer::addPrinter(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price)
 {
 
 	this->setId(id);
 	this->setName(name);
 	this->setPrice(price);
-
 	strcpy_s(this->printingTechnology, printingTechnology);
 	strcpy_s(this->mainPrintingFormat, mainPrintingFormat);
 	this->oneOrManyColor = oneOrManyColor;

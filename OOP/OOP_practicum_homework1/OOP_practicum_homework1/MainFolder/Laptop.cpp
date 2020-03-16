@@ -1,12 +1,12 @@
 #include <iostream>
 
-#include "Laptop.h"
+#include "Laptop.hpp"
 
 using namespace std;
 
 Laptop::Laptop() {}
 
-Laptop::Laptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price)
+Laptop::Laptop(const char* processor, int ramMemory, const char* videoCart, int id, const char* name, double price)
 {
 	this->setId(id);
 	this->setName(name);
@@ -28,7 +28,7 @@ int Laptop::getRamMemory()
 	return this->ramMemory;
 }
 
-void Laptop::setProcessor(char* processor)
+void Laptop::setProcessor(const char* processor)
 {
 	strcpy_s(this->processor, processor);
 }
@@ -38,7 +38,7 @@ char* Laptop::getProcessor()
 	return this->processor;
 }
 
-void Laptop::setVideoCart(char* videoCart)
+void Laptop::setVideoCart(const char* videoCart)
 {
 	strcpy_s(this->videoCard, videoCart);
 }
@@ -48,7 +48,7 @@ char* Laptop::getVideoCart()
 	return this->videoCard;
 }
 
-void Laptop::addLaptop(char* processor, int ramMemory, char* videoCart, int id, char* name, double price)
+void Laptop::addLaptop(const char* processor, int ramMemory, const char* videoCart, int id, const char* name, double price)
 {
 	this->setId(id);
 	this->setName(name);
