@@ -5,13 +5,14 @@
 class Laptop:public Product
 {
 private:
-	char processor[50];
+	char* processor;
 	int ramMemory;
-	char videoCard[60];
+	char* videoCard;
 public:
 
 	Laptop();
 	Laptop(const char* processor,int ramMemory, const char* videoCart, int id, const char* name, double price);
+	~Laptop();
 
 	void setProcessor(const char*);
 	char* getProcessor();

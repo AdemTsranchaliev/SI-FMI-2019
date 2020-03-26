@@ -2,29 +2,30 @@
 class Order
 {
 private:
-	char name[50];
-	char surname[50];
-	char phoneNumber[15];
-	char addressToDelivery[200];
-	char populatedPlace[100];
-	char email[100];
+	char* name;
+	char* surname;
+	char* phoneNumber;
+	char* addressToDelivery;
+	char* populatedPlace;
+	char* email;
 public:
 
 	Order();
-	Order(char* name,char* surname,char* phone,char* address,char* populatedPlace,char* email);
+	Order(const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace, const char* email);
+	~Order();
 
 	void setName(char*);
-	char* getName();
+	char* getName() const;
 	void setSurname(char*);
-	char* getSurname();
+	char* getSurname() const;
 	void setPhoneNumber(char*);
-	char* getPhoneNumber();
+	char* getPhoneNumber() const;
 	void setAddressToDelivery(char*);
-	char* getAddressToDelivery();
+	char* getAddressToDelivery() const;
 	void setPopulatedPlace(char*);
-	char* getPopulatedPlace();
+	char* getPopulatedPlace() const;
 	void setEmail(char*);
-	char* getEmail();
+	char* getEmail() const;
 
 
 };

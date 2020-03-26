@@ -1,13 +1,23 @@
 
 #include <iostream>
 #include <cstring>
+#include "CommonFunctions.h"
 
 #include "Printer.hpp"
 
 using namespace std;
 
 
-Printer::Printer() {}
+Printer::Printer() 
+{
+	this->printingTechnology = new char[1];
+	this->printingTechnology[0] = '\0';
+
+	this->mainPrintingFormat = new char[1];
+	this->mainPrintingFormat[0] = '\0';
+
+	oneOrManyColor = false;
+}
 
 Printer::Printer(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price)
 {
@@ -16,25 +26,41 @@ Printer::Printer(const char* printingTechnology, const char* mainPrintingFormat,
 	this->setName(name);
 	this->setPrice(price);
 
-	strcpy_s(this->printingTechnology, printingTechnology);
-	strcpy_s(this->mainPrintingFormat, mainPrintingFormat);
+	this->printingTechnology = new char[strlen(printingTechnology)+1];
+	CopyCharArr(this->printingTechnology,printingTechnology, strlen(printingTechnology) + 1);
+
+	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
+	CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+
+
 	this->oneOrManyColor = oneOrManyColor;
 }
 
+Printer::~Printer()
+{
+	delete[] this->printingTechnology;
+	delete[] this->mainPrintingFormat;
+}
+
+
 void Printer::setPrintingTechnology(const char* printingTechnology)
 {
-	strcpy_s(this->printingTechnology, printingTechnology);
+	delete[] this->printingTechnology;
+	this->printingTechnology = new char[strlen(printingTechnology) + 1];
+	CopyCharArr(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
 }
-char* Printer::getPrintingTechnology()
+char* Printer::getPrintingTechnology() const
 {
 	return this->printingTechnology;
 }
 
 void Printer::setMainPrintingFormat(const char* mainPrintingFormat)
 {
-	strcpy_s(this->mainPrintingFormat, mainPrintingFormat);
+	delete[] this->mainPrintingFormat;
+	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
+	CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
 }
-char* Printer::getMainPrintingFormat()
+char* Printer::getMainPrintingFormat() const
 {
 	return this->mainPrintingFormat;
 }
@@ -43,7 +69,7 @@ void Printer::setOneOrManyColors(bool oneOrManyColors)
 {
 	this->oneOrManyColor = oneOrManyColor;
 }
-bool Printer::getOneOrManyColors()
+bool Printer::getOneOrManyColors() const
 {
 	return this->oneOrManyColor;
 }
@@ -63,12 +89,20 @@ void Printer::print()
 
 void Printer::addPrinter(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price)
 {
+	delete[] this->printingTechnology;
+	delete[] this->mainPrintingFormat;
+
 
 	this->setId(id);
 	this->setName(name);
 	this->setPrice(price);
-	strcpy_s(this->printingTechnology, printingTechnology);
-	strcpy_s(this->mainPrintingFormat, mainPrintingFormat);
+
+	this->printingTechnology = new char[strlen(printingTechnology) + 1];
+	CopyCharArr(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
+
+	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
+	CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+
 	this->oneOrManyColor = oneOrManyColor;
 }
 
@@ -76,14 +110,20 @@ Printer& Printer::operator=(Printer& print)
 {
 	if (this != &print)
 	{
+		delete[] this->printingTechnology;
+		delete[] this->mainPrintingFormat;
 		this->setId(print.getId());
 		this->setName(print.getName());
 		this->setPrice(print.getPrice());
 
-		strcpy_s(this->printingTechnology, print.getPrintingTechnology());
-		strcpy_s(this->mainPrintingFormat, print.getMainPrintingFormat());
+		this->printingTechnology = new char[strlen(printingTechnology) + 1];
+		CopyCharArr(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
+
+		this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
+		CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+
 		this->oneOrManyColor = print.getOneOrManyColors();
 
-		return *this;
 	}
+	return *this;
 }

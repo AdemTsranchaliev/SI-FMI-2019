@@ -4,19 +4,20 @@ class User
 {
 private:
 	int id;
-	char username[50];
-	char password[50];
-	char role[50];
+	char* username;
+	char* password;
+	char* role;
 public:
 	User();
 	User(int id,char* username,char* password,char* role);
+	~User();
 
 	void setId(int id);
-	int getId();
+	int getId() const;
 	void setUsername(char*);
-	char* getUsername();
+	char* getUsername() const;
 	void setPassword(char*);
-	char* getPassword();
+	char* getPassword() const;
 	void setRole(char*);
-	char* getRole();
+	char* getRole() const;
 };

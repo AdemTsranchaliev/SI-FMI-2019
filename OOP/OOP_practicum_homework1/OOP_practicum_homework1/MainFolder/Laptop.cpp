@@ -1,5 +1,5 @@
 #include <iostream>
-
+#include "CommonFunctions.h"
 #include "Laptop.hpp"
 
 using namespace std;
@@ -13,8 +13,8 @@ Laptop::Laptop(const char* processor, int ramMemory, const char* videoCart, int 
 	this->setPrice(price);
 
 	this->ramMemory = ramMemory;
-	strcpy_s(this->processor,processor);
-	strcpy_s(this->videoCard, videoCard);
+	strncpy(this->processor,processor);
+	strncpy(this->videoCard, videoCard);
 	this->ramMemory = ramMemory;
 }
 
@@ -30,7 +30,7 @@ int Laptop::getRamMemory()
 
 void Laptop::setProcessor(const char* processor)
 {
-	strcpy_s(this->processor, processor);
+	strncpy(this->processor, processor);
 }
 
 char* Laptop::getProcessor()
@@ -40,7 +40,7 @@ char* Laptop::getProcessor()
 
 void Laptop::setVideoCart(const char* videoCart)
 {
-	strcpy_s(this->videoCard, videoCart);
+	strncpy(this->videoCard, videoCart);
 }
 
 char* Laptop::getVideoCart()
@@ -55,8 +55,8 @@ void Laptop::addLaptop(const char* processor, int ramMemory, const char* videoCa
 	this->setPrice(price);
 
 	this->ramMemory = ramMemory;
-	strcpy_s(this->processor, processor);
-	strcpy_s(this->videoCard, videoCard);
+	strncpy(this->processor, processor);
+	strncpy(this->videoCard, videoCard);
 }
 
 void Laptop::print()
@@ -73,8 +73,8 @@ Laptop& Laptop::operator=(Laptop& lap)
 		this->setPrice(lap.getPrice());
 
 		this->ramMemory = lap.getRamMemory();
-		strcpy_s(this->processor, lap.getProcessor());
-		strcpy_s(this->videoCard, lap.getVideoCart());
+		strncpy(this->processor, lap.getProcessor());
+		strncpy(this->videoCard, lap.getVideoCart());
 
 		return *this;
 	}

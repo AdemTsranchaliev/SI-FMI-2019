@@ -4,21 +4,22 @@
 class SmartWatch:public Product
 {
 private:
-	char style[50];//woman man or unisex
-	char operatingSystem[50];
-	char typeDisplay[50];
+	char* style;//woman man or unisex
+	char* operatingSystem;
+	char* typeDisplay;
 
 public:
 
 	SmartWatch();
 	SmartWatch(const char* style, const char* operatingSystem, const char* typeDisplay, int id, const char* name , double price);
+	~SmartWatch();
 
 	void setStyle(const char*);
-	char* getStyle();
+	char* getStyle() const;
 	void setOperatingSystem(const char*);
-	char* getOperatingSystem();
+	char* getOperatingSystem() const;
 	void setTypeDisplay(const char*);
-	char* getTypeDisplay();
+	char* getTypeDisplay() const;
 
 	SmartWatch& operator=(SmartWatch&);
 
