@@ -14,9 +14,10 @@ Login::Login(char* username)
 	cout << "Please enter how will be the lenght of password" << endl;
 	cin >> lenght;
 	cin.ignore();
-	this->password = new char[lenght];
+	this->password = new char[lenght+1];
 	cout << "Please enter password"<<endl;
 	cin >> this->password;
+	this->sessionType = 1;
 }
 
 Login::Login(char* username, char* password)
