@@ -12,7 +12,7 @@ void Date::setDate(int day, int month, int year)
 }
 void Date::setDayName(char* name)
 {
-	this->dayName = name;
+	strcpy_s(this->dayName ,name);
 }
 void Date::displayA() const //dd/mm/yyyy
 {
