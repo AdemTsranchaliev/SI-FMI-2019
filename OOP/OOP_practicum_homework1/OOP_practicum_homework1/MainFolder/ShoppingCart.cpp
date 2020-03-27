@@ -134,5 +134,5 @@ int ShoppingCart::getQuantity() const
 
 void ShoppingCart::print()
 {
-	cout << "";
+	cout << getProductId() << " | " << getProductCategory() << " | " << getName() << " | " << getPrice() << " | " << getQuantity() << " | " << getPrice()*getQuantity() << " leva " << endl;
 }

@@ -116,6 +116,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Laptop.cpp" />
+    <ClCompile Include="List.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Phone.cpp" />
     <ClCompile Include="Printer.cpp" />
@@ -127,6 +128,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Laptop.hpp" />
+    <ClInclude Include="List.hpp" />
     <ClInclude Include="Order.hpp" />
     <ClInclude Include="Phone.hpp" />
     <ClInclude Include="Printer.hpp" />

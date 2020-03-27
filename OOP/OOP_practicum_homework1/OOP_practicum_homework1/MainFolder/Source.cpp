@@ -8,13 +8,13 @@ using namespace std;
 #include "Printer.hpp"
 #include "SmartWatch.hpp"
 #include "ShoppingCart.hpp"
+#include "List.hpp"
 
-
-Laptop laptops[4];
-Phone phones[4];
-Printer printers[4];
-SmartWatch smarthWatches[2];
-ShoppingCart shoppingCart[30];
+List<Laptop> laptops;
+List<Phone> phones;
+List<Printer> printers;
+List<SmartWatch> smarthWatches;
+List<ShoppingCart> shoppingCart;
 
 void InsertData();
 void SortAndPrint(char*);
@@ -64,9 +64,9 @@ int main()
 			cout << "No | Name | Ram memory | Processor | Video cart | Price" << endl;
 			cout << "-----------------------------------------------------------" << endl;
 			
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < laptops.Count(); i++)
 			{
-				laptops[i].print();
+				laptops.getAt(i).print();
 			}
 			strcpy_s(categorySelected, "Laptop");
 		}
@@ -76,9 +76,9 @@ int main()
 			cout << "Phones" << endl;
 			cout << "No | Name | Color | Model | Year of production | Price" << endl;
 			cout << "-----------------------------------------------------------" << endl;
-			for (int i = 0; i < 4; i++)
+			for (int i = 0; i < phones.Count(); i++)
 			{
-				phones[i].print();
+				phones.getAt(i).print();
 			}
 			strcpy_s(categorySelected, "Phone");
 
@@ -88,9 +88,9 @@ int main()
 			cout << "Printers" << endl;
 			cout << "No | Name | Printing technology | Main format | Printning colors | Price" << endl;
 			cout << "-----------------------------------------------------------" << endl;
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < printers.Count(); i++)
 			{
-				printers[i].print();
+				printers.getAt(i).print();
 			}
 			strcpy_s(categorySelected, "Printer");
 
@@ -100,9 +100,9 @@ int main()
 			cout << "Smart Watches" << endl;
 			cout << "No | Name | Style | Operating system | Display type | Price" << endl;
 			cout << "-----------------------------------------------------------" << endl;
-			for (int i = 0; i < 2; i++)
+			for (int i = 0; i < smarthWatches.Count(); i++)
 			{
-				smarthWatches[i].print();
+				smarthWatches.getAt(i).print();
 			}
 			strcpy_s(categorySelected, "SmartWatch");
 
@@ -341,13 +341,18 @@ int main()
 
 static void InsertData()
 {
-	phones[0] = Phone("X", "Black", 2019, 1, "Iphone", 1100);
-	phones[1] = Phone("Galaxy S4", "White", 2016, 2, "Samsung", 700);
-	phones[2] = Phone("PRO 20", "Black", 2017, 3, "Huawei", 200);
-	phones[3] = Phone("4", "Pink", 2011, 4, "Iphone", 450);
+	Phone phone1("X", "Black", 2019, 1, "Iphone", 1100);
+	Phone phone2("X", "Black", 2019, 1, "Iphone", 1100);
+	Phone phone3("X", "Black", 2019, 1, "Iphone", 1100);
+	Phone phone4("X", "Black", 2019, 1, "Iphone", 1100);
+	phones.add(phone1);
+	phones.add(phone2);
+	phones.add(phone3);
+	phones.add(phone4);
 
-	printers[0]=Printer("RA", "A", true, 5, "ASUS", 200);
-	printers[1]= Printer("Laser", "B", true, 6, "HP", 220);
+	Printer printer1("RA", "A", true, 5, "ASUS", 200);
+	Printer printer2("Laser", "B", true, 6, "HP", 220);
+
 
 
 
@@ -393,7 +398,7 @@ void ShowShoppingCart()
 		for (int i = 0; i < lastProductIndex; i++)
 		{
 			totalForCart += shoppingCart[i].getPrice()*shoppingCart[i].getQuantity();
-			cout << shoppingCart[i].getProductId() << " | " << shoppingCart[i].getProductCategory() << " | " << shoppingCart[i].getName() << " | " << shoppingCart[i].getPrice() << " | " << shoppingCart[i].getQuantity() << " | " << shoppingCart[i].getPrice()*shoppingCart[i].getQuantity() << " leva " << endl;
+			shoppingCart[i].print();
 		}
 		cout << "======================" << endl;
 		cout << "Total: " << totalForCart << " leva" << endl;

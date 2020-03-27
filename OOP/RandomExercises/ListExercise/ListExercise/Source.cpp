@@ -1,29 +1,29 @@
 //ex.22
 
 #include <iostream>
-
+#include "List.h"
 using namespace std;
 
 int main() {
 
 	int n;
 	cin >> n;
+	List numbers=List();
 
-	int counter = 0;
-
-	if (n > 0 && n < 1000000) {
-
-		while (n != 0)
-		{
-
-			counter = counter + n % 2;
-
-			n = n / 2;
-
-		}
-
+	for (int i = 0; i < 5000; i++)
+	{
+		numbers.add(i);
+			
 	}
-	cout << counter << endl;
+	for (int i = 0; i < 1000; i++)
+	{
+		numbers.removeAt(0);
+	}
+
+	for (int i = 0; i < numbers.Count(); i++)
+	{
+		cout << i + 1 << ". " << numbers.getAt(i) << endl;
+	}
 	system("pause");
 	return 0;
 }
