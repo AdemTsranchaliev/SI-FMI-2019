@@ -1,13 +1,13 @@
 
 #include <iostream>
 #include <cstring>
-#include "CommonFunctions.h"
-
+#pragma warning (disable:4996)
 #include "Printer.hpp"
 
 using namespace std;
 
 
+//Constructors
 Printer::Printer() 
 {
 	this->printingTechnology = new char[1];
@@ -27,27 +27,67 @@ Printer::Printer(const char* printingTechnology, const char* mainPrintingFormat,
 	this->setPrice(price);
 
 	this->printingTechnology = new char[strlen(printingTechnology)+1];
-	CopyCharArr(this->printingTechnology,printingTechnology, strlen(printingTechnology) + 1);
+	strncpy(this->printingTechnology,printingTechnology, strlen(printingTechnology) + 1);
 
 	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
-	CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+	strncpy(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
 
 
 	this->oneOrManyColor = oneOrManyColor;
 }
 
+Printer::Printer(const Printer& printer)
+{
+	this->setId(printer.getId());
+	this->setName(printer.getName());
+	this->setPrice(printer.getPrice());
+
+	this->printingTechnology = new char[strlen(printer.printingTechnology) + 1];
+	strncpy(this->printingTechnology, printer.printingTechnology, strlen(printer.printingTechnology) + 1);
+
+	this->mainPrintingFormat = new char[strlen(printer.mainPrintingFormat) + 1];
+	strncpy(this->mainPrintingFormat, printer.mainPrintingFormat, strlen(printer.mainPrintingFormat) + 1);
+
+	this->oneOrManyColor = printer.getOneOrManyColors();
+}
+
+//Destructor
 Printer::~Printer()
 {
 	delete[] this->printingTechnology;
 	delete[] this->mainPrintingFormat;
 }
 
+//Assignment operator
+Printer& Printer::operator=(const Printer& print)
+{
+	if (this != &print)
+	{
+		delete[] this->printingTechnology;
+		delete[] this->mainPrintingFormat;
 
+		this->setId(print.getId());
+		this->setName(print.getName());
+		this->setPrice(print.getPrice());
+
+		this->printingTechnology = new char[strlen(print.printingTechnology) + 1];
+		strncpy(this->printingTechnology, print.printingTechnology, strlen(print.printingTechnology) + 1);
+
+		this->mainPrintingFormat = new char[strlen(print.mainPrintingFormat) + 1];
+		strncpy(this->mainPrintingFormat, print.mainPrintingFormat, strlen(print.mainPrintingFormat) + 1);
+
+		this->oneOrManyColor = print.getOneOrManyColors();
+
+	}
+	return *this;
+}
+
+//Mutators
 void Printer::setPrintingTechnology(const char* printingTechnology)
 {
 	delete[] this->printingTechnology;
 	this->printingTechnology = new char[strlen(printingTechnology) + 1];
-	CopyCharArr(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
+	strncpy(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
 }
 char* Printer::getPrintingTechnology() const
 {
@@ -58,7 +98,7 @@ void Printer::setMainPrintingFormat(const char* mainPrintingFormat)
 {
 	delete[] this->mainPrintingFormat;
 	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
-	CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+	strncpy(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
 }
 char* Printer::getMainPrintingFormat() const
 {
@@ -74,6 +114,7 @@ bool Printer::getOneOrManyColors() const
 	return this->oneOrManyColor;
 }
 
+//Functions
 void Printer::print()
 {
 	if (this->getOneOrManyColors()==true)
@@ -87,43 +128,5 @@ void Printer::print()
 	}
 }
 
-void Printer::addPrinter(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price)
-{
-	delete[] this->printingTechnology;
-	delete[] this->mainPrintingFormat;
 
 
-	this->setId(id);
-	this->setName(name);
-	this->setPrice(price);
-
-	this->printingTechnology = new char[strlen(printingTechnology) + 1];
-	CopyCharArr(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
-
-	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
-	CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
-
-	this->oneOrManyColor = oneOrManyColor;
-}
-
-Printer& Printer::operator=(Printer& print)
-{
-	if (this != &print)
-	{
-		delete[] this->printingTechnology;
-		delete[] this->mainPrintingFormat;
-		this->setId(print.getId());
-		this->setName(print.getName());
-		this->setPrice(print.getPrice());
-
-		this->printingTechnology = new char[strlen(printingTechnology) + 1];
-		CopyCharArr(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
-
-		this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
-		CopyCharArr(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
-
-		this->oneOrManyColor = print.getOneOrManyColors();
-
-	}
-	return *this;
-}

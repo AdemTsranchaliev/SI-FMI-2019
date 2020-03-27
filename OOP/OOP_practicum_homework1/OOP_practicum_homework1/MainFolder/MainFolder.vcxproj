@@ -126,7 +126,6 @@
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="CommonFunctions.h" />
     <ClInclude Include="Laptop.hpp" />
     <ClInclude Include="Order.hpp" />
     <ClInclude Include="Phone.hpp" />

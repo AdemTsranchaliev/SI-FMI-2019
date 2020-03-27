@@ -13,7 +13,9 @@ public:
 
 	Printer();
 	Printer(const char* printingTechnology, const char* mainPrintingFormat,bool oneOrManyColor, int id , const char* name, double price);
+	Printer(const Printer& printer);
 	~Printer();
+	Printer& operator=(const Printer& printer);
 
 	void setPrintingTechnology(const char*);
 	char* getPrintingTechnology() const;
@@ -22,8 +24,6 @@ public:
 	void setOneOrManyColors(bool);
 	bool getOneOrManyColors() const;
 
-	Printer& operator=(Printer&);
 
 	void print();
-	void addPrinter(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price);
 };

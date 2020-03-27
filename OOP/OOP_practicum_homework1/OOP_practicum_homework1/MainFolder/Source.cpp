@@ -19,13 +19,12 @@ ShoppingCart shoppingCart[30];
 void InsertData();
 void SortAndPrint(char*);
 void ShowShoppingCart();
-void InitialiseShoppingCart();
+
 int FindFirstEmptyIndex();
 
 int main()
 {
 	InsertData();
-	InitialiseShoppingCart();
 	cout << "=============================" << endl;
 	cout << "Welcome in the SMART SHOP" << endl;
 	cout << "=============================" << endl << endl;
@@ -342,31 +341,25 @@ int main()
 
 static void InsertData()
 {
-	phones[0].addPhone("X", "Black", 2019, 1, "Iphone", 1100);
-	phones[1].addPhone("Galaxy S4", "White", 2016, 2, "Samsung", 700);
-	phones[2].addPhone("PRO 20", "Black", 2017, 3, "Huawei", 200);
-	phones[3].addPhone("4", "Pink", 2011, 4, "Iphone", 450);
+	phones[0] = Phone("X", "Black", 2019, 1, "Iphone", 1100);
+	phones[1] = Phone("Galaxy S4", "White", 2016, 2, "Samsung", 700);
+	phones[2] = Phone("PRO 20", "Black", 2017, 3, "Huawei", 200);
+	phones[3] = Phone("4", "Pink", 2011, 4, "Iphone", 450);
 
-	printers[0].addPrinter("RA", "A", true, 5, "ASUS", 200);
-	printers[1].addPrinter("Laser", "B", true, 6, "HP", 220);
+	printers[0]=Printer("RA", "A", true, 5, "ASUS", 200);
+	printers[1]= Printer("Laser", "B", true, 6, "HP", 220);
 
 
 
 }
 
- void InitialiseShoppingCart()
-{
-	for (int i = 0; i < 40; i++)
-	{
-		shoppingCart[i].setProductId(-1);
-	}
-}
+
 int FindFirstEmptyIndex()
 {
 	int index = -1;
 	for (int i = 0; i < 20; i++)
 	{
-		if (shoppingCart[i].getProductId() == -1)
+		if (shoppingCart[i].getProductId() == 0)
 		{
 			index = i;
 			break;
@@ -377,7 +370,7 @@ int FindFirstEmptyIndex()
 }
 void ShowShoppingCart()
 {
-	char command[50];
+
 	int lastProductIndex = FindFirstEmptyIndex();
 	if (lastProductIndex == 0)
 	{

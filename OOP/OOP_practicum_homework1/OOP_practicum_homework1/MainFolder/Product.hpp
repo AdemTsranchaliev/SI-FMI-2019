@@ -11,7 +11,9 @@ public:
 
 	Product();
 	Product(int, double,const char*);
-	Product();
+	Product(const Product& product);
+	~Product();
+	Product& operator=(const Product& product);
 
 	void setId(int);
 	int getId() const;

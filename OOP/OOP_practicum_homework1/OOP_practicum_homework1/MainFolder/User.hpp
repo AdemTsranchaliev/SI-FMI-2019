@@ -11,6 +11,7 @@ public:
 	User();
 	User(int id,char* username,char* password,char* role);
 	~User();
+	User& operator=(const User& laptop);
 
 	void setId(int id);
 	int getId() const;

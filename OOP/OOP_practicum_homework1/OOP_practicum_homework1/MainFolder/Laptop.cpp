@@ -1,10 +1,17 @@
 #include <iostream>
-#include "CommonFunctions.h"
 #include "Laptop.hpp"
-
+#pragma warning (disable:4996)
 using namespace std;
 
-Laptop::Laptop() {}
+//Constructors
+Laptop::Laptop()
+{
+	this->processor = new char[1];
+	this->processor = '\0';
+	this->videoCard = new char[1];
+	this->videoCard = '\0';
+	this->ramMemory = 0;
+}
 
 Laptop::Laptop(const char* processor, int ramMemory, const char* videoCart, int id, const char* name, double price)
 {
@@ -13,72 +20,101 @@ Laptop::Laptop(const char* processor, int ramMemory, const char* videoCart, int 
 	this->setPrice(price);
 
 	this->ramMemory = ramMemory;
-	strncpy(this->processor,processor);
-	strncpy(this->videoCard, videoCard);
-	this->ramMemory = ramMemory;
+
+	this->processor = new char[strlen(processor)+1];
+	strncpy(this->processor,processor, strlen(processor) + 1);
+
+	this->videoCard = new char[strlen(videoCart) + 1];
+	strncpy(this->videoCard, videoCart, strlen(videoCart) + 1);
+
 }
 
-void Laptop::setRamMemory(int ramMemory)
+Laptop::Laptop(const Laptop& laptop)
+{
+
+	this->setId(laptop.getId());
+	this->setName(laptop.getName());
+	this->setPrice(laptop.getPrice());
+
+	this->ramMemory = laptop.getRamMemory();
+
+	this->processor = new char[strlen(laptop.processor) + 1];
+	strncpy(this->processor, laptop.processor, strlen(laptop.processor) + 1);
+
+	this->videoCard = new char[strlen(laptop.videoCard) + 1];
+	strncpy(this->videoCard, laptop.videoCard, strlen(laptop.videoCard) + 1);
+}
+
+//Destructor
+Laptop::~Laptop()
+{
+	delete[] this->processor;
+	delete[] this->videoCard;
+}
+
+//Assignment operator
+Laptop& Laptop::operator=(const Laptop& lap)
+{
+	if (this != &lap)
+	{
+		delete[] this->processor;
+		delete[] this->videoCard;
+
+		this->setId(lap.getId());
+		this->setName(lap.getName());
+		this->setPrice(lap.getPrice());
+
+		this->ramMemory = lap.getRamMemory();
+
+		this->processor = new char[strlen(lap.processor) + 1];
+		strncpy(this->processor, lap.processor, strlen(lap.processor) + 1);
+
+		this->videoCard = new char[strlen(lap.videoCard) + 1];
+		strncpy(this->videoCard, lap.videoCard, strlen(lap.videoCard) + 1);
+	}
+	return *this;
+}
+
+
+//Mutators
+void Laptop::setRamMemory(int ramMemory) 
 {
 	this->ramMemory = ramMemory;
 }
-
-int Laptop::getRamMemory()
+int Laptop::getRamMemory() const
 {
 	return this->ramMemory;
 }
 
 void Laptop::setProcessor(const char* processor)
 {
-	strncpy(this->processor, processor);
+	delete[] this->processor;
+	this->processor = new char[strlen(processor) + 1];
+	strncpy(this->processor, processor, strlen(processor) + 1);
 }
-
-char* Laptop::getProcessor()
+char* Laptop::getProcessor() const
 {
 	return this->processor;
 }
 
 void Laptop::setVideoCart(const char* videoCart)
 {
-	strncpy(this->videoCard, videoCart);
+	delete[] this->videoCard;
+	this->videoCard = new char[strlen(videoCart) + 1];
+	strncpy(this->videoCard, videoCart, strlen(videoCart) + 1);
 }
-
-char* Laptop::getVideoCart()
+char* Laptop::getVideoCart() const
 {
 	return this->videoCard;
 }
 
-void Laptop::addLaptop(const char* processor, int ramMemory, const char* videoCart, int id, const char* name, double price)
-{
-	this->setId(id);
-	this->setName(name);
-	this->setPrice(price);
 
-	this->ramMemory = ramMemory;
-	strncpy(this->processor, processor);
-	strncpy(this->videoCard, videoCard);
-}
-
+//Functions
 void Laptop::print()
 {
 	cout << this->getId() << " | " << this->getName() << " | " << this->getRamMemory() << " | " << this->getProcessor() << " | " << this->getVideoCart() << " | " << this->getPrice() << endl;
 }
 
-Laptop& Laptop::operator=(Laptop& lap)
-{
-	if (this != &lap)
-	{
-		this->setId(lap.getId());
-		this->setName(lap.getName());
-		this->setPrice(lap.getPrice());
-
-		this->ramMemory = lap.getRamMemory();
-		strncpy(this->processor, lap.getProcessor());
-		strncpy(this->videoCard, lap.getVideoCart());
-
-		return *this;
-	}
-}
 
 
 

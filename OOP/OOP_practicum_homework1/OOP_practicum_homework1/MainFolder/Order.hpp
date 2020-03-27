@@ -12,7 +12,9 @@ public:
 
 	Order();
 	Order(const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace, const char* email);
+	Order(const Order& order);
 	~Order();
+	Order& operator=(const Order& order);
 
 	void setName(char*);
 	char* getName() const;
@@ -27,5 +29,5 @@ public:
 	void setEmail(char*);
 	char* getEmail() const;
 
-
+	void print();
 };

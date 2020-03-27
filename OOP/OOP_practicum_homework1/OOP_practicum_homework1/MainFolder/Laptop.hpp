@@ -12,19 +12,18 @@ public:
 
 	Laptop();
 	Laptop(const char* processor,int ramMemory, const char* videoCart, int id, const char* name, double price);
+	Laptop(const Laptop& laptop);
 	~Laptop();
+	Laptop& operator=(const Laptop& laptop);
 
 	void setProcessor(const char*);
-	char* getProcessor();
+	char* getProcessor() const;
 	void setRamMemory(int);
-	int getRamMemory();
+	int getRamMemory() const;
 	void setVideoCart(const char*);
-	char* getVideoCart();
-
-	Laptop& operator=(Laptop&);
+	char* getVideoCart() const;
 
 	void print();
-	void addLaptop(const char* processor, int ramMemory, const char* videoCart, int id, const char* name, double price);
 
 };
 

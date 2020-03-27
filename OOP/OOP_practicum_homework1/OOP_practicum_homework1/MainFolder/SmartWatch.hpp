@@ -12,7 +12,9 @@ public:
 
 	SmartWatch();
 	SmartWatch(const char* style, const char* operatingSystem, const char* typeDisplay, int id, const char* name , double price);
+	SmartWatch(const SmartWatch& smartWatch);
 	~SmartWatch();
+	SmartWatch& operator=(const SmartWatch&);
 
 	void setStyle(const char*);
 	char* getStyle() const;
@@ -21,8 +23,5 @@ public:
 	void setTypeDisplay(const char*);
 	char* getTypeDisplay() const;
 
-	SmartWatch& operator=(SmartWatch&);
-
 	void print();
-	void addSmartWatch(const char* style, const char* operatingSystem, const char* typeDisplay, int id, const char* name, double price);
 };
