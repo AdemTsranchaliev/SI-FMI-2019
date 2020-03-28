@@ -4,7 +4,7 @@
 class ShoppingCart
 {
 private:
-	char* productCategory;//Laptop, Phone ...
+	int productCategory;//1-Laptop, 1-Phone ...
 	int productId;
 	int quantity;
 	char* name;
@@ -12,14 +12,14 @@ private:
 public:
 
 	ShoppingCart();
-	ShoppingCart(char* productCategory,int productId,int quantity,double price,char* name);
+	ShoppingCart(int productCategory,int productId,int quantity,double price,char* name);
 	ShoppingCart(const ShoppingCart& shoppingCart);
 	~ShoppingCart();
 	ShoppingCart& operator=(const ShoppingCart& shoppingCart);
 	bool operator==(const ShoppingCart& laptop);
 
-	void setProductCategory(char*);
-	char* getProductCategory() const;
+	void setProductCategory(int);
+	int getProductCategory() const;
 	void setProductId(int);
 	int getProductId() const;
 	void setQuantity(int);

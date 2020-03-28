@@ -13,22 +13,18 @@ ShoppingCart::ShoppingCart()
 	this->productId = 0;
 	this->quantity = 0;
 	this->price = 0;
-
-	this->productCategory = new char[1];
-	this->productCategory[0] = '\0';
+	this->productCategory = 0;
 
 	this->name = new char[1];
 	this->name[0] = '\0';
 }
 
-ShoppingCart::ShoppingCart(char* productCategory, int productId, int quantity, double price,char* name)
+ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, double price,char* name)
 {
-	this->productCategory = new char[strlen(productCategory)+1];
-	strncpy(this->productCategory, productCategory, strlen(productCategory) + 1);
-
 	this->name = new char[strlen(name) + 1];
 	strncpy(this->name, name, strlen(name) + 1);
 
+	this->productCategory = productCategory;
 	this->productId = productId;
 	this->quantity = quantity;
 	this->price = price;
@@ -36,12 +32,10 @@ ShoppingCart::ShoppingCart(char* productCategory, int productId, int quantity, d
 
 ShoppingCart::ShoppingCart(const ShoppingCart& shoppingCart)
 {
-	this->productCategory = new char[strlen(shoppingCart.productCategory) + 1];
-	strncpy(this->productCategory, shoppingCart.productCategory, strlen(shoppingCart.productCategory) + 1);
-
 	this->name = new char[strlen(shoppingCart.name) + 1];
 	strncpy(this->name, shoppingCart.name, strlen(shoppingCart.name) + 1);
 
+	this->productCategory = shoppingCart.productCategory;
 	this->setPrice(shoppingCart.getPrice());
 	this->setProductId(shoppingCart.getProductId());
 	this->setQuantity(shoppingCart.getQuantity());
@@ -51,7 +45,6 @@ ShoppingCart::ShoppingCart(const ShoppingCart& shoppingCart)
 ShoppingCart::~ShoppingCart()
 {
 	delete[] this->name;
-	delete[] this->productCategory;
 }
 
 //Assignment operator
@@ -60,14 +53,12 @@ ShoppingCart& ShoppingCart::operator=(const ShoppingCart& prod)
 	if (this != &prod)
 	{
 		delete[] this->name;
-		delete[] this->productCategory;
-
-		this->productCategory = new char[strlen(prod.productCategory) + 1];
-		strncpy(this->productCategory, prod.productCategory, strlen(prod.productCategory) + 1);
 
 		this->name = new char[strlen(prod.name) + 1];
 		strncpy(this->name, prod.name, strlen(prod.name) + 1);
 
+
+		this->productCategory = prod.productCategory;
 		this->setPrice(prod.getPrice());
 		this->setProductId(prod.getProductId());
 		this->setQuantity(prod.getQuantity());
@@ -77,13 +68,12 @@ ShoppingCart& ShoppingCart::operator=(const ShoppingCart& prod)
 }
 
 //Mutators
-void ShoppingCart::setProductCategory(char* productCategory)
+void ShoppingCart::setProductCategory(int productCategory)
 {
-	delete[] this->productCategory;
-	this->productCategory = new char[strlen(productCategory) + 1];
-	strncpy(this->productCategory, productCategory, strlen(productCategory) + 1);
+	this->productCategory=productCategory;
+
 }
-char* ShoppingCart::getProductCategory() const
+int ShoppingCart::getProductCategory() const
 {
 	return this->productCategory;
 }
