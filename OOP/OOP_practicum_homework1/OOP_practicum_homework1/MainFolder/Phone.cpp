@@ -78,6 +78,11 @@ Phone& Phone::operator=(const Phone& phon)
 	return *this;
 }
 
+bool Phone::operator==(const Phone& phone)
+{
+	return this->getId() == phone.getId();
+}
+
 //Mutators
 void Phone::setYearOfProduction(int year)
 {

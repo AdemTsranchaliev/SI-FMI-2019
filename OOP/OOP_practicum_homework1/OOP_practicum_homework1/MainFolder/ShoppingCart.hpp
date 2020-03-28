@@ -15,7 +15,8 @@ public:
 	ShoppingCart(char* productCategory,int productId,int quantity,double price,char* name);
 	ShoppingCart(const ShoppingCart& shoppingCart);
 	~ShoppingCart();
-	ShoppingCart& operator=(const ShoppingCart& laptop);
+	ShoppingCart& operator=(const ShoppingCart& shoppingCart);
+	bool operator==(const ShoppingCart& laptop);
 
 	void setProductCategory(char*);
 	char* getProductCategory() const;

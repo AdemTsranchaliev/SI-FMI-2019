@@ -14,7 +14,9 @@ public:
 	SmartWatch(const char* style, const char* operatingSystem, const char* typeDisplay, int id, const char* name , double price);
 	SmartWatch(const SmartWatch& smartWatch);
 	~SmartWatch();
+
 	SmartWatch& operator=(const SmartWatch&);
+	bool operator==(const SmartWatch&);
 
 	void setStyle(const char*);
 	char* getStyle() const;

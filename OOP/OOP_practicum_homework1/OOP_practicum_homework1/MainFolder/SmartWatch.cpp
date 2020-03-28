@@ -82,6 +82,11 @@ SmartWatch& SmartWatch::operator=(const SmartWatch& smwt)
 	return *this;
 }
 
+bool SmartWatch::operator==(const SmartWatch& smartWatch)
+{
+	return this->getId() == smartWatch.getId();
+}
+
 //Mutators
 void SmartWatch::setStyle(const char* style)
 {

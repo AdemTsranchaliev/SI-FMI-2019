@@ -15,6 +15,7 @@ public:
 	Order(const Order& order);
 	~Order();
 	Order& operator=(const Order& order);
+	bool operator==(const Order& order);
 
 	void setName(char*);
 	char* getName() const;

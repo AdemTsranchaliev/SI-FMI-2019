@@ -14,7 +14,9 @@ public:
 	Phone(const char* model,const char* color, int yearOfProduction,int id ,const char* name,double price);
 	Phone(const Phone& phone);
 	~Phone();
+
 	Phone& operator=(const Phone& phone);
+	bool operator==(const Phone& phone);
 
 	void setModel(const char* model);
 	char* getModel() const;

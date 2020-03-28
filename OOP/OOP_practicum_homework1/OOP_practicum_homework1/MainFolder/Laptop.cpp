@@ -75,6 +75,10 @@ Laptop& Laptop::operator=(const Laptop& lap)
 	return *this;
 }
 
+bool Laptop::operator==(const Laptop& laptop)
+{
+	return this->getId() == laptop.getId();
+}
 
 //Mutators
 void Laptop::setRamMemory(int ramMemory) 

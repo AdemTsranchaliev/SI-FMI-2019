@@ -82,6 +82,11 @@ Printer& Printer::operator=(const Printer& print)
 	return *this;
 }
 
+bool Printer::operator==(const Printer& printer)
+{
+	return this->getId() == printer.getId();
+}
+
 //Mutators
 void Printer::setPrintingTechnology(const char* printingTechnology)
 {

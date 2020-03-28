@@ -15,6 +15,7 @@ public:
 	Laptop(const Laptop& laptop);
 	~Laptop();
 	Laptop& operator=(const Laptop& laptop);
+	bool operator==(const Laptop& laptop);
 
 	void setProcessor(const char*);
 	char* getProcessor() const;
