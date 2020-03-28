@@ -1,7 +1,0 @@
-﻿  Source.cpp
-c:\users\asus\desktop\si-fmi-2019\oop\oop_practicum_homework1\oop_practicum_homework1\mainfolder\list.hpp(143): warning C4715: 'List<ShoppingCart>::getAt': not all control paths return a value
-c:\users\asus\desktop\si-fmi-2019\oop\oop_practicum_homework1\oop_practicum_homework1\mainfolder\list.hpp(143): warning C4715: 'List<Laptop>::getAt': not all control paths return a value
-c:\users\asus\desktop\si-fmi-2019\oop\oop_practicum_homework1\oop_practicum_homework1\mainfolder\list.hpp(143): warning C4715: 'List<Printer>::getAt': not all control paths return a value
-c:\users\asus\desktop\si-fmi-2019\oop\oop_practicum_homework1\oop_practicum_homework1\mainfolder\list.hpp(143): warning C4715: 'List<Phone>::getAt': not all control paths return a value
-c:\users\asus\desktop\si-fmi-2019\oop\oop_practicum_homework1\oop_practicum_homework1\mainfolder\list.hpp(143): warning C4715: 'List<SmartWatch>::getAt': not all control paths return a value
-  MainFolder.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\Debug\MainFolder.exe
