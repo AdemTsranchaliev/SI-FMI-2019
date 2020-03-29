@@ -23,10 +23,11 @@ Laptop::Laptop(const char* processor, int ramMemory, const char* videoCart, int 
 
 	this->processor = new char[strlen(processor)+1];
 	strncpy(this->processor,processor, strlen(processor) + 1);
+	this->processor[strlen(processor)] = '\0';
 
 	this->videoCard = new char[strlen(videoCart) + 1];
 	strncpy(this->videoCard, videoCart, strlen(videoCart) + 1);
-
+	this->videoCard[strlen(videoCart)] = '\0';
 }
 
 Laptop::Laptop(const Laptop& laptop)
@@ -40,9 +41,12 @@ Laptop::Laptop(const Laptop& laptop)
 
 	this->processor = new char[strlen(laptop.processor) + 1];
 	strncpy(this->processor, laptop.processor, strlen(laptop.processor) + 1);
+	this->processor[strlen(laptop.processor)] = '\0';
 
 	this->videoCard = new char[strlen(laptop.videoCard) + 1];
 	strncpy(this->videoCard, laptop.videoCard, strlen(laptop.videoCard) + 1);
+	this->videoCard[strlen(laptop.videoCard)] = '\0';
+
 }
 
 //Destructor
@@ -68,9 +72,11 @@ Laptop& Laptop::operator=(const Laptop& lap)
 
 		this->processor = new char[strlen(lap.processor) + 1];
 		strncpy(this->processor, lap.processor, strlen(lap.processor) + 1);
+		this->processor[strlen(lap.processor)] = '\0';
 
 		this->videoCard = new char[strlen(lap.videoCard) + 1];
 		strncpy(this->videoCard, lap.videoCard, strlen(lap.videoCard) + 1);
+		this->videoCard[strlen(lap.videoCard)] = '\0';
 	}
 	return *this;
 }
@@ -95,6 +101,7 @@ void Laptop::setProcessor(const char* processor)
 	delete[] this->processor;
 	this->processor = new char[strlen(processor) + 1];
 	strncpy(this->processor, processor, strlen(processor) + 1);
+	this->processor[strlen(processor)] = '\0';
 }
 char* Laptop::getProcessor() const
 {
@@ -106,6 +113,7 @@ void Laptop::setVideoCart(const char* videoCart)
 	delete[] this->videoCard;
 	this->videoCard = new char[strlen(videoCart) + 1];
 	strncpy(this->videoCard, videoCart, strlen(videoCart) + 1);
+	this->videoCard[strlen(videoCard)] = '\0';
 }
 char* Laptop::getVideoCart() const
 {

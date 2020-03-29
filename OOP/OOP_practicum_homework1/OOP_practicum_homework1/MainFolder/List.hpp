@@ -19,6 +19,7 @@ public:
 	void insertAt(int index, int value);
 	void removeAt(int index);
 	int Count();
+	void Sort();
 	T& getAt(int position);
 };
 
@@ -135,6 +136,7 @@ T& List<T>::getAt(int position)
 	if (!checkIndex(position))
 	{
 		cout << "Invalid index!" << endl;
+
 	}
 	else
 	{
@@ -152,5 +154,22 @@ bool List<T>::checkIndex(int index)
 	else
 	{
 		return false;
+	}
+}
+template <class T>
+void  List<T>::Sort()
+{
+	int i, j;
+	for (i = 0; i < this->Count() - 1; i++) {
+		for (j = 0; j < this->Count() - i - 1; j++)
+		{
+			if (this->getAt(j).getPrice() > getAt(j + 1).getPrice())
+			{
+				T temp;
+				temp = (this->getAt(j));
+				this->getAt(j) = this->getAt(j + 1);
+				this->getAt(j + 1) = temp;
+			}
+		}
 	}
 }

@@ -20,12 +20,16 @@ User::User(int id, char* username, char* password, char* role) {
 	this->id = id;
 	this->username = new char[strlen(username)+1];
 	strncpy(this->username,username, strlen(username) + 1);
+	this->username[strlen(username)] = '\0';
 
 	this->password = new char[strlen(password) + 1];
 	strncpy(this->password, password, strlen(password) + 1);
+	this->password[strlen(password)] = '\0';
 
 	this->role = new char[strlen(role) + 1];
 	strncpy(this->role, role, strlen(role) + 1);
+	this->role[strlen(role)] = '\0';
+
 }
 
 //Destructor
@@ -33,6 +37,31 @@ User::~User() {
 	delete[] this->username;
 	delete[] this->password;
 	delete[] this->role;
+}
+
+User& User::operator=(const User& user)
+{
+	if (this!=&user)
+	{
+		delete[] this->username;
+		delete[] this->password;
+		delete[] this->role;
+
+		this->id = user.id;
+		this->username = new char[strlen(user.username) + 1];
+		strncpy(this->username, user.username, strlen(user.username) + 1);
+		this->username[strlen(user.username)] = '\0';
+
+		this->password = new char[strlen(user.password) + 1];
+		strncpy(this->password, user.password, strlen(user.password) + 1);
+		this->password[strlen(user.password)] = '\0';
+
+		this->role = new char[strlen(user.role) + 1];
+		strncpy(this->role, user.role, strlen(user.role) + 1);
+		this->role[strlen(user.role)] = '\0';
+
+	}
+	return *this;
 }
 
 //Mutators
@@ -49,6 +78,8 @@ void User::setUsername(char* username)
 	delete[] this->username;
 	this->username = new char[strlen(username) + 1];
 	strncpy(this->username, username, strlen(username) + 1);
+	this->username[strlen(username)] = '\0';
+
 }
 char* User::getUsername() const
 {
@@ -60,6 +91,8 @@ void User::setPassword(char* password)
 	delete[] this->password;
 	this->password = new char[strlen(password) + 1];
 	strncpy(this->password, password, strlen(password) + 1);
+	this->password[strlen(password)] = '\0';
+
 }
 char* User::getPassword() const
 {
@@ -71,6 +104,8 @@ void User::setRole(char* role)
 	delete[] this->role;
 	this->role = new char[strlen(role) + 1];
 	strncpy(this->role, role, strlen(role) + 1);
+	this->role[strlen(role)] = '\0';
+
 }
 char* User::getRole() const
 {

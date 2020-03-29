@@ -24,12 +24,16 @@ SmartWatch::SmartWatch(const char* style, const char* operatingSystem, const cha
 
 	this->style = new char[strlen(style)+1];
 	strncpy(this->style,style, strlen(style) + 1);
+	this->style[strlen(style)] = '\0';
 
 	this->operatingSystem = new char[strlen(operatingSystem) + 1];
 	strncpy(this->operatingSystem, operatingSystem, strlen(operatingSystem) + 1);
+	this->operatingSystem[strlen(operatingSystem)] = '\0';
 
 	this->typeDisplay = new char[strlen(typeDisplay) + 1];
 	strncpy(this->typeDisplay, typeDisplay, strlen(typeDisplay) + 1);
+	this->typeDisplay[strlen(typeDisplay)] = '\0';
+
 }
 
 SmartWatch::SmartWatch(const SmartWatch& smartWatch)
@@ -40,12 +44,16 @@ SmartWatch::SmartWatch(const SmartWatch& smartWatch)
 
 	this->style = new char[strlen(smartWatch.style) + 1];
 	strncpy(this->style, style, strlen(smartWatch.style) + 1);
+	this->style[strlen(smartWatch.style)] = '\0';
 
 	this->operatingSystem = new char[strlen(smartWatch.operatingSystem) + 1];
 	strncpy(this->operatingSystem, smartWatch.operatingSystem, strlen(smartWatch.operatingSystem) + 1);
+	this->operatingSystem[strlen(smartWatch.operatingSystem)] = '\0';
 
 	this->typeDisplay = new char[strlen(smartWatch.typeDisplay) + 1];
 	strncpy(this->typeDisplay, smartWatch.typeDisplay, strlen(smartWatch.typeDisplay) + 1);
+	this->typeDisplay[strlen(smartWatch.typeDisplay)] = '\0';
+
 }
 
 //Destructor
@@ -71,12 +79,16 @@ SmartWatch& SmartWatch::operator=(const SmartWatch& smwt)
 
 		this->style = new char[strlen(smwt.style) + 1];
 		strncpy(this->style, smwt.style, strlen(smwt.style) + 1);
+		this->style[strlen(smwt.style)] = '\0';
 
 		this->operatingSystem = new char[strlen(smwt.operatingSystem) + 1];
 		strncpy(this->operatingSystem, smwt.operatingSystem, strlen(smwt.operatingSystem) + 1);
+		this->operatingSystem[strlen(smwt.operatingSystem)] = '\0';
 
 		this->typeDisplay = new char[strlen(smwt.typeDisplay) + 1];
 		strncpy(this->typeDisplay, smwt.typeDisplay, strlen(smwt.typeDisplay) + 1);
+		this->typeDisplay[strlen(smwt.typeDisplay)] = '\0';
+
 	}
 
 	return *this;
@@ -93,6 +105,8 @@ void SmartWatch::setStyle(const char* style)
 	delete[] this->style;
 	this->style = new char[strlen(style) + 1];
 	strncpy(this->style, style, strlen(style) + 1);
+	this->style[strlen(style)] = '\0';
+
 }
 char* SmartWatch::getStyle() const
 {
@@ -104,6 +118,8 @@ void SmartWatch::setOperatingSystem(const char* operatingSystem)
 	delete[] this->operatingSystem;
 	this->operatingSystem = new char[strlen(operatingSystem) + 1];
 	strncpy(this->operatingSystem, operatingSystem, strlen(operatingSystem) + 1);
+	this->operatingSystem[strlen(operatingSystem)] = '\0';
+
 }
 char* SmartWatch::getOperatingSystem() const
 {
@@ -115,6 +131,8 @@ void SmartWatch::setTypeDisplay(const char* typeDispaly)
 	delete[] this->typeDisplay;
 	this->typeDisplay = new char[strlen(typeDispaly) + 1];
 	strncpy(this->typeDisplay, typeDispaly, strlen(typeDispaly) + 1);
+	this->typeDisplay[strlen(typeDispaly)] = '\0';
+
 }
 char* SmartWatch::getTypeDisplay() const
 {

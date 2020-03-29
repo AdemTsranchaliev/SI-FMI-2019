@@ -23,6 +23,7 @@ ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, dou
 {
 	this->name = new char[strlen(name) + 1];
 	strncpy(this->name, name, strlen(name) + 1);
+	this->name[strlen(name)] = '\0';
 
 	this->productCategory = productCategory;
 	this->productId = productId;
@@ -34,6 +35,7 @@ ShoppingCart::ShoppingCart(const ShoppingCart& shoppingCart)
 {
 	this->name = new char[strlen(shoppingCart.name) + 1];
 	strncpy(this->name, shoppingCart.name, strlen(shoppingCart.name) + 1);
+	this->name[strlen(shoppingCart.name)] = '\0';
 
 	this->productCategory = shoppingCart.productCategory;
 	this->setPrice(shoppingCart.getPrice());
@@ -56,6 +58,7 @@ ShoppingCart& ShoppingCart::operator=(const ShoppingCart& prod)
 
 		this->name = new char[strlen(prod.name) + 1];
 		strncpy(this->name, prod.name, strlen(prod.name) + 1);
+		this->name[strlen(prod.name)] = '\0';
 
 
 		this->productCategory = prod.productCategory;
@@ -103,6 +106,8 @@ void ShoppingCart::setName(char* name)
 	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strncpy(this->name, name, strlen(name) + 1);
+	this->name[strlen(name)] = '\0';
+
 }
 char* ShoppingCart::getName() const
 {

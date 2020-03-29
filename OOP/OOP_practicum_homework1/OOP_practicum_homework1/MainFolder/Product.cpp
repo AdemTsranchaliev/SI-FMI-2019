@@ -19,6 +19,8 @@ Product::Product(int id, double price,const char* name)
 	this->price = price;
 	this->name = new char[strlen(name)+1];
 	strncpy(this->name,name,strlen(name)+1);
+	this->name[strlen(name)] = '\0';
+
 }
 
 Product::Product(const Product& product)
@@ -27,6 +29,8 @@ Product::Product(const Product& product)
 	this->price = product.price;
 	this->name = new char[strlen(product.name) + 1];
 	strncpy(this->name, product.name, strlen(product.name) + 1);
+	this->name[strlen(product.name)] = '\0';
+
 }
 
 //Destructor
@@ -46,6 +50,8 @@ Product& Product::operator=(const Product& product)
 		this->price = product.price;
 		this->name = new char[strlen(product.name) + 1];
 		strncpy(this->name, product.name, strlen(product.name) + 1);
+		this->name[strlen(product.name)] = '\0';
+
 	}
 	return *this;
 }
@@ -74,6 +80,8 @@ void Product::setName(const char* name)
 	delete[] this->name;
 	this->name = new char[strlen(name) + 1];
 	strncpy(this->name, name, strlen(name) + 1);
+	this->name[strlen(name)] = '\0';
+
 }
 char* Product::getName() const
 {

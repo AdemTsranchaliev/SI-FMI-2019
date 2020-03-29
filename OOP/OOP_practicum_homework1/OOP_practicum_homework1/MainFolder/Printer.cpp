@@ -28,9 +28,11 @@ Printer::Printer(const char* printingTechnology, const char* mainPrintingFormat,
 
 	this->printingTechnology = new char[strlen(printingTechnology)+1];
 	strncpy(this->printingTechnology,printingTechnology, strlen(printingTechnology) + 1);
+	this->printingTechnology[strlen(printingTechnology)] = '\0';
 
 	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
 	strncpy(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+	this->mainPrintingFormat[strlen(mainPrintingFormat)] = '\0';
 
 
 	this->oneOrManyColor = oneOrManyColor;
@@ -44,9 +46,11 @@ Printer::Printer(const Printer& printer)
 
 	this->printingTechnology = new char[strlen(printer.printingTechnology) + 1];
 	strncpy(this->printingTechnology, printer.printingTechnology, strlen(printer.printingTechnology) + 1);
+	this->printingTechnology[strlen(printer.printingTechnology)] = '\0';
 
 	this->mainPrintingFormat = new char[strlen(printer.mainPrintingFormat) + 1];
 	strncpy(this->mainPrintingFormat, printer.mainPrintingFormat, strlen(printer.mainPrintingFormat) + 1);
+	this->mainPrintingFormat[strlen(printer.mainPrintingFormat)] = '\0';
 
 	this->oneOrManyColor = printer.getOneOrManyColors();
 }
@@ -72,9 +76,11 @@ Printer& Printer::operator=(const Printer& print)
 
 		this->printingTechnology = new char[strlen(print.printingTechnology) + 1];
 		strncpy(this->printingTechnology, print.printingTechnology, strlen(print.printingTechnology) + 1);
+		this->printingTechnology[strlen(print.printingTechnology)] = '\0';
 
 		this->mainPrintingFormat = new char[strlen(print.mainPrintingFormat) + 1];
 		strncpy(this->mainPrintingFormat, print.mainPrintingFormat, strlen(print.mainPrintingFormat) + 1);
+		this->mainPrintingFormat[strlen(print.mainPrintingFormat)] = '\0';
 
 		this->oneOrManyColor = print.getOneOrManyColors();
 
@@ -93,6 +99,8 @@ void Printer::setPrintingTechnology(const char* printingTechnology)
 	delete[] this->printingTechnology;
 	this->printingTechnology = new char[strlen(printingTechnology) + 1];
 	strncpy(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
+	this->printingTechnology[strlen(printingTechnology)] = '\0';
+
 }
 char* Printer::getPrintingTechnology() const
 {
@@ -104,6 +112,8 @@ void Printer::setMainPrintingFormat(const char* mainPrintingFormat)
 	delete[] this->mainPrintingFormat;
 	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
 	strncpy(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
+	this->mainPrintingFormat[strlen(mainPrintingFormat)] = '\0';
+
 }
 char* Printer::getMainPrintingFormat() const
 {

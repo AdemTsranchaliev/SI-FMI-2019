@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Phone.hpp"
+
 #pragma warning (disable:4996)
 using namespace std;
 
@@ -24,11 +25,13 @@ Phone::Phone(const char* color,const char* model, int yearOfProduction, int id,c
 
 	this->color = new char[strlen(color)+1];
 	strncpy(this->color, color, strlen(color) + 1);
+	this->color[strlen(color)] = '\0';
 
 	this->model = new char[strlen(model) + 1];
 	strncpy(this->model, model, strlen(model) + 1);
+	this->model[strlen(model)] = '\0';
 
-	this->yearOfProduction = 0;
+	this->yearOfProduction = yearOfProduction;
 }
 
 Phone::Phone(const Phone& phone)
@@ -41,9 +44,12 @@ Phone::Phone(const Phone& phone)
 
 	this->color = new char[strlen(phone.color) + 1];
 	strncpy(this->color, color, strlen(phone.color) + 1);
+	this->color[strlen(phone.color)] = '\0';
 
 	this->model = new char[strlen(phone.model) + 1];
 	strncpy(this->model, phone.model, strlen(phone.model) + 1);
+	this->model[strlen(phone.model)] = '\0';
+
 }
 
 //Destructor
@@ -69,10 +75,11 @@ Phone& Phone::operator=(const Phone& phon)
 
 		this->color = new char[strlen(phon.color) + 1];
 		strncpy(this->color, phon.color, strlen(phon.color) + 1);
+		this->color[strlen(phon.color)] = '\0';
 
 		this->model = new char[strlen(phon.model) + 1];
 		strncpy(this->model, phon.model, strlen(phon.model) + 1);
-
+		this->model[strlen(phon.model)] = '\0';
 
 	}
 	return *this;
@@ -98,6 +105,7 @@ void Phone::setColor(const char* color)
 	delete[] this->color;
 	this->color = new char[strlen(color) + 1];
 	strncpy(this->color, color, strlen(color) + 1);
+	this->color[strlen(color)] = '\0';
 }
 char* Phone::getColor() const
 {
@@ -109,6 +117,7 @@ void Phone::setModel(const char* model)
 	delete[] this->model;
 	this->model = new char[strlen(model) + 1];
 	strncpy(this->model, model, strlen(model) + 1);
+	this->model[strlen(model)] = '\0';
 }
 char* Phone::getModel() const
 {

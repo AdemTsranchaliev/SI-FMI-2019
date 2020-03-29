@@ -120,6 +120,7 @@
     <ClCompile Include="Phone.cpp" />
     <ClCompile Include="Printer.cpp" />
     <ClCompile Include="Product.cpp" />
+    <ClCompile Include="Shop.cpp" />
     <ClCompile Include="ShoppingCart.cpp" />
     <ClCompile Include="SmartWatch.cpp" />
     <ClCompile Include="Source.cpp" />
@@ -132,6 +133,7 @@
     <ClInclude Include="Phone.hpp" />
     <ClInclude Include="Printer.hpp" />
     <ClInclude Include="Product.hpp" />
+    <ClInclude Include="Shop.h" />
     <ClInclude Include="ShoppingCart.hpp" />
     <ClInclude Include="SmartWatch.hpp" />
     <ClInclude Include="User.hpp" />
