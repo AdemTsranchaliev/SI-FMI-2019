@@ -5,19 +5,11 @@ using namespace std;
 
 int main()
 {
-	char arr[] = "sd";
-	MyString str(arr);
+	MyString str1("Hello World!");
+	MyString str2("Hello World");
 
-	str.print();
-	cout << endl;
-
-	str.append('!');
-
-	str.print();
-
-	cout << endl;
-
-
+	cout<< (str1>str2) << endl;
+	cout<<(str1<str2)<<endl;
 	system("pause");
 	return 0;
 }
