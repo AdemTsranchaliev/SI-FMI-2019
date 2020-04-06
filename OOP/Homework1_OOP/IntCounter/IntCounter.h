@@ -3,7 +3,7 @@ class IntCounter
 {
 private:
 	int* reference;
-	int count;
+	int* count;
 
 public:
 	IntCounter();
