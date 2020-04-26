@@ -16,6 +16,11 @@ public:
 	Point& getDiagonalEndPoint();
 
 	Rectangle& operator=(Rectangle& rectangle);
+
+
+	double getSideA();
+	double getSideB();
+
 	double getArea();
 	
 };

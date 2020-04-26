@@ -33,6 +33,7 @@ Point& Rectangle::getDiagonalEndPoint()
 	return this->diagonalSecondPoint;
 }
 
+
 double Rectangle::getArea()
 {
 	double sideA = this->diagonalSecondPoint.getX() - this->diagonalFirstPoint.getX();
@@ -48,6 +49,8 @@ double Rectangle::getArea()
 
 	return sideA * sideB;
 }
+
+
 
 Rectangle& Rectangle::operator=(Rectangle& rectangle)
 {
