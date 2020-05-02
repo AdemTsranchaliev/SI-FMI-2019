@@ -3,10 +3,6 @@
 
 using namespace std;
 
-
-
-
-
 Shop::Shop()
 {
 	InsertData();
@@ -36,6 +32,12 @@ void Shop::InsertData()
 
 	SmartWatch smartWatch("Women", "IOS", "Liquid RETINA", 9, "IWatch", 900);
 	smarthWatches.add(smartWatch);
+
+	User user(2, "ademski34", "12345", "ROLE_ADMIN");
+	users.add(user);
+
+	Order order(1,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
+	orders.add(order);
 
 }
 
@@ -294,9 +296,72 @@ void Shop::SortAndPrint(int category)
 		this->smarthWatches.Sort();
 		PrintCategory(4);
 	}
-
 }
 
+bool Shop::Authenticate(const char* username, const char* password)
+{
+	for (int i = 0; i < users.Count(); i++)
+	{
+		if (strcmp(users.getAt(i).getUsername(),username)==0)
+		{
+			if (strcmp(users.getAt(i).getPassword(), password) == 0)
+			{
+				authenticatedUser = users.getAt(i);
+				return true;
+			}
+			return false;
+		}
+	}
+	return false;
+}
+
+bool Shop::isAuthenticated()
+{
+	if (this->authenticatedUser.getId()==0)
+	{
+		return false;
+
+	}
+	return true;
+}
+bool Shop::isAuthorized(const char* role)
+{
+	if (strcmp(this->authenticatedUser.getRole(),role)==0)
+	{
+		return true;
+
+	}
+	return false;
+}
+
+
+
+char* Shop::getAuthenticateUserUsername()
+{
+	return this->authenticatedUser.getUsername();
+}
+char* Shop::getAuthenticateUserRole()
+{
+	return this->authenticatedUser.getRole();
+}
+void Shop::seeAllOrders()
+{
+	cout << "No  |" << "Ordered name |" << " Delivery to |" << " Status";
+	for (int i = 0; i < orders.Count(); i++)
+	{
+		orders.getAt(i).print();
+	}
+}
+void Shop::seeOrder(int id)
+{
+	for (int i = 0; i < orders.Count(); i++)
+	{
+		if (id=orders.getAt(i).getId())
+		{
+			orders.getAt(i).printDetail();
+		}
+	}
+}
 
 
 

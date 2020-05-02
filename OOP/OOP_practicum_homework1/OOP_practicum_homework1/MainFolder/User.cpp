@@ -16,7 +16,7 @@ User::User()
 	this->password[0] = '\0';
 }
 
-User::User(int id, char* username, char* password, char* role) {
+User::User(int id, const char* username, const char* password, const char* role) {
 	this->id = id;
 	this->username = new char[strlen(username)+1];
 	strncpy(this->username,username, strlen(username) + 1);

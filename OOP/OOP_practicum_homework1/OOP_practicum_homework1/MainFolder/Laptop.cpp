@@ -7,9 +7,9 @@ using namespace std;
 Laptop::Laptop()
 {
 	this->processor = new char[1];
-	this->processor = '\0';
+	this->processor[0] = '\0';
 	this->videoCard = new char[1];
-	this->videoCard = '\0';
+	this->videoCard[0] = '\0';
 	this->ramMemory = 0;
 }
 

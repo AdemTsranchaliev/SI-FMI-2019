@@ -1,11 +1,15 @@
 #include <iostream>
 #include "Order.hpp"
+#include "User.hpp"
+#include "ShoppingCart.hpp"
 #pragma warning (disable:4996)
 using namespace std;
 
 //Constructors
 Order::Order()
 {
+	this->id=0;
+
 	this->name = new char[1];
 	this->name[0] = '\0';
 
@@ -25,8 +29,10 @@ Order::Order()
 	this->email[0] = '\0';
 }
 
-Order::Order(const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace,const char* email)
+Order::Order(int id,const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace,const char* email)
 {
+	this->id = id;
+
 	this->name = new char[strlen(name) + 1];
 	strncpy(this->name,name,strlen(name)+1);
 	this->name[strlen(name)] = '\0';
@@ -135,6 +141,16 @@ Order& Order::operator=(const Order& order)
 }
 
 //Mutators
+
+void Order::setId(int id)
+{
+	this->id = id;
+}
+int Order::getId() const
+{
+	return this->id;
+}
+
 void Order::setName(char* name)
 {
 	delete[] this->name;
@@ -210,5 +226,22 @@ char* Order::getEmail() const
 //Functions
 void Order::print()
 {
-	cout << "";
+	cout << this->id << " | " << this->getName() << " | " << this->getPopulatedPlace() << " | ";
+	if (this->isConfirmed)
+	{
+		cout << "CONFIRMED" << endl;
+	}
+	else
+	{
+		cout << "NOT CONFIRMED" << endl;
+
+	}
+}
+void Order::printDetail()
+{
+	cout << "Name: " << this->name << " " << this->surname << endl;
+	cout << "Phone: " << this->phoneNumber << endl;
+	cout << "Town/Vilage to delivery: " << this->populatedPlace<<endl;
+	cout << "Address: "<<this->addressToDelivery<<endl;
+	cout << "Email: " << this->email << endl;
 }

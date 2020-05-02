@@ -6,6 +6,9 @@
 #include "SmartWatch.hpp"
 #include "ShoppingCart.hpp"
 #include "List.hpp"
+#include "ShoppingCart.hpp"
+#include "Order.hpp"
+#include "User.hpp"
 
 class Shop
 {
@@ -15,6 +18,11 @@ private:
 	List<Printer> printers;
 	List<SmartWatch> smarthWatches;
 	List<ShoppingCart> shoppingCart;
+	List<Order> orders;
+	List<User> users;
+
+	User authenticatedUser;
+
 
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, int category);
@@ -29,5 +37,15 @@ public:
 	void PrintCategory(int);
 	void PrintCategoryName(int);
 	int AddProductInShoppingCart(int productId, int category);
+	bool Authenticate(const char* username, const char* password);
+
+	char* getAuthenticateUserUsername();
+	char* getAuthenticateUserRole();
+	bool isAuthenticated();
+	bool isAuthorized(const char* role);
+
+	//Only for users with role ROLE_ADMIN
+	void seeAllOrders();
+	void seeOrder(int id);
 };
 
