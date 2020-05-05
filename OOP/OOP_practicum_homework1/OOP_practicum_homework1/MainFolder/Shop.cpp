@@ -399,7 +399,10 @@ void Shop::seeAllUsers()
 	cout << "Id  |" << "Username |" << " Role " <<  endl;
 	for (int i = 0; i < users.Count(); i++)
 	{
-		users.getAt(i).print();
+		if (this->authenticatedUser.getId()!= users.getAt(i).getId())
+		{
+			users.getAt(i).print();
+		}
 	}
 }
 
@@ -463,28 +466,26 @@ void Shop::makeUserAdminOrUser(int id)
 		if (users.getAt(i).getId()==id)
 		{
 			user = users.getAt(i);
-			break;
+			if (strcmp(users.getAt(i).getRole(), "ROLE_ADMIN") == 0)
+			{
+				users.getAt(i).setRole("ROLE_USER");
+				
+				cout << users.getAt(i).getUsername() << " role was changed from ROLE_ADMIN to ROLE_USER"<<endl;
+			}
+			else
+			{
+				users.getAt(i).setRole("ROLE_ADMIN");
+		
+				cout << user.getUsername() << " role was changed from ROLE_USER to ROLE_ADMIN"<<endl;
+			}
 		}
 	}
-	if (user.getId()!=0)
-	{
-		if (strcmp(user.getRole(), "ROLE_ADMIN") == 0)
-		{
-			user.setRole("ROLE_USER");
 
-			cout << user.getUsername() << " role was changed from ROLE_ADMIN to ROLE_USER";
-		}
-		else
-		{
-			users.getAt(id).setRole("ROLE_ADMIN");
-			cout << user.getUsername() << " role was changed from ROLE_USER to ROLE_ADMIN";
-
-		}
-	}
-	else
+	if (user.getId()==0)
 	{
 		cout << "User with given id wasn't found!";
 	}
+	
 	
 }
 
@@ -495,24 +496,31 @@ void Shop::addLaptop()
 {
 	Laptop laptop;
 	cin >> laptop;
+	laptop.setId(laptops.getAt(laptops.Count()-1).getId()+1);
 	laptops.add(laptop);
 }
 void Shop::addPhone()
 {
 	Phone phone;
 	cin >> phone;
+	phone.setId(phones.getAt(phones.Count() - 1).getId() + 1);
+
 	phones.add(phone);
 }
 void Shop::addPrinter()
 {
 	Printer printer;
 	cin >> printer;
+	printer.setId(printers.getAt(printers.Count() - 1).getId() + 1);
+
 	printers.add(printer);
 }
 void Shop::addSmartWatch()
 {
 	SmartWatch smartWatch;
 	cin >> smartWatch;
+	smartWatch.setId(smarthWatches.getAt(smarthWatches.Count() - 1).getId() + 1);
+
 	smarthWatches.add(smartWatch);
 }
 

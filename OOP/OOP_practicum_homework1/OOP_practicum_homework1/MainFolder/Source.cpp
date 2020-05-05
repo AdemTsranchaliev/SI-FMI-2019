@@ -47,8 +47,7 @@ int main()
 			if (shop.isAuthorized("ROLE_USER"))
 			{
 				cout << "You are loged as " << shop.getAuthenticateUserUsername() << endl;
-				cout << "To see profile information press 'p'" << endl;
-				cout << "To see made orders 'o'" << endl;
+			
 				cout << "To logout press 'e'" << endl;
 
 			}
@@ -156,42 +155,8 @@ int main()
 
 			continue;
 		}
-		else if (strcmp(command, "s") == 0)
-		{
-			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
+	
 
-			system("cls");
-
-			continue;
-		}
-		else if (strcmp(command, "s") == 0)
-		{
-			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
-
-			system("cls");
-
-			continue;
-		}
-		else if (strcmp(command, "s") == 0)
-		{
-			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
-
-			system("cls");
-
-			continue;
-		}
-		else if (strcmp(command, "s") == 0)
-		{
-			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
-
-			system("cls");
-
-			continue;
-		}
 		else if (strcmp(command, "e") == 0&&shop.isAuthenticated())
 		{
 			shop.logOut();

@@ -115,6 +115,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Authenticator.cpp" />
+    <ClCompile Include="Database.cpp" />
     <ClCompile Include="Laptop.cpp" />
     <ClCompile Include="Order.cpp" />
     <ClCompile Include="Phone.cpp" />
@@ -127,6 +129,8 @@
     <ClCompile Include="User.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Authenticator.h" />
+    <ClInclude Include="Database.h" />
     <ClInclude Include="Laptop.hpp" />
     <ClInclude Include="List.hpp" />
     <ClInclude Include="Order.hpp" />
