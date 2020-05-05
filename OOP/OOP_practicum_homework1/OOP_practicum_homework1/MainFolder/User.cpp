@@ -141,3 +141,9 @@ std::istream& operator>>(std::istream& in, User& user)
 
 	return in;
 }
+
+void User::print()
+{
+	cout << this->id << " | " << this->username << " | " << this->role << endl;
+	
+}

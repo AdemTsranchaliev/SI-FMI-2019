@@ -26,4 +26,6 @@ public:
 
 	friend std::istream& operator>>(std::istream& in, User& user);
 
+	void print();
+
 };

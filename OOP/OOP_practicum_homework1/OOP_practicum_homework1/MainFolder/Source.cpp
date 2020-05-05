@@ -36,9 +36,7 @@ int main()
 		shop.registation();
 		GetCommandPressAnyKeyToContiniue();
 	}
-	system("cls");
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
 	int categorySelected = 0;
 	while (true)
 	{
@@ -113,6 +111,37 @@ int main()
 
 
 			GetCommandPressAnyKeyToContiniue();
+
+			system("cls");
+
+			continue;
+		}
+		else if (strcmp(command, "u") == 0 && shop.isAuthorized("ROLE_ADMIN"))
+		{
+			cout << "All users"<<endl;
+			cout << "----------------------------" << endl;
+
+			shop.seeAllUsers();
+
+			cout << "============================"<<endl;
+			cout << "If you want to change user role press 'role'" << endl;
+			cout << "If you want to go back, press any other key" << endl;
+
+			cin.clear();
+			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+			cin.get(command, 50);
+			if (strcmp("role",command)==0)
+			{
+				int idNum;
+				cin.clear();
+				cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+				cout << "Press user No to change his role" << endl;
+				cin >> idNum;
+				shop.makeUserAdminOrUser(idNum);
+				
+				cout << "Press any key to continiue" << endl;
+				GetCommandPressAnyKeyToContiniue();
+			}
 
 			system("cls");
 

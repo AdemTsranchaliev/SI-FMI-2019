@@ -26,7 +26,7 @@ private:
 
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, int category);
-
+	bool checkIfUsernameIsUnique(const char* username);
 public:
 
 	Shop();
@@ -48,6 +48,9 @@ public:
 
 	//Only for users with role ROLE_ADMIN
 	void seeAllOrders();
+	void makeUserAdminOrUser(int id);
+
+	void seeAllUsers();
 	void seeOrder(int id);
 	void addProduct();
 	void addLaptop();

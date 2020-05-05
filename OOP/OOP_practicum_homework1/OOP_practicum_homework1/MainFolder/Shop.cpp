@@ -340,8 +340,32 @@ void Shop::registation()
 	cin >> newUser;
 	newUser.setRole("ROLE_USER");
 	newUser.setId(users.getAt(users.Count()-1).getId()+1);
-	this->authenticatedUser = newUser;
-	cout << "You registered successfully! Press any key to continiue.";
+	if (checkIfUsernameIsUnique(newUser.getUsername()))
+	{
+		this->authenticatedUser = newUser;
+		users.add(newUser);
+		cout << "You registered successfully! Press any key to continiue.";
+	}
+	else
+	{
+		cout << "The username already exist, your registration failed, press any key to go back."<<endl;
+	}
+
+}
+
+
+bool Shop::checkIfUsernameIsUnique(const char* username)
+{
+	bool temp = true;
+	for (int i = 0; i < users.Count(); i++)
+	{
+		if (strcmp(users.getAt(i).getUsername(),username)==0)
+		{
+			temp = false;
+		}
+	}
+
+	return temp;
 }
 
 char* Shop::getAuthenticateUserUsername()
@@ -369,6 +393,17 @@ void Shop::seeAllOrders()
 		orders.getAt(i).print();
 	}
 }
+
+void Shop::seeAllUsers()
+{
+	cout << "Id  |" << "Username |" << " Role " <<  endl;
+	for (int i = 0; i < users.Count(); i++)
+	{
+		users.getAt(i).print();
+	}
+}
+
+
 void Shop::seeOrder(int id)
 {
 	for (int i = 0; i < orders.Count(); i++)
@@ -393,23 +428,69 @@ void Shop::addProduct()
 	cin.get(tempInput,10);
 	if (tempInput[0]=='1')
 	{
+		system("cls");
+		cout << "Adding new product 'Phone'"<<endl;
 		addPhone();
 	}
 	else if (tempInput[0] == '2')
 	{
+		system("cls");
+		cout << "Adding new product 'Laptop'" << endl;
 		addLaptop();
 	}
 	else if (tempInput[0] == '3')
 	{
+		system("cls");
+		cout << "Adding new product 'Smart Watch'" << endl;
 		addSmartWatch();
 	}
 	else if (tempInput[0] == '4')
 	{
+		system("cls");
+		cout << "Adding new product 'Printer'" << endl;
 		addPrinter();
 	}
 
 
 }
+
+void Shop::makeUserAdminOrUser(int id)
+{
+	User user;
+
+	for (int i = 0; i < users.Count(); i++)
+	{
+		if (users.getAt(i).getId()==id)
+		{
+			user = users.getAt(i);
+			break;
+		}
+	}
+	if (user.getId()!=0)
+	{
+		if (strcmp(user.getRole(), "ROLE_ADMIN") == 0)
+		{
+			user.setRole("ROLE_USER");
+
+			cout << user.getUsername() << " role was changed from ROLE_ADMIN to ROLE_USER";
+		}
+		else
+		{
+			users.getAt(id).setRole("ROLE_ADMIN");
+			cout << user.getUsername() << " role was changed from ROLE_USER to ROLE_ADMIN";
+
+		}
+	}
+	else
+	{
+		cout << "User with given id wasn't found!";
+	}
+	
+}
+
+
+
+
 void Shop::addLaptop()
 {
 	Laptop laptop;
