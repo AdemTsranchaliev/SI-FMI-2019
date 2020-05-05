@@ -1,0 +1,7 @@
+﻿  Laptop.cpp
+  Main.cpp
+c:\users\asus\desktop\si-fmi-2019\oop\exercises\exercise 3\laptop\laptop\main.cpp(10): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+c:\users\asus\desktop\si-fmi-2019\oop\exercises\exercise 3\laptop\laptop\main.cpp(11): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+  Proccessor.cpp
+  Generating Code...
+  Laptop.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Exercises\Exercise 3\Laptop\x64\Debug\Laptop.exe

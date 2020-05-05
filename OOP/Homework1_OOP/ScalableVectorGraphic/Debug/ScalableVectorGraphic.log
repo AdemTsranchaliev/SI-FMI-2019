@@ -1,0 +1,3 @@
+﻿  RectangleStorage.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework1_OOP\ScalableVectorGraphic\List.hpp(146): warning C4715: 'List<Rectangle>::getAt': not all control paths return a value
+  ScalableVectorGraphic.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework1_OOP\Debug\ScalableVectorGraphic.exe
