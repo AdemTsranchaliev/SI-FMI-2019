@@ -20,7 +20,8 @@ int main()
 	cout << "=============================" << endl << endl;
 
 	cout << "Would you like to login in your profile" << endl << endl;
-	cout << "Press L for login" << endl;
+	cout << "Press 'L' for login" << endl;
+	cout << "Press 'R' for register" << endl;
 	cout << "Press any other key to continiue like guest" << endl;
 
 	cin.get(command, 50);
@@ -28,8 +29,14 @@ int main()
 	if (command[0]=='L')
 	{
 		Login(shop);
+		GetCommandPressAnyKeyToContiniue();
 	}
-
+	else if (command[0] == 'R')
+	{
+		shop.registation();
+		GetCommandPressAnyKeyToContiniue();
+	}
+	system("cls");
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 	int categorySelected = 0;
@@ -45,21 +52,26 @@ int main()
 				cout << "To see profile information press 'p'" << endl;
 				cout << "To see made orders 'o'" << endl;
 				cout << "To logout press 'e'" << endl;
+
 			}
 			else
 			{
 				cout << "You are loged as " << shop.getAuthenticateUserUsername() << endl;
 				cout << "To see orders press 'q'" << endl;
 				cout << "To see users 'u'" << endl;
-				cout << "To see products 'm'" << endl;
 				cout << "To add new product 't'" << endl;
-
+				cout << "To logout press 'e'" << endl;
 			}
 			
 			
 			cout << "---------------------------------------"<<endl;
 		}
-		cout << "To see you shopping cart 'PRESS 's'" << endl;
+		else
+		{
+			cout << "To login PRESS 'L'" << endl;
+			cout << "Press 'R' for register" << endl;
+		}
+		cout << "To see you shopping cart PRESS 's'" << endl;
 		cout << "Bellow are our categories. To open category, choice the number in front of the category and press ENTER" << endl;
 		cout << "1 Laptops" << endl;
 		cout << "2 Phones" << endl;
@@ -80,10 +92,24 @@ int main()
 			
 			continue;
 		}
-		if (strcmp(command, "q") == 0)
+		else if (command[0] == 'L'&&!shop.isAuthenticated())
+		{
+			Login(shop);
+			GetCommandPressAnyKeyToContiniue();
+			system("cls");
+			continue;
+		}
+		else if (command[0] == 'R' && !shop.isAuthenticated())
+		{
+			shop.registation();
+			GetCommandPressAnyKeyToContiniue();
+			system("cls");
+			continue;
+		}
+		else if (strcmp(command, "q") == 0&&shop.isAuthorized("ROLE_ADMIN"))
 		{
 			
-			shop.seeAllOrders();
+			SeeOrders(shop);
 
 
 			GetCommandPressAnyKeyToContiniue();
@@ -92,7 +118,16 @@ int main()
 
 			continue;
 		}
-		if (strcmp(command, "s") == 0)
+		else if (strcmp(command, "t") == 0 && shop.isAuthorized("ROLE_ADMIN"))
+		{
+			shop.addProduct();
+			GetCommandPressAnyKeyToContiniue();
+
+			system("cls");
+
+			continue;
+		}
+		else if (strcmp(command, "s") == 0)
 		{
 			shop.ShowShoppingCart();
 			GetCommandPressAnyKeyToContiniue();
@@ -101,7 +136,7 @@ int main()
 
 			continue;
 		}
-		if (strcmp(command, "s") == 0)
+		else if (strcmp(command, "s") == 0)
 		{
 			shop.ShowShoppingCart();
 			GetCommandPressAnyKeyToContiniue();
@@ -110,7 +145,7 @@ int main()
 
 			continue;
 		}
-		if (strcmp(command, "s") == 0)
+		else if (strcmp(command, "s") == 0)
 		{
 			shop.ShowShoppingCart();
 			GetCommandPressAnyKeyToContiniue();
@@ -119,7 +154,7 @@ int main()
 
 			continue;
 		}
-		if (strcmp(command, "s") == 0)
+		else if (strcmp(command, "s") == 0)
 		{
 			shop.ShowShoppingCart();
 			GetCommandPressAnyKeyToContiniue();
@@ -128,18 +163,10 @@ int main()
 
 			continue;
 		}
-		if (strcmp(command, "s") == 0)
+		else if (strcmp(command, "e") == 0&&shop.isAuthenticated())
 		{
-			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
+			shop.logOut();
 
-			system("cls");
-
-			continue;
-		}
-		if (strcmp(command, "s") == 0)
-		{
-			shop.ShowShoppingCart();
 			GetCommandPressAnyKeyToContiniue();
 
 			system("cls");
@@ -263,19 +290,20 @@ void Login(Shop& shop)
 }
 void SeeOrders(Shop& shop)
 {
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 	while (true)
 	{
 		system("cls");
 		cout << "All orders" << endl;
-		cout << "--------------------------------";
-		cout << "To see order in details press 'D'";
-		cout << "To go back in main menu press any other key";
+		cout << "--------------------------------" << endl;
+		cout << "To see order in details press 'D'" << endl;
+		cout << "To go back in main menu press any other key" << endl << endl;
 
 		shop.seeAllOrders();
 
 		char tempCommand[10];
-		cin.clear();
-		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		
 		cin.get(tempCommand, 10);
 		if (tempCommand[0] == 'D')
 		{
@@ -285,7 +313,7 @@ void SeeOrders(Shop& shop)
 			cin.get(tempCommand, 10);
 			
 			shop.seeOrder(tempCommand[0]-'0');
-
+			cout << "Press any key to go back." << endl;
 			GetCommandPressAnyKeyToContiniue();
 		}
 		else
@@ -293,8 +321,6 @@ void SeeOrders(Shop& shop)
 			break;
 		}
 	}
-	
-
 }
 void GetCommandPressAnyKeyToContiniue()
 {

@@ -145,3 +145,55 @@ void SmartWatch::print()
 	cout << this->getId() << " | " << this->getName() << " | " << this->getStyle() << " | " << this->getOperatingSystem() << " | " << this->getTypeDisplay() << " | " << this->getPrice() << endl;
 }
 
+std::istream& operator>>(std::istream& in, SmartWatch& smartWatch)
+{
+	char style[100];
+	char operatingSystem[100];
+	char typeDisplay[100];
+	double price;
+	char name[50];
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Name: ";
+	in.get(name, 50);
+	cout << endl;
+	smartWatch.setName(name);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Price: ";
+	cin >> price;
+	cout << endl;
+	smartWatch.setPrice(price);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Style (man or women): ";
+	in.get(style, 50);
+	cout << endl;
+	smartWatch.setStyle(style);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Operating system: ";
+	in.get(operatingSystem, 50);
+	cout << endl;
+	smartWatch.setOperatingSystem(operatingSystem);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Type display: ";
+	cin >> typeDisplay;
+	cout << endl;
+	smartWatch.setTypeDisplay(typeDisplay);
+
+	cout << "You added successfully the product, press any key to continiue" << endl;
+
+	return in;
+}

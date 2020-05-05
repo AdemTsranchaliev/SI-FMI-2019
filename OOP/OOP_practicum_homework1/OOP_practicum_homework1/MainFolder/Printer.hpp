@@ -26,6 +26,7 @@ public:
 	void setOneOrManyColors(bool);
 	bool getOneOrManyColors() const;
 
+	friend std::istream& operator>>(std::istream& in, Printer& o);
 
 	void print();
 };

@@ -25,5 +25,8 @@ public:
 	void setTypeDisplay(const char*);
 	char* getTypeDisplay() const;
 
+	friend std::istream& operator>>(std::istream& in, SmartWatch& o);
+
+
 	void print();
 };

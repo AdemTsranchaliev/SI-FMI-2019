@@ -43,9 +43,18 @@ public:
 	char* getAuthenticateUserRole();
 	bool isAuthenticated();
 	bool isAuthorized(const char* role);
+	void registation();
+	void logOut();
 
 	//Only for users with role ROLE_ADMIN
 	void seeAllOrders();
 	void seeOrder(int id);
+	void addProduct();
+	void addLaptop();
+	void addPhone();
+	void addPrinter();
+	void addSmartWatch();
+
+
 };
 

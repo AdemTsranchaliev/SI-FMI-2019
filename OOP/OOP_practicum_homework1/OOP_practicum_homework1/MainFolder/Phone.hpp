@@ -25,6 +25,8 @@ public:
 	void setYearOfProduction(int year);
 	int getYearOfProduction() const;
 
+	friend std::istream& operator>>(std::istream& in, Phone& o);
+
 	void print();
 
 };

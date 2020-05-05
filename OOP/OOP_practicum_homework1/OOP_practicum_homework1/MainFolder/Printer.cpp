@@ -142,6 +142,57 @@ void Printer::print()
 
 	}
 }
+std::istream& operator>>(std::istream& in, Printer& printer)
+{
+	char printingTechnology[100];
+	char mainPrintingFormat[100];
+	bool oneOrManyColors;
+	double price;
+	char name[50];
 
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Name: ";
+	in.get(name, 50);
+	cout << endl;
+	printer.setName(name);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Price: ";
+	cin >> price;
+	cout << endl;
+	printer.setPrice(price);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Main printing format: ";
+	in.get(mainPrintingFormat, 50);
+	cout << endl;
+	printer.setMainPrintingFormat(mainPrintingFormat);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Printing technology: ";
+	in.get(printingTechnology, 50);
+	cout << endl;
+	printer.setPrintingTechnology(printingTechnology);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "One or many colors(1 for one,0 for many): ";
+	cin >> oneOrManyColors;
+	cout << endl;
+	printer.setOneOrManyColors(oneOrManyColors);
+
+	cout << "You added successfully the product, press any key to continiue" << endl;
+
+	return in;
+}
 
 

@@ -9,7 +9,6 @@ private:
 	char* username;
 	char* password;
 	char* role;
-	List<Order> orders;
 public:
 	User();
 	User(int id,const char* username, const char* password, const char* role);
@@ -18,10 +17,13 @@ public:
 
 	void setId(int id);
 	int getId() const;
-	void setUsername(char*);
+	void setUsername(const char*);
 	char* getUsername() const;
-	void setPassword(char*);
+	void setPassword(const char*);
 	char* getPassword() const;
-	void setRole(char*);
+	void setRole(const char*);
 	char* getRole() const;
+
+	friend std::istream& operator>>(std::istream& in, User& user);
+
 };

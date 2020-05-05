@@ -24,6 +24,9 @@ public:
 	void setVideoCart(const char*);
 	char* getVideoCart() const;
 
+	friend std::istream& operator>>(std::istream& in, Laptop& laptop);
+
+
 	void print();
 
 };

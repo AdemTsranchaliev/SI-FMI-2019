@@ -1,7 +1,6 @@
 #include <iostream>
 #include "Order.hpp"
-#include "User.hpp"
-#include "ShoppingCart.hpp"
+
 #pragma warning (disable:4996)
 using namespace std;
 
@@ -47,7 +46,7 @@ Order::Order(int id,const char* name, const char* surname, const char* phone, co
 
 	this->addressToDelivery = new char[strlen(address) + 1];
 	strncpy(this->addressToDelivery, address, strlen(address) + 1);
-	this->addressToDelivery[strlen(addressToDelivery)] = '\0';
+	this->addressToDelivery[strlen(address)] = '\0';
 
 	this->populatedPlace = new char[strlen(populatedPlace) + 1];
 	strncpy(this->populatedPlace, populatedPlace, strlen(populatedPlace) + 1);
@@ -75,7 +74,7 @@ Order::Order(const Order& order)
 	this->name[strlen(order.phoneNumber)] = '\0';
 
 	this->addressToDelivery = new char[strlen(order.addressToDelivery) + 1];
-	strncpy(this->addressToDelivery, addressToDelivery, strlen(order.addressToDelivery) + 1);
+	strncpy(this->addressToDelivery, order.addressToDelivery, strlen(order.addressToDelivery) + 1);
 	this->name[strlen(order.addressToDelivery)] = '\0';
 
 	this->populatedPlace = new char[strlen(order.populatedPlace) + 1];
@@ -118,23 +117,23 @@ Order& Order::operator=(const Order& order)
 
 		this->surname = new char[strlen(order.surname) + 1];
 		strncpy(this->surname, order.surname, strlen(order.surname) + 1);
-		this->name[strlen(order.surname)] = '\0';
+		this->surname[strlen(order.surname)] = '\0';
 
 		this->phoneNumber = new char[strlen(order.phoneNumber) + 1];
 		strncpy(this->phoneNumber, order.phoneNumber, strlen(order.phoneNumber) + 1);
-		this->name[strlen(order.phoneNumber)] = '\0';
+		this->phoneNumber[strlen(order.phoneNumber)] = '\0';
 
 		this->addressToDelivery = new char[strlen(order.addressToDelivery) + 1];
-		strncpy(this->addressToDelivery, addressToDelivery, strlen(order.addressToDelivery) + 1);
-		this->name[strlen(order.addressToDelivery)] = '\0';
+		strncpy(this->addressToDelivery, order.addressToDelivery, strlen(order.addressToDelivery) + 1);
+		this->addressToDelivery[strlen(order.addressToDelivery)] = '\0';
 
 		this->populatedPlace = new char[strlen(order.populatedPlace) + 1];
 		strncpy(this->populatedPlace, order.populatedPlace, strlen(order.populatedPlace) + 1);
-		this->name[strlen(order.populatedPlace)] = '\0';
+		this->populatedPlace[strlen(order.populatedPlace)] = '\0';
 
 		this->email = new char[strlen(order.email) + 1];
 		strncpy(this->email, order.email, strlen(order.email) + 1);
-		this->name[strlen(order.email)] = '\0';
+		this->email[strlen(order.email)] = '\0';
 	}
 
 	return *this;
@@ -192,7 +191,7 @@ void Order::setAddressToDelivery(char* address)
 	delete[] this->addressToDelivery;
 	this->addressToDelivery = new char[strlen(address) + 1];
 	strncpy(this->addressToDelivery, address, strlen(address) + 1);
-	this->addressToDelivery[strlen(addressToDelivery)] = '\0';
+	this->addressToDelivery[strlen(address)] = '\0';
 }
 char* Order::getAddressToDelivery()const
 {
@@ -226,7 +225,7 @@ char* Order::getEmail() const
 //Functions
 void Order::print()
 {
-	cout << this->id << " | " << this->getName() << " | " << this->getPopulatedPlace() << " | ";
+	cout << this->id+1 << " | " << this->getName() << " | " << this->getPopulatedPlace() << " | ";
 	if (this->isConfirmed)
 	{
 		cout << "CONFIRMED" << endl;

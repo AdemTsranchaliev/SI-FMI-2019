@@ -128,3 +128,56 @@ void Phone::print()
 {
 	cout << this->getId() << " | " << this->getName() << " | " << this->getModel() << " | " << this->getColor() << " | " << this->getYearOfProduction() << " | " << this->getPrice()<<" leva"<<endl;
 }
+
+std::istream& operator>>(std::istream& in, Phone& phone)
+{
+	char model[100];
+	char color[100];
+	int yearOfProduction;
+	double price;
+	char name[50];
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Name: ";
+	in.get(name, 50);
+	cout << endl;
+	phone.setName(name);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Price: ";
+	cin >> price;
+	cout << endl;
+	phone.setPrice(price);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Color: ";
+	in.get(color, 50);
+	cout << endl;
+	phone.setColor(color);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Model: ";
+	in.get(model, 50);
+	cout << endl;
+	phone.setModel(model);
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Year of production: ";
+	cin >> yearOfProduction;
+	cout << endl;
+	phone.setYearOfProduction(yearOfProduction);
+
+	cout << "You added successfully the product, press any key to continiue" << endl;
+
+	return in;
+}

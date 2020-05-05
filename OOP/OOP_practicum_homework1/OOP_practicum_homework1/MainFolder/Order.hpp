@@ -1,4 +1,6 @@
-
+#pragma once
+#include "ShoppingCart.hpp"
+#include "User.hpp"
 
 class Order
 {
@@ -13,7 +15,8 @@ private:
 	bool isConfirmed;
 
 	ShoppingCart orderedProducts;
-	User user;
+
+
 public:
 
 	Order();
@@ -38,6 +41,9 @@ public:
 	void setEmail(char*);
 	char* getEmail() const;
 
+
 	void print();
 	void printDetail();
 };
+
+

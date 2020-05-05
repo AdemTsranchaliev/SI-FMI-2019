@@ -33,8 +33,10 @@ void Shop::InsertData()
 	SmartWatch smartWatch("Women", "IOS", "Liquid RETINA", 9, "IWatch", 900);
 	smarthWatches.add(smartWatch);
 
-	User user(2, "ademski34", "12345", "ROLE_ADMIN");
-	users.add(user);
+	User user1(2, "admin", "12345", "ROLE_ADMIN");
+	users.add(user1);
+	User user2(3, "user", "12345", "ROLE_USER");
+	users.add(user2);
 
 	Order order(1,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
 	orders.add(order);
@@ -260,8 +262,6 @@ void Shop::PrintCategoryName(int category)
 	else if (category == 3)
 	{
 		cout << "Printer";
-
-
 	}
 	else if (category == 4)
 	{
@@ -334,7 +334,15 @@ bool Shop::isAuthorized(const char* role)
 	return false;
 }
 
-
+void Shop::registation()
+{
+	User newUser;
+	cin >> newUser;
+	newUser.setRole("ROLE_USER");
+	newUser.setId(users.getAt(users.Count()-1).getId()+1);
+	this->authenticatedUser = newUser;
+	cout << "You registered successfully! Press any key to continiue.";
+}
 
 char* Shop::getAuthenticateUserUsername()
 {
@@ -344,9 +352,18 @@ char* Shop::getAuthenticateUserRole()
 {
 	return this->authenticatedUser.getRole();
 }
+
+void Shop::logOut()
+{
+	User user;
+	this->authenticatedUser = user;
+	cout << "Successfully logout, press any key to continiue";
+}
+
+
 void Shop::seeAllOrders()
 {
-	cout << "No  |" << "Ordered name |" << " Delivery to |" << " Status";
+	cout << "No  |" << "Ordered name |" << " Delivery to |" << " Status"<<endl;
 	for (int i = 0; i < orders.Count(); i++)
 	{
 		orders.getAt(i).print();
@@ -356,12 +373,66 @@ void Shop::seeOrder(int id)
 {
 	for (int i = 0; i < orders.Count(); i++)
 	{
-		if (id=orders.getAt(i).getId())
+		if ((id-1)==orders.getAt(i).getId())
 		{
 			orders.getAt(i).printDetail();
 		}
 	}
 }
 
+void Shop::addProduct()
+{
+	cout << "What category of product you want to add" << endl;
+	cout << "For 'Phone' press 1" << endl;
+	cout << "For 'Laptop' press 2" << endl;
+	cout << "For 'Smart watch' press 3" << endl;
+	cout << "For 'Printer' press 4" << endl;
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	char tempInput[40];
+	cin.get(tempInput,10);
+	if (tempInput[0]=='1')
+	{
+		addPhone();
+	}
+	else if (tempInput[0] == '2')
+	{
+		addLaptop();
+	}
+	else if (tempInput[0] == '3')
+	{
+		addSmartWatch();
+	}
+	else if (tempInput[0] == '4')
+	{
+		addPrinter();
+	}
+
+
+}
+void Shop::addLaptop()
+{
+	Laptop laptop;
+	cin >> laptop;
+	laptops.add(laptop);
+}
+void Shop::addPhone()
+{
+	Phone phone;
+	cin >> phone;
+	phones.add(phone);
+}
+void Shop::addPrinter()
+{
+	Printer printer;
+	cin >> printer;
+	printers.add(printer);
+}
+void Shop::addSmartWatch()
+{
+	SmartWatch smartWatch;
+	cin >> smartWatch;
+	smarthWatches.add(smartWatch);
+}
 
 
