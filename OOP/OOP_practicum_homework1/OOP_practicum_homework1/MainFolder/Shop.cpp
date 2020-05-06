@@ -224,6 +224,9 @@ void Shop::ShowShoppingCart()
 	{
 		cout << "There are no products in Shopping Cart" << endl;
 		cout << "Press any key to continiue to categories" << endl;
+
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 	}
 	else
 	{
@@ -241,6 +244,22 @@ void Shop::ShowShoppingCart()
 		cout << "======================" << endl;
 		cout << "Total: " << totalForCart << " leva" << endl;
 		cout << "======================" << endl;
+
+		char command[3];
+		cout << "For finishing the order press 'O'"<<endl;
+		cout << "To go back PRESS any other key" << endl;
+
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		cin.get(command,3);
+		if (command[0]=='O')
+		{
+			this->MakeOrder();
+		}
+
+		system("cls");
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	}
 
@@ -407,15 +426,16 @@ void Shop::seeAllUsers()
 }
 
 
-void Shop::seeOrder(int id)
+Order& Shop::seeOrder(int id)
 {
 	for (int i = 0; i < orders.Count(); i++)
 	{
 		if ((id-1)==orders.getAt(i).getId())
 		{
-			orders.getAt(i).printDetail();
+			return orders.getAt(i);				
 		}
 	}
+
 }
 
 void Shop::addProduct()
@@ -489,6 +509,38 @@ void Shop::makeUserAdminOrUser(int id)
 	
 }
 
+void Shop::MakeOrder()
+{
+	system("cls");
+
+	cout << "FINISHING ORDER" << endl;
+	cout << "====================================" << endl;
+
+	Order order;
+
+	cin >> order;
+	orders.add(order);
+
+	cout << "Your order was successfully send! Press any key to continiue!";
+
+	ClearShoppingCart();
+
+	char temp[50];
+
+	cin.clear();
+	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cin.get(temp,50);
+
+}
+
+void Shop::ClearShoppingCart()
+{
+	while (this->shoppingCart.Count()!=0)
+	{
+		this->shoppingCart.removeAt(0);
+	}
+}
 
 
 

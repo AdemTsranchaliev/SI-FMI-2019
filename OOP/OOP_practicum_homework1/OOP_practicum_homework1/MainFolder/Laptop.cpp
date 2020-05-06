@@ -6,6 +6,7 @@ using namespace std;
 //Constructors
 Laptop::Laptop()
 {
+
 	this->processor = new char[1];
 	this->processor[0] = '\0';
 	this->videoCard = new char[1];

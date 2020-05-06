@@ -26,6 +26,8 @@ Order::Order()
 
 	this->email = new char[1];
 	this->email[0] = '\0';
+
+	this->isConfirmed = false;
 }
 
 Order::Order(int id,const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace,const char* email)
@@ -57,6 +59,9 @@ Order::Order(int id,const char* name, const char* surname, const char* phone, co
 	strncpy(this->email, email, strlen(email) + 1);
 	this->email[strlen(email)] = '\0';
 
+	this->isConfirmed = false;
+
+
 }
 
 Order::Order(const Order& order)
@@ -84,6 +89,9 @@ Order::Order(const Order& order)
 	this->email = new char[strlen(order.email) + 1];
 	strncpy(this->email, order.email, strlen(order.email) + 1);
 	this->name[strlen(order.email)] = '\0';
+
+	this->isConfirmed = order.isConfirmed;
+
 }
 
 
@@ -134,6 +142,8 @@ Order& Order::operator=(const Order& order)
 		this->email = new char[strlen(order.email) + 1];
 		strncpy(this->email, order.email, strlen(order.email) + 1);
 		this->email[strlen(order.email)] = '\0';
+
+		this->isConfirmed=order.isConfirmed;
 	}
 
 	return *this;
@@ -242,5 +252,84 @@ void Order::printDetail()
 	cout << "Phone: " << this->phoneNumber << endl;
 	cout << "Town/Vilage to delivery: " << this->populatedPlace<<endl;
 	cout << "Address: "<<this->addressToDelivery<<endl;
-	cout << "Email: " << this->email << endl;
+	cout << "Email: " << this->email << endl;	
+	if (this->getIsConfirmed()==true)
+	{
+		cout << "Order is CONFIRMED"<<endl;
+	}
+	else
+	{
+		cout << "Order is NOT CONFIRMED" << endl;
+
+	}
 }
+
+std::istream& operator>>(std::istream& in, Order& order)
+{
+	char name[40];
+	char surname[40];
+	char phoneNumber[40];
+	char addressToDelivery[40];
+	char populatedPlace[40];
+	char email[40];
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Name: ";
+	in.get(name,39);
+	order.setName(name);
+	cout << endl;
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Surname: ";
+	in.get(surname, 39);
+	order.setSurname(surname);
+	cout << endl;
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Phone: ";
+	in.get(phoneNumber, 39);
+	order.setPhoneNumber(phoneNumber);
+	cout << endl;
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Town/vilage: ";
+	in.get(populatedPlace, 39);
+	order.setPopulatedPlace(populatedPlace);
+	cout << endl;
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Address: ";
+	in.get(addressToDelivery, 39);
+	order.setAddressToDelivery(addressToDelivery);
+	cout << endl;
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+	cout << "Email: ";
+	in.get(email, 39);
+	order.setEmail(email);
+	cout << endl;
+
+	return in;
+}
+
+void Order::confirmOrder()
+{
+	this->isConfirmed = true;
+}
+bool Order::getIsConfirmed() const
+{
+	return this->isConfirmed;
+}
+

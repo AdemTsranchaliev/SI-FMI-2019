@@ -40,7 +40,11 @@ public:
 	char* getPopulatedPlace() const;
 	void setEmail(char*);
 	char* getEmail() const;
+	
+	void confirmOrder();
+	bool getIsConfirmed() const;
 
+	friend std::istream& operator>>(std::istream& in, Order& order);
 
 	void print();
 	void printDetail();

@@ -36,6 +36,12 @@ int main()
 		shop.registation();
 		GetCommandPressAnyKeyToContiniue();
 	}
+	else
+	{
+		system("cls");
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	}
 
 	int categorySelected = 0;
 	while (true)
@@ -80,10 +86,11 @@ int main()
 		cin.get(command, 50);
 
 		system("cls");
+
 		if (strcmp(command, "s") == 0)
 		{
 			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
+	
 		
 			system("cls");
 			
@@ -196,7 +203,6 @@ int main()
 		else if (strcmp(command, "s") == 0)
 		{
 			shop.ShowShoppingCart();
-			GetCommandPressAnyKeyToContiniue();
 
 			system("cls");
 		
@@ -302,13 +308,39 @@ void SeeOrders(Shop& shop)
 		if (tempCommand[0] == 'D')
 		{
 			cout << "Which No product want to see? Press the product number."<<endl;
+
 			cin.clear();
 			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 			cin.get(tempCommand, 10);
-			
-			shop.seeOrder(tempCommand[0]-'0');
-			cout << "Press any key to go back." << endl;
-			GetCommandPressAnyKeyToContiniue();
+			system("cls");
+
+			cout << "Order No: "<<tempCommand<<endl;
+
+			shop.seeOrder(tempCommand[0] - '0').printDetail();
+
+			if (shop.seeOrder(tempCommand[0] - '0').getIsConfirmed()==false&&shop.isAuthorized("ROLE_ADMIN"))
+			{
+
+				cout << "That order is not confirmed, if you want to confirm it press '1'"<<endl;
+				cout << "If you want to go back press any other key" << endl;
+
+				int n;
+				cin.clear();
+				cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+				cin >> n;
+				if (n==1)
+				{
+					shop.seeOrder(tempCommand[0] - '0').confirmOrder();
+				}
+
+				cin.clear();
+				cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+			}
+			else
+			{
+				GetCommandPressAnyKeyToContiniue();
+			}
 		}
 		else
 		{

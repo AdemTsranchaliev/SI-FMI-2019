@@ -27,6 +27,7 @@ private:
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, int category);
 	bool checkIfUsernameIsUnique(const char* username);
+	void ClearShoppingCart();
 public:
 
 	Shop();
@@ -34,6 +35,8 @@ public:
 	void InsertData();
 	void SortAndPrint(int);
 	void ShowShoppingCart();
+	void MakeOrder();
+
 	void PrintCategory(int);
 	void PrintCategoryName(int);
 	int AddProductInShoppingCart(int productId, int category);
@@ -51,7 +54,7 @@ public:
 	void makeUserAdminOrUser(int id);
 
 	void seeAllUsers();
-	void seeOrder(int id);
+	Order& seeOrder(int id);
 	void addProduct();
 	void addLaptop();
 	void addPhone();
