@@ -137,43 +137,43 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 	double price;
 	char name[50];
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
 	in.get(name, 50);
 	cout << endl;
 	phone.setName(name);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Price: ";
-	cin >> price;
+	in >> price;
 	cout << endl;
 	phone.setPrice(price);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Color: ";
 	in.get(color, 50);
 	cout << endl;
 	phone.setColor(color);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Model: ";
 	in.get(model, 50);
 	cout << endl;
 	phone.setModel(model);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Year of production: ";
-	cin >> yearOfProduction;
+	in >> yearOfProduction;
 	cout << endl;
 	phone.setYearOfProduction(yearOfProduction);
 

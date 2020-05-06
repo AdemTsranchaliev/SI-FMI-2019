@@ -121,25 +121,30 @@ std::istream& operator>>(std::istream& in, User& user)
 	char password[100];
 
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Username: ";
 	in.get(username, 50);
 	cout << endl;
 	user.setUsername(username);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Password: ";
-	cin >> password;
+	in >> password;
 	cout << endl;
 	user.setPassword(password);
 
 	
 
 	return in;
+}
+
+void User::addNewOrder(const Order& order)
+{
+	this->orders.add(order);
 }
 
 void User::print()

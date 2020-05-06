@@ -333,3 +333,8 @@ bool Order::getIsConfirmed() const
 	return this->isConfirmed;
 }
 
+void Order::addProductToShoppingCart(const ShoppingCart& product)
+{
+	this->products.add(product);
+}
+

@@ -225,8 +225,16 @@ void Shop::ShowShoppingCart()
 		cout << "There are no products in Shopping Cart" << endl;
 		cout << "Press any key to continiue to categories" << endl;
 
+		char command[3];	
 		cin.clear();
 		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+		cin.get(command, 3);
+
+		cin.clear();
+		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+
+		system("cls");
 	}
 	else
 	{
@@ -240,6 +248,8 @@ void Shop::ShowShoppingCart()
 		{
 			totalForCart += shoppingCart.getAt(i).getPrice()*shoppingCart.getAt(i).getQuantity();
 			shoppingCart.getAt(i).print();
+
+			
 		}
 		cout << "======================" << endl;
 		cout << "Total: " << totalForCart << " leva" << endl;
@@ -355,6 +365,10 @@ bool Shop::isAuthorized(const char* role)
 
 void Shop::registation()
 {
+	system("cls");
+
+	cout << "Registration"<<endl;
+	cout << "=============================="<<endl;
 	User newUser;
 	cin >> newUser;
 	newUser.setRole("ROLE_USER");
@@ -453,24 +467,28 @@ void Shop::addProduct()
 	{
 		system("cls");
 		cout << "Adding new product 'Phone'"<<endl;
+		cout << "================================" << endl << endl;
 		addPhone();
 	}
 	else if (tempInput[0] == '2')
 	{
 		system("cls");
 		cout << "Adding new product 'Laptop'" << endl;
+		cout << "================================" << endl << endl;
 		addLaptop();
 	}
 	else if (tempInput[0] == '3')
 	{
 		system("cls");
 		cout << "Adding new product 'Smart Watch'" << endl;
+		cout << "================================" << endl << endl;
 		addSmartWatch();
 	}
 	else if (tempInput[0] == '4')
 	{
 		system("cls");
 		cout << "Adding new product 'Printer'" << endl;
+		cout << "================================" << endl << endl;
 		addPrinter();
 	}
 
@@ -503,7 +521,7 @@ void Shop::makeUserAdminOrUser(int id)
 
 	if (user.getId()==0)
 	{
-		cout << "User with given id wasn't found!";
+		cout << "User with given id wasn't found!"<<endl;
 	}
 	
 	
@@ -519,8 +537,18 @@ void Shop::MakeOrder()
 	Order order;
 
 	cin >> order;
+	order.setId(this->orders.getAt(this->orders.Count()-1).getId()+1);
 	orders.add(order);
 
+	for (int i = 0; i < shoppingCart.Count(); i++)
+	{
+		order.addProductToShoppingCart(shoppingCart.getAt(i));
+	}
+
+	if (this->isAuthenticated())
+	{
+		this->authenticatedUser.addNewOrder(order);
+	}
 	cout << "Your order was successfully send! Press any key to continiue!";
 
 	ClearShoppingCart();

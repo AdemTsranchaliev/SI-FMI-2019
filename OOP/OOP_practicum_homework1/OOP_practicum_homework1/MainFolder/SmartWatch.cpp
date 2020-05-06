@@ -153,43 +153,43 @@ std::istream& operator>>(std::istream& in, SmartWatch& smartWatch)
 	double price;
 	char name[50];
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
 	in.get(name, 50);
 	cout << endl;
 	smartWatch.setName(name);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Price: ";
-	cin >> price;
+	in >> price;
 	cout << endl;
 	smartWatch.setPrice(price);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Style (man or women): ";
 	in.get(style, 50);
 	cout << endl;
 	smartWatch.setStyle(style);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Operating system: ";
 	in.get(operatingSystem, 50);
 	cout << endl;
 	smartWatch.setOperatingSystem(operatingSystem);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Type display: ";
-	cin >> typeDisplay;
+	in >> typeDisplay;
 	cout << endl;
 	smartWatch.setTypeDisplay(typeDisplay);
 

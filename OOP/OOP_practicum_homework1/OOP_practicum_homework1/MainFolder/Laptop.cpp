@@ -129,32 +129,32 @@ std::istream& operator>>(std::istream& in, Laptop& laptop)
 	double price;
 	char name[50];
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
 	in.get(name,50);
 	cout << endl;
 	laptop.setName(name);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Price: ";
-	cin >> price;
+	in >> price;
 	cout << endl;
 	laptop.setPrice(price);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Video card: ";
 	in.get(videoCart, 50);
 	cout << endl;
 	laptop.setVideoCart(videoCart);
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Processor: ";
 	in.get(procecors, 50);

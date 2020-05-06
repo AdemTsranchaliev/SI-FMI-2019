@@ -91,9 +91,7 @@ int main()
 		{
 			shop.ShowShoppingCart();
 	
-		
-			system("cls");
-			
+				
 			continue;
 		}
 		else if (command[0] == 'L'&&!shop.isAuthenticated())
@@ -148,8 +146,14 @@ int main()
 				cout << "Press any key to continiue" << endl;
 				GetCommandPressAnyKeyToContiniue();
 			}
+			else
+			{
+				cin.clear();
+				cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+				system("cls");
+			}
 
-			system("cls");
+		
 
 			continue;
 		}
@@ -244,8 +248,8 @@ void Login(Shop& shop)
 	system("cls");
 	char username[100];
 	char password[100];
-	cout << "Login in your profile" << endl << endl;
-
+	cout << "Login in your profile" << endl;
+	cout << "========================================" << endl << endl;
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 
@@ -264,7 +268,7 @@ void Login(Shop& shop)
 		if (isAuthenticated)
 		{
 			cout << "Wellcome, "<<shop.getAuthenticateUserUsername()<<"!"<<endl;
-
+			cout << "Press any key to continiue!"<<endl;
 			break;
 		}
 		system("cls");
@@ -307,7 +311,8 @@ void SeeOrders(Shop& shop)
 		cin.get(tempCommand, 10);
 		if (tempCommand[0] == 'D')
 		{
-			cout << "Which No product want to see? Press the product number."<<endl;
+		
+			cout << "Which No order want to see? Press the order number."<<endl;
 
 			cin.clear();
 			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
@@ -315,12 +320,13 @@ void SeeOrders(Shop& shop)
 			system("cls");
 
 			cout << "Order No: "<<tempCommand<<endl;
-
+			cout << "====================================="<<endl<<endl;
 			shop.seeOrder(tempCommand[0] - '0').printDetail();
 
 			if (shop.seeOrder(tempCommand[0] - '0').getIsConfirmed()==false&&shop.isAuthorized("ROLE_ADMIN"))
 			{
-
+	
+				cout << "==================================================================" << endl;
 				cout << "That order is not confirmed, if you want to confirm it press '1'"<<endl;
 				cout << "If you want to go back press any other key" << endl;
 

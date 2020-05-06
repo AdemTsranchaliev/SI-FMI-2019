@@ -1,6 +1,6 @@
 #pragma once
 #include "ShoppingCart.hpp"
-#include "User.hpp"
+#include "List.hpp"
 
 class Order
 {
@@ -14,8 +14,7 @@ private:
 	char* email;
 	bool isConfirmed;
 
-	ShoppingCart orderedProducts;
-
+	List<ShoppingCart> products;
 
 public:
 
@@ -43,6 +42,8 @@ public:
 	
 	void confirmOrder();
 	bool getIsConfirmed() const;
+
+	void addProductToShoppingCart(const ShoppingCart& product);
 
 	friend std::istream& operator>>(std::istream& in, Order& order);
 
