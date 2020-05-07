@@ -53,6 +53,8 @@ public:
 	void seeAllOrders();
 	void makeUserAdminOrUser(int id);
 
+
+	bool checkIfOrderExist(int id);
 	void seeAllUsers();
 	Order& seeOrder(int id);
 	void addProduct();

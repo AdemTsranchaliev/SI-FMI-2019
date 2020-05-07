@@ -319,6 +319,16 @@ void SeeOrders(Shop& shop)
 			cin.get(tempCommand, 10);
 			system("cls");
 
+			if (!shop.checkIfOrderExist(tempCommand[0] - '0'))
+			{
+				cout << "Order with that number doesn't exist!"<<endl;
+				cout << "Press any key to continiue back." << endl;
+
+				GetCommandPressAnyKeyToContiniue();
+				continue;
+
+			}
+
 			cout << "Order No: "<<tempCommand<<endl;
 			cout << "====================================="<<endl<<endl;
 			shop.seeOrder(tempCommand[0] - '0').printDetail();

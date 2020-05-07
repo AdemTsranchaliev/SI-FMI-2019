@@ -66,6 +66,8 @@ Order::Order(int id,const char* name, const char* surname, const char* phone, co
 
 Order::Order(const Order& order)
 {
+	this->id = order.id;
+
 	this->name = new char[strlen(order.name) + 1];
 	strncpy(this->name, order.name, strlen(order.name) + 1);
 	this->name[strlen(order.name)] = '\0';
@@ -118,6 +120,8 @@ Order& Order::operator=(const Order& order)
 		delete[] this->addressToDelivery;
 		delete[] this->populatedPlace;
 		delete[] this->email;
+
+		this->id = order.id;
 
 		this->name = new char[strlen(order.name) + 1];
 		strncpy(this->name, order.name, strlen(order.name) + 1);
@@ -262,6 +266,13 @@ void Order::printDetail()
 		cout << "Order is NOT CONFIRMED" << endl;
 
 	}
+	cout << "============================================="<<endl;
+	cout << "Ordered items" << endl << endl;
+	for (int i = 0; i < this->products.Count(); i++)
+	{
+		this->products.getAt(i).print();
+	}
+
 }
 
 std::istream& operator>>(std::istream& in, Order& order)

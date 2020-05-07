@@ -38,7 +38,7 @@ void Shop::InsertData()
 	User user2(3, "user", "12345", "ROLE_USER");
 	users.add(user2);
 
-	Order order(1,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
+	Order order(0,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
 	orders.add(order);
 
 }
@@ -538,7 +538,7 @@ void Shop::MakeOrder()
 
 	cin >> order;
 	order.setId(this->orders.getAt(this->orders.Count()-1).getId()+1);
-	orders.add(order);
+	
 
 	for (int i = 0; i < shoppingCart.Count(); i++)
 	{
@@ -549,6 +549,7 @@ void Shop::MakeOrder()
 	{
 		this->authenticatedUser.addNewOrder(order);
 	}
+	orders.add(order);
 	cout << "Your order was successfully send! Press any key to continiue!";
 
 	ClearShoppingCart();
@@ -570,6 +571,19 @@ void Shop::ClearShoppingCart()
 	}
 }
 
+bool Shop::checkIfOrderExist(int id)
+{
+	id = id - 1;
+	for (int i = 0; i < orders.Count(); i++)
+	{
+		if (this->orders.getAt(i).getId()==id)
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 
 void Shop::addLaptop()
