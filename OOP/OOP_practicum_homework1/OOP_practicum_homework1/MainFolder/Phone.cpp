@@ -15,7 +15,7 @@ Phone::Phone()
 
 }
 
-Phone::Phone(string color,string model, int yearOfProduction, int id,string name, double price) : Product(id,price,name)
+Phone::Phone(string color,string model, int yearOfProduction, int id,string name, double price,string category) : Product(id,price,name, category)
 {
 
 	this->color = color;
@@ -102,9 +102,6 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 	double price;
 	string name;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Name: ";
 	getline(in,name);
 	cout << endl;
@@ -134,6 +131,8 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 	phone.setYearOfProduction(yearOfProduction);
 
 	cout << "You added successfully the product, press any key to continiue" << endl;
+
+	
 
 	return in;
 }

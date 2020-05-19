@@ -85,9 +85,6 @@ std::istream& operator>>(std::istream& in, User& user)
 	string password;
 
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Username: ";
 	getline(cin,username);
 	cout << endl;

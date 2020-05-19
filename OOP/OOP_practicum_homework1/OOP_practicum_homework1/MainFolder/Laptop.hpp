@@ -12,7 +12,7 @@ private:
 public:
 
 	Laptop();
-	Laptop(string processor,int ramMemory, string videoCart, int id, string  name, double price);
+	Laptop(string processor,int ramMemory, string videoCart, int id, string  name, double price,string category);
 	Laptop(const Laptop& laptop);
 
 	Laptop& operator=(const Laptop& laptop);

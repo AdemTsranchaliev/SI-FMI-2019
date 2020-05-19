@@ -8,6 +8,7 @@
 #include "ShoppingCart.hpp"
 #include "Order.hpp"
 #include "User.hpp"
+#include <string>
 using namespace std;
 
 class Shop
@@ -16,6 +17,7 @@ private:
 	List<Laptop> laptops;
 	List<Phone> phones;
 	List<Printer> printers;
+
 	List<ShoppingCart> shoppingCart;
 	List<Order> orders;
 	List<User> users;
@@ -44,7 +46,7 @@ public:
 	string getAuthenticateUserUsername();
 	string getAuthenticateUserRole();
 	bool isAuthenticated();
-	bool isAuthorized(const char* role);
+	bool isAuthorized(string role);
 	void registation();
 	void logOut();
 
@@ -60,7 +62,6 @@ public:
 	void addLaptop();
 	void addPhone();
 	void addPrinter();
-	void addSmartWatch();
 
 
 };

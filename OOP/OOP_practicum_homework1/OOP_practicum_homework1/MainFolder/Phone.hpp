@@ -12,9 +12,8 @@ private:
 public:
 
 	Phone();
-	Phone(string model,string color, int yearOfProduction,int id ,string name,double price);
+	Phone(string model,string color, int yearOfProduction,int id ,string name,double price,string category);
 	Phone(const Phone& phone);
-	~Phone();
 
 	Phone& operator=(const Phone& phone);
 	bool operator==(const Phone& phone);

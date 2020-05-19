@@ -13,7 +13,7 @@ Printer::Printer()
 	oneOrManyColor = false;
 }
 
-Printer::Printer(string printingTechnology, string mainPrintingFormat, bool oneOrManyColor, int id, string name, double price) : Product(id,price,name)
+Printer::Printer(string printingTechnology, string mainPrintingFormat, bool oneOrManyColor, int id, string name, double price, string category) : Product(id,price,name, category)
 {
 	this->printingTechnology = printingTechnology;
 
@@ -106,9 +106,6 @@ std::istream& operator>>(std::istream& in, Printer& printer)
 	bool oneOrManyColors;
 	double price;
 	string name;
-
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
 	getline(in,name);

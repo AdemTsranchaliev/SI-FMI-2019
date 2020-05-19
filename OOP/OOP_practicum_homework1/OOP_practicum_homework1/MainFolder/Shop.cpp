@@ -1,5 +1,5 @@
 #include <iostream>
-#include <string>
+
 
 #include "Shop.h"
 
@@ -11,23 +11,23 @@ Shop::Shop()
 
 void Shop::InsertData()
 {
-	Phone phone1("X", "Black", 2019, 1, "Iphone", 1100);
-	Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700);
-	Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200);
-	Phone phone4("4", "Pink", 2011, 4, "Iphone", 450);
+	Phone phone1("X", "Black", 2019, 1, "Iphone", 1100,"Phone");
+	Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
+	Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
+	Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
 	phones.add(phone1);
 	phones.add(phone2);
 	phones.add(phone3);
 	phones.add(phone4);
-	phone1.setColor("");
-	Printer printer1("RA", "A", true, 5, "ASUS", 200);
-	Printer printer2("Laser", "B", true, 6, "HP", 220);
+
+	Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
+	Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
 
 	printers.add(printer1);
 	printers.add(printer2);
 
-	Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799);
-	Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799);
+	Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
+	Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
 	laptops.add(laptop1);
 	laptops.add(laptop2);
 
@@ -199,15 +199,11 @@ void Shop::ShowShoppingCart()
 		cout << "There are no products in Shopping Cart" << endl;
 		cout << "Press any key to continiue to categories" << endl;
 
-		char command[3];	
-		cin.clear();
-		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+		string command;	
+		
+		getline(cin,command);
 
-		cin.get(command, 3);
-
-		cin.clear();
-		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-
+	
 		system("cls");
 	}
 	else
@@ -229,21 +225,17 @@ void Shop::ShowShoppingCart()
 		cout << "Total: " << totalForCart << " leva" << endl;
 		cout << "======================" << endl;
 
-		char command[3];
+		string command;
 		cout << "For finishing the order press 'O'"<<endl;
 		cout << "To go back PRESS any other key" << endl;
 
-		cin.clear();
-		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-		cin.get(command,3);
+		getline(cin,command);
 		if (command[0]=='O')
 		{
 			this->MakeOrder();
 		}
 
 		system("cls");
-		cin.clear();
-		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	}
 
@@ -299,7 +291,7 @@ bool Shop::Authenticate(string username, string password)
 	{
 		if (users.getAt(i).getUsername()==username)
 		{
-			if (users.getAt(i).getPassword()==password == 0)
+			if (users.getAt(i).getPassword()==password)
 			{
 				authenticatedUser = users.getAt(i);
 				return true;
@@ -423,10 +415,8 @@ void Shop::addProduct()
 	cout << "What category of product you want to add" << endl;
 	cout << "For 'Phone' press 1" << endl;
 	cout << "For 'Laptop' press 2" << endl;
-	cout << "For 'Smart watch' press 3" << endl;
-	cout << "For 'Printer' press 4" << endl;
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
+	cout << "For 'Printer' press 3" << endl;
+	
 	string tempInput;
 	getline(cin,tempInput);
 	if (tempInput[0]=='1')
@@ -443,14 +433,8 @@ void Shop::addProduct()
 		cout << "================================" << endl << endl;
 		addLaptop();
 	}
+
 	else if (tempInput[0] == '3')
-	{
-		system("cls");
-		cout << "Adding new product 'Smart Watch'" << endl;
-		cout << "================================" << endl << endl;
-		addSmartWatch();
-	}
-	else if (tempInput[0] == '4')
 	{
 		system("cls");
 		cout << "Adding new product 'Printer'" << endl;
@@ -470,7 +454,7 @@ void Shop::makeUserAdminOrUser(int id)
 		if (users.getAt(i).getId()==id)
 		{
 			user = users.getAt(i);
-			if (strcmp(users.getAt(i).getRole(), "ROLE_ADMIN") == 0)
+			if (users.getAt(i).getRole()== "ROLE_ADMIN")
 			{
 				users.getAt(i).setRole("ROLE_USER");
 				
@@ -522,9 +506,6 @@ void Shop::MakeOrder()
 
 	string temp;
 
-	cin.clear();
-	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	getline(cin,temp);
 
 }
@@ -566,6 +547,7 @@ void Shop::addPhone()
 	phone.setId(phones.getAt(phones.Count() - 1).getId() + 1);
 
 	phones.add(phone);
+	string a = "";
 }
 void Shop::addPrinter()
 {

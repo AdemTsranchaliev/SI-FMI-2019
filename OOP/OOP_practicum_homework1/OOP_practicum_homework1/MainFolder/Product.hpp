@@ -1,4 +1,5 @@
 #pragma once
+
 using namespace std;
 
 
@@ -8,10 +9,11 @@ private:
 	int id;
 	double price;
 	string name;
+	string category;
 public:
 
 	Product();
-	Product(int, double,string);
+	Product(int, double,string,string);
 	Product(const Product& product);
 
 	Product& operator=(const Product& product);
@@ -22,7 +24,8 @@ public:
 	double getPrice() const;
 	void setName(string);
 	string getName() const;
-
+	void setCategory(string);
+	string getCategory() const;
 
 
 };

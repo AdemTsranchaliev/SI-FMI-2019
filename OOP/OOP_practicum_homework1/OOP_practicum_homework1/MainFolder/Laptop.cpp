@@ -13,7 +13,7 @@ Laptop::Laptop()
 	this->ramMemory = 0;
 }
 
-Laptop::Laptop(string processor, int ramMemory, string videoCart, int id, string name, double price): Product(id,price, name)
+Laptop::Laptop(string processor, int ramMemory, string videoCart, int id, string name, double price,string category): Product(id,price, name, category)
 {
 	this->ramMemory = ramMemory;
 
@@ -93,9 +93,6 @@ std::istream& operator>>(std::istream& in, Laptop& laptop)
 	int ramMemory;
 	double price;
 	string name;
-
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
 	getline(in, name);

@@ -11,12 +11,12 @@ Product::Product()
 	this->name = "";
 }
 
-Product::Product(int id, double price, string name)
+Product::Product(int id, double price, string name,string cateogry)
 {
 	this->id = id;
 	this->price = price;
 	this->name = name;
-
+	this->category = category;
 }
 
 Product::Product(const Product& product)
@@ -24,6 +24,7 @@ Product::Product(const Product& product)
 	this->id = product.id;
 	this->price = product.price;
 	this->name = product.name;
+	this->category = product.category;
 
 }
 
@@ -33,11 +34,10 @@ Product& Product::operator=(const Product& product)
 {
 	if (this!=&product)
 	{
-	
-
 		this->id = product.id;
 		this->price = product.price;
 		this->name = product.name;
+		this->category = product.category;
 
 	}
 	return *this;
@@ -70,6 +70,15 @@ void Product::setName(string name)
 string Product::getName() const
 {
 	return this->name;
+}
+
+void Product::setCategory(string category)
+{
+	this->category = category;
+}
+string Product::getCategory() const
+{
+	return this->category;
 }
 
 //Functions..

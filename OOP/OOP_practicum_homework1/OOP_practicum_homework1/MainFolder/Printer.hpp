@@ -13,9 +13,8 @@ private:
 public:
 
 	Printer();
-	Printer(string printingTechnology, string mainPrintingFormat,bool oneOrManyColor, int id , string name, double price);
+	Printer(string printingTechnology, string mainPrintingFormat,bool oneOrManyColor, int id , string name, double price, string category);
 	Printer(const Printer& printer);
-	~Printer();
 
 	Printer& operator=(const Printer& printer);
 	bool operator==(const Printer& printer);
