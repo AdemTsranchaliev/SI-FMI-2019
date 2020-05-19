@@ -1,28 +1,29 @@
 #pragma once
 
 #include "Product.hpp"
+using namespace std;
 
 class Laptop:public Product
 {
 private:
-	char* processor;
+	string processor;
 	int ramMemory;
-	char* videoCard;
+	string videoCard;
 public:
 
 	Laptop();
-	Laptop(const char* processor,int ramMemory, const char* videoCart, int id, const char* name, double price);
+	Laptop(string processor,int ramMemory, string videoCart, int id, string  name, double price);
 	Laptop(const Laptop& laptop);
-	~Laptop();
+
 	Laptop& operator=(const Laptop& laptop);
 	bool operator==(const Laptop& laptop);
 
-	void setProcessor(const char*);
-	char* getProcessor() const;
+	void setProcessor(string);
+	string getProcessor() const;
 	void setRamMemory(int);
 	int getRamMemory() const;
-	void setVideoCart(const char*);
-	char* getVideoCart() const;
+	void setVideoCart(string);
+	string getVideoCart() const;
 
 	friend std::istream& operator>>(std::istream& in, Laptop& laptop);
 

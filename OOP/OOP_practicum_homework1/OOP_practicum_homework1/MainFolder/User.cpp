@@ -1,66 +1,40 @@
 #include <iostream>
+#include <string>
 #include "User.hpp"
 
 #pragma warning (disable:4996)
-using namespace std;
 
 
 //Constructors
 User::User()
 {
 	this->id = 0;
-	this->username = new char[1];
-	this->username[0] = '\0';
-	this->role = new char[1];
-	this->role[0] = '\0';
-	this->password = new char[1];
-	this->password[0] = '\0';
+	this->username = "";
+	this->role = "";
+	this->password = "";
 
 }
 
-User::User(int id, const char* username, const char* password, const char* role) {
+User::User(int id, string username, string password, string role) {
 	this->id = id;
-	this->username = new char[strlen(username)+1];
-	strncpy(this->username,username, strlen(username) + 1);
-	this->username[strlen(username)] = '\0';
+	this->username = username;
 
-	this->password = new char[strlen(password) + 1];
-	strncpy(this->password, password, strlen(password) + 1);
-	this->password[strlen(password)] = '\0';
+	this->password = password;
 
-	this->role = new char[strlen(role) + 1];
-	strncpy(this->role, role, strlen(role) + 1);
-	this->role[strlen(role)] = '\0';
+	this->role = role;
 
-}
-
-//Destructor
-User::~User() {
-	delete[] this->username;
-	delete[] this->password;
-	delete[] this->role;
 }
 
 User& User::operator=(const User& user)
 {
 	if (this!=&user)
 	{
-		delete[] this->username;
-		delete[] this->password;
-		delete[] this->role;
-
 		this->id = user.id;
-		this->username = new char[strlen(user.username) + 1];
-		strncpy(this->username, user.username, strlen(user.username) + 1);
-		this->username[strlen(user.username)] = '\0';
+		this->username = user.username;
 
-		this->password = new char[strlen(user.password) + 1];
-		strncpy(this->password, user.password, strlen(user.password) + 1);
-		this->password[strlen(user.password)] = '\0';
+		this->password = user.password;
 
-		this->role = new char[strlen(user.role) + 1];
-		strncpy(this->role, user.role, strlen(user.role) + 1);
-		this->role[strlen(user.role)] = '\0';
+		this->role = user.role;
 
 	}
 	return *this;
@@ -75,41 +49,31 @@ int User::getId() const
 	return this->id;
 }
 
-void User::setUsername(const char* username)
+void User::setUsername(string username)
 {
-	delete[] this->username;
-	this->username = new char[strlen(username) + 1];
-	strncpy(this->username, username, strlen(username) + 1);
-	this->username[strlen(username)] = '\0';
+	this->username = username;
 
 }
-char* User::getUsername() const
+string User::getUsername() const
 {
 	return this->username;
 }
 
-void User::setPassword(const char* password)
+void User::setPassword(string password)
 {
-	delete[] this->password;
-	this->password = new char[strlen(password) + 1];
-	strncpy(this->password, password, strlen(password) + 1);
-	this->password[strlen(password)] = '\0';
-
+	this->password = password;
 }
-char* User::getPassword() const
+string User::getPassword() const
 {
 	return this->password;
 }
 
-void User::setRole(const char* role)
+void User::setRole(string role)
 {
-	delete[] this->role;
-	this->role = new char[strlen(role) + 1];
-	strncpy(this->role, role, strlen(role) + 1);
-	this->role[strlen(role)] = '\0';
+	this->role = role;
 
 }
-char* User::getRole() const
+string User::getRole() const
 {
 	return this->role;
 }
@@ -117,23 +81,20 @@ char* User::getRole() const
 std::istream& operator>>(std::istream& in, User& user)
 {
 
-	char username[100];
-	char password[100];
+	string username;
+	string password;
 
 
 	in.clear();
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Username: ";
-	in.get(username, 50);
+	getline(cin,username);
 	cout << endl;
 	user.setUsername(username);
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Password: ";
-	in >> password;
+	getline(cin, password);
 	cout << endl;
 	user.setPassword(password);
 

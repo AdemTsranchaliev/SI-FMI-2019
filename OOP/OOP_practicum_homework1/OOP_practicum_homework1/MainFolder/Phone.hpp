@@ -1,27 +1,28 @@
 #pragma once
 #include "Product.hpp"
+using namespace std;
 
 class Phone :public Product
 {
 private:
 
-	char* model;
-	char* color;
+	string model;
+	string color;
 	int yearOfProduction;
 public:
 
 	Phone();
-	Phone(const char* model,const char* color, int yearOfProduction,int id ,const char* name,double price);
+	Phone(string model,string color, int yearOfProduction,int id ,string name,double price);
 	Phone(const Phone& phone);
 	~Phone();
 
 	Phone& operator=(const Phone& phone);
 	bool operator==(const Phone& phone);
 
-	void setModel(const char* model);
-	char* getModel() const;
-	void setColor(const char* color);
-	char* getColor() const;
+	void setModel(string model);
+	string getModel() const;
+	void setColor(string color);
+	string getColor() const;
 	void setYearOfProduction(int year);
 	int getYearOfProduction() const;
 

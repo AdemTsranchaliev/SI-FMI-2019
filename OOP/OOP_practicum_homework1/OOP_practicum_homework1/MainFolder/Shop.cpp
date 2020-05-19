@@ -1,7 +1,8 @@
 #include <iostream>
+#include <string>
+
 #include "Shop.h"
 
-using namespace std;
 
 Shop::Shop()
 {
@@ -29,9 +30,6 @@ void Shop::InsertData()
 	Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799);
 	laptops.add(laptop1);
 	laptops.add(laptop2);
-
-	SmartWatch smartWatch("Women", "IOS", "Liquid RETINA", 9, "IWatch", 900);
-	smarthWatches.add(smartWatch);
 
 	User user1(2, "admin", "12345", "ROLE_ADMIN");
 	users.add(user1);
@@ -75,10 +73,7 @@ int Shop::AddProductInShoppingCart(int productId, int category)
 				cart = ShoppingCart(category, productId, 1, printers.getAt(productIndex).getPrice(), printers.getAt(productIndex).getName());
 
 			}
-			else if (category == 4)
-			{
-				cart = ShoppingCart(category, productId, 1, smarthWatches.getAt(productIndex).getPrice(), smarthWatches.getAt(productIndex).getName());
-			}
+		
 			shoppingCart.add(cart);
 
 		}
@@ -136,16 +131,6 @@ void Shop::PrintCategory(int category)
 		}
 
 	}
-	else if (category == 4)
-	{
-		cout << "Smart Watches" << endl;
-		cout << "No | Name | Style | Operating system | Display type | Price" << endl;
-		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < smarthWatches.Count(); i++)
-		{
-			smarthWatches.getAt(i).print();
-		}
-	}
 }
 
 
@@ -180,17 +165,6 @@ int Shop::CheckIfProductExistInGivenCategory(int productId, int category)
 		for (int i = 0; i < printers.Count(); i++)
 		{
 			if (printers.getAt(i).getId() == productId)
-			{
-				index = i;
-				break;
-			}
-		}
-	}
-	else if (category == 4)
-	{
-		for (int i = 0; i < smarthWatches.Count(); i++)
-		{
-			if (smarthWatches.getAt(i).getId() == productId)
 			{
 				index = i;
 				break;
@@ -292,11 +266,7 @@ void Shop::PrintCategoryName(int category)
 	{
 		cout << "Printer";
 	}
-	else if (category == 4)
-	{
-		cout << "Smart Watch";
 
-	}
 }
 
 
@@ -320,20 +290,16 @@ void Shop::SortAndPrint(int category)
 		this->printers.Sort();
 		PrintCategory(3);
 	}
-	else if (category == 4)
-	{
-		this->smarthWatches.Sort();
-		PrintCategory(4);
-	}
+
 }
 
-bool Shop::Authenticate(const char* username, const char* password)
+bool Shop::Authenticate(string username, string password)
 {
 	for (int i = 0; i < users.Count(); i++)
 	{
-		if (strcmp(users.getAt(i).getUsername(),username)==0)
+		if (users.getAt(i).getUsername()==username)
 		{
-			if (strcmp(users.getAt(i).getPassword(), password) == 0)
+			if (users.getAt(i).getPassword()==password == 0)
 			{
 				authenticatedUser = users.getAt(i);
 				return true;
@@ -353,9 +319,9 @@ bool Shop::isAuthenticated()
 	}
 	return true;
 }
-bool Shop::isAuthorized(const char* role)
+bool Shop::isAuthorized(string role)
 {
-	if (strcmp(this->authenticatedUser.getRole(),role)==0)
+	if (this->authenticatedUser.getRole()==role)
 	{
 		return true;
 
@@ -387,12 +353,12 @@ void Shop::registation()
 }
 
 
-bool Shop::checkIfUsernameIsUnique(const char* username)
+bool Shop::checkIfUsernameIsUnique(string username)
 {
 	bool temp = true;
 	for (int i = 0; i < users.Count(); i++)
 	{
-		if (strcmp(users.getAt(i).getUsername(),username)==0)
+		if (users.getAt(i).getUsername()==username)
 		{
 			temp = false;
 		}
@@ -401,11 +367,11 @@ bool Shop::checkIfUsernameIsUnique(const char* username)
 	return temp;
 }
 
-char* Shop::getAuthenticateUserUsername()
+string Shop::getAuthenticateUserUsername()
 {
 	return this->authenticatedUser.getUsername();
 }
-char* Shop::getAuthenticateUserRole()
+string Shop::getAuthenticateUserRole()
 {
 	return this->authenticatedUser.getRole();
 }
@@ -461,8 +427,8 @@ void Shop::addProduct()
 	cout << "For 'Printer' press 4" << endl;
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-	char tempInput[40];
-	cin.get(tempInput,10);
+	string tempInput;
+	getline(cin,tempInput);
 	if (tempInput[0]=='1')
 	{
 		system("cls");
@@ -554,12 +520,12 @@ void Shop::MakeOrder()
 
 	ClearShoppingCart();
 
-	char temp[50];
+	string temp;
 
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 
-	cin.get(temp,50);
+	getline(cin,temp);
 
 }
 
@@ -609,13 +575,6 @@ void Shop::addPrinter()
 
 	printers.add(printer);
 }
-void Shop::addSmartWatch()
-{
-	SmartWatch smartWatch;
-	cin >> smartWatch;
-	smartWatch.setId(smarthWatches.getAt(smarthWatches.Count() - 1).getId() + 1);
 
-	smarthWatches.add(smartWatch);
-}
 
 

@@ -1,85 +1,56 @@
 #include <iostream>
+#include <string>
 #include "Phone.hpp"
 
 #pragma warning (disable:4996)
-using namespace std;
 
 //Constructors
 Phone::Phone()
 {
-	this->color = new char[1];
-	this->color[0] = '\0';
+	this->color = "";
 
-	this->model = new char[1];
-	this->model[0] = '\0';
+	this->model = "";
 
 	this->yearOfProduction = 0;
 
 }
 
-Phone::Phone(const char* color,const char* model, int yearOfProduction, int id,const char* name, double price) 
+Phone::Phone(string color,string model, int yearOfProduction, int id,string name, double price) : Product(id,price,name)
 {
-	this->setId(id);
-	this->setName(name);
-	this->setPrice(price);
 
-	this->color = new char[strlen(color)+1];
-	strncpy(this->color, color, strlen(color) + 1);
-	this->color[strlen(color)] = '\0';
+	this->color = color;
 
-	this->model = new char[strlen(model) + 1];
-	strncpy(this->model, model, strlen(model) + 1);
-	this->model[strlen(model)] = '\0';
+	this->model = model;
 
 	this->yearOfProduction = yearOfProduction;
 }
 
-Phone::Phone(const Phone& phone)
+Phone::Phone(const Phone& phone) : Product(phone)
 {
-	this->setId(phone.getId());
-	this->setName(phone.getName());
-	this->setPrice(phone.getPrice());
-
 	this->yearOfProduction = phone.getYearOfProduction();
 
-	this->color = new char[strlen(phone.color) + 1];
-	strncpy(this->color, color, strlen(phone.color) + 1);
-	this->color[strlen(phone.color)] = '\0';
+	this->color = phone.color;
 
-	this->model = new char[strlen(phone.model) + 1];
-	strncpy(this->model, phone.model, strlen(phone.model) + 1);
-	this->model[strlen(phone.model)] = '\0';
+	this->model = phone.model;
 
 }
 
-//Destructor
-Phone::~Phone()
-{
-	delete[] color;
-	delete[] model;
-}
 
 //Assignment operator
-Phone& Phone::operator=(const Phone& phon)
+Phone& Phone::operator=(const Phone& phone)
 {
-	if (this != &phon)
+	if (this != &phone)
 	{
-		delete[] this->color;
-		delete[] this->model;
 
-		this->setId(phon.getId());
-		this->setName(phon.getName());
-		this->setPrice(phon.getPrice());
+		this->setId(phone.getId());
+		this->setName(phone.getName());
+		this->setPrice(phone.getPrice());
 
-		this->yearOfProduction = phon.getYearOfProduction();
+		this->yearOfProduction = phone.getYearOfProduction();
 
-		this->color = new char[strlen(phon.color) + 1];
-		strncpy(this->color, phon.color, strlen(phon.color) + 1);
-		this->color[strlen(phon.color)] = '\0';
+		this->color = phone.color;
 
-		this->model = new char[strlen(phon.model) + 1];
-		strncpy(this->model, phon.model, strlen(phon.model) + 1);
-		this->model[strlen(phon.model)] = '\0';
+		this->model = phone.model;
 
 	}
 	return *this;
@@ -100,26 +71,20 @@ int Phone::getYearOfProduction() const
 	return this->yearOfProduction;
 }
 
-void Phone::setColor(const char* color)
+void Phone::setColor(string color)
 {
-	delete[] this->color;
-	this->color = new char[strlen(color) + 1];
-	strncpy(this->color, color, strlen(color) + 1);
-	this->color[strlen(color)] = '\0';
+	this->color = color;
 }
-char* Phone::getColor() const
+string Phone::getColor() const
 {
 	return this->color;
 }
 
-void Phone::setModel(const char* model)
+void Phone::setModel(string model)
 {
-	delete[] this->model;
-	this->model = new char[strlen(model) + 1];
-	strncpy(this->model, model, strlen(model) + 1);
-	this->model[strlen(model)] = '\0';
+	this->model = model;
 }
-char* Phone::getModel() const
+string Phone::getModel() const
 {
 	return this->model;
 }
@@ -131,22 +96,19 @@ void Phone::print()
 
 std::istream& operator>>(std::istream& in, Phone& phone)
 {
-	char model[100];
-	char color[100];
+	string model;
+	string color;
 	int yearOfProduction;
 	double price;
-	char name[50];
+	string name;
 
 	in.clear();
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
-	in.get(name, 50);
+	getline(in,name);
 	cout << endl;
 	phone.setName(name);
-
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Price: ";
 	in >> price;
@@ -157,20 +119,14 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Color: ";
-	in.get(color, 50);
+	getline(in,color);
 	cout << endl;
 	phone.setColor(color);
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Model: ";
-	in.get(model, 50);
+	getline(in,model);
 	cout << endl;
 	phone.setModel(model);
-
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Year of production: ";
 	in >> yearOfProduction;

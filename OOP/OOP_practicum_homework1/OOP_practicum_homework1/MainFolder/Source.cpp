@@ -1,10 +1,11 @@
 #include <iostream>
+#include <string>
 
 
 using namespace std;
 
 #include "Shop.h"
-char command[50];
+string command;
 
 void GetCommandPressAnyKeyToContiniue();
 void Login(Shop& shop);
@@ -24,7 +25,7 @@ int main()
 	cout << "Press 'R' for register" << endl;
 	cout << "Press any other key to continiue like guest" << endl;
 
-	cin.get(command, 50);
+	getline(cin,command, 50);
 
 	if (command[0]=='L')
 	{
@@ -83,36 +84,33 @@ int main()
 
 		
 
-		cin.get(command, 50);
+		getline(cin,command);
 
 		system("cls");
 
-		if (strcmp(command, "s") == 0)
+		if (command=="s")
 		{
 			shop.ShowShoppingCart();
-	
-				
+					
 			continue;
 		}
-		else if (command[0] == 'L'&&!shop.isAuthenticated())
+		else if (command == "L" && !shop.isAuthenticated())
 		{
 			Login(shop);
 			GetCommandPressAnyKeyToContiniue();
 			system("cls");
 			continue;
 		}
-		else if (command[0] == 'R' && !shop.isAuthenticated())
+		else if (command == "R" && !shop.isAuthenticated())
 		{
 			shop.registation();
 			GetCommandPressAnyKeyToContiniue();
 			system("cls");
 			continue;
 		}
-		else if (strcmp(command, "q") == 0&&shop.isAuthorized("ROLE_ADMIN"))
-		{
-			
+		else if (command== "q" == 0 && shop.isAuthorized("ROLE_ADMIN"))
+		{	
 			SeeOrders(shop);
-
 
 			GetCommandPressAnyKeyToContiniue();
 
@@ -120,7 +118,7 @@ int main()
 
 			continue;
 		}
-		else if (strcmp(command, "u") == 0 && shop.isAuthorized("ROLE_ADMIN"))
+		else if (command == "u" && shop.isAuthorized("ROLE_ADMIN"))
 		{
 			cout << "All users"<<endl;
 			cout << "----------------------------" << endl;
@@ -131,10 +129,9 @@ int main()
 			cout << "If you want to change user role press 'role'" << endl;
 			cout << "If you want to go back, press any other key" << endl;
 
-			cin.clear();
-			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-			cin.get(command, 50);
-			if (strcmp("role",command)==0)
+			getline(cin, command);
+
+			if ("role"==command)
 			{
 				int idNum;
 				cin.clear();
@@ -195,7 +192,7 @@ int main()
 
 		cin.clear();
 		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-		cin.get(command, 50);
+		getline(cin,command, 50);
 
 		if (strcmp(command, "b") == 0)
 		{
@@ -256,12 +253,12 @@ void Login(Shop& shop)
 	while (true)
 	{
 		cout << "Enter username:" << endl;
-		cin.get(username, 99);
+		getline(cin,username, 99);
 		cout << endl;
 		cin.clear();
 		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 		cout << "Enter password:" << endl;
-		cin.get(password, 99);
+		getline(cin,password, 99);
 
 		bool isAuthenticated = shop.Authenticate(username, password);
 
@@ -279,7 +276,7 @@ void Login(Shop& shop)
 
 		cin.clear();
 		cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-		cin.get(username, 99);
+		getline(cin,username, 99);
 
 		if (username[0]=='G')
 		{
@@ -308,7 +305,7 @@ void SeeOrders(Shop& shop)
 
 		char tempCommand[10];
 		
-		cin.get(tempCommand, 10);
+		getline(cin,tempCommand, 10);
 		if (tempCommand[0] == 'D')
 		{
 		
@@ -316,7 +313,7 @@ void SeeOrders(Shop& shop)
 
 			cin.clear();
 			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-			cin.get(tempCommand, 10);
+			getline(cin,tempCommand, 10);
 			system("cls");
 
 			if (!shop.checkIfOrderExist(tempCommand[0] - '0'))
@@ -368,7 +365,7 @@ void GetCommandPressAnyKeyToContiniue()
 {
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-	cin.get(command, 50);
+	getline(cin,command, 50);
 	system("cls");
 	cin.clear();
 	cin.ignore(numeric_limits < streamsize > ::max(), '\n');

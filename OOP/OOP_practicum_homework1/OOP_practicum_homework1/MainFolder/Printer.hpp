@@ -1,28 +1,29 @@
 #pragma once
 #include "Product.hpp"
+using namespace std;
 
 
 class Printer:public Product
 {
 private:
-	char* printingTechnology;
-	char* mainPrintingFormat;
+	string printingTechnology;
+	string mainPrintingFormat;
 	bool  oneOrManyColor;
 
 public:
 
 	Printer();
-	Printer(const char* printingTechnology, const char* mainPrintingFormat,bool oneOrManyColor, int id , const char* name, double price);
+	Printer(string printingTechnology, string mainPrintingFormat,bool oneOrManyColor, int id , string name, double price);
 	Printer(const Printer& printer);
 	~Printer();
 
 	Printer& operator=(const Printer& printer);
 	bool operator==(const Printer& printer);
 
-	void setPrintingTechnology(const char*);
-	char* getPrintingTechnology() const;
-	void setMainPrintingFormat(const char*);
-	char* getMainPrintingFormat() const;
+	void setPrintingTechnology(string);
+	string getPrintingTechnology() const;
+	void setMainPrintingFormat(string);
+	string getMainPrintingFormat() const;
 	void setOneOrManyColors(bool);
 	bool getOneOrManyColors() const;
 

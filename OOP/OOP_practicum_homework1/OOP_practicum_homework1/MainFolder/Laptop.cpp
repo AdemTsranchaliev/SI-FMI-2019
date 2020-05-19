@@ -1,83 +1,54 @@
 #include <iostream>
 #include "Laptop.hpp"
+
+#include <string>
 #pragma warning (disable:4996)
-using namespace std;
 
 //Constructors
 Laptop::Laptop()
 {
+	this->processor = "";
+	this->videoCard = "";
 
-	this->processor = new char[1];
-	this->processor[0] = '\0';
-	this->videoCard = new char[1];
-	this->videoCard[0] = '\0';
 	this->ramMemory = 0;
 }
 
-Laptop::Laptop(const char* processor, int ramMemory, const char* videoCart, int id, const char* name, double price)
+Laptop::Laptop(string processor, int ramMemory, string videoCart, int id, string name, double price): Product(id,price, name)
 {
-	this->setId(id);
-	this->setName(name);
-	this->setPrice(price);
-
 	this->ramMemory = ramMemory;
 
-	this->processor = new char[strlen(processor)+1];
-	strncpy(this->processor,processor, strlen(processor) + 1);
-	this->processor[strlen(processor)] = '\0';
+	this->processor = processor;
 
-	this->videoCard = new char[strlen(videoCart) + 1];
-	strncpy(this->videoCard, videoCart, strlen(videoCart) + 1);
-	this->videoCard[strlen(videoCart)] = '\0';
+	this->videoCard = videoCard;
 }
 
-Laptop::Laptop(const Laptop& laptop)
+Laptop::Laptop(const Laptop& laptop) : Product(laptop)
 {
-
-	this->setId(laptop.getId());
-	this->setName(laptop.getName());
-	this->setPrice(laptop.getPrice());
 
 	this->ramMemory = laptop.getRamMemory();
 
-	this->processor = new char[strlen(laptop.processor) + 1];
-	strncpy(this->processor, laptop.processor, strlen(laptop.processor) + 1);
-	this->processor[strlen(laptop.processor)] = '\0';
+	this->processor = laptop.processor;
 
-	this->videoCard = new char[strlen(laptop.videoCard) + 1];
-	strncpy(this->videoCard, laptop.videoCard, strlen(laptop.videoCard) + 1);
-	this->videoCard[strlen(laptop.videoCard)] = '\0';
+	this->videoCard = laptop.videoCard;
 
 }
 
-//Destructor
-Laptop::~Laptop()
-{
-	delete[] this->processor;
-	delete[] this->videoCard;
-}
 
 //Assignment operator
-Laptop& Laptop::operator=(const Laptop& lap)
+Laptop& Laptop::operator=(const Laptop& laptop) 
 {
-	if (this != &lap)
+	if (this != &laptop)
 	{
-		delete[] this->processor;
-		delete[] this->videoCard;
 
-		this->setId(lap.getId());
-		this->setName(lap.getName());
-		this->setPrice(lap.getPrice());
+		this->setId(laptop.getId());
+		this->setName(laptop.getName());
+		this->setPrice(laptop.getPrice());
 
-		this->ramMemory = lap.getRamMemory();
+		this->ramMemory = laptop.getRamMemory();
 
-		this->processor = new char[strlen(lap.processor) + 1];
-		strncpy(this->processor, lap.processor, strlen(lap.processor) + 1);
-		this->processor[strlen(lap.processor)] = '\0';
+		this->processor = laptop.processor;
 
-		this->videoCard = new char[strlen(lap.videoCard) + 1];
-		strncpy(this->videoCard, lap.videoCard, strlen(lap.videoCard) + 1);
-		this->videoCard[strlen(lap.videoCard)] = '\0';
+		this->videoCard = laptop.videoCard;
 	}
 	return *this;
 }
@@ -97,67 +68,58 @@ int Laptop::getRamMemory() const
 	return this->ramMemory;
 }
 
-void Laptop::setProcessor(const char* processor)
+void Laptop::setProcessor(string processor)
 {
-	delete[] this->processor;
-	this->processor = new char[strlen(processor) + 1];
-	strncpy(this->processor, processor, strlen(processor) + 1);
-	this->processor[strlen(processor)] = '\0';
+	this->processor = processor;
 }
-char* Laptop::getProcessor() const
+string Laptop::getProcessor() const
 {
 	return this->processor;
 }
 
-void Laptop::setVideoCart(const char* videoCart)
+void Laptop::setVideoCart(string videoCart)
 {
-	delete[] this->videoCard;
-	this->videoCard = new char[strlen(videoCart) + 1];
-	strncpy(this->videoCard, videoCart, strlen(videoCart) + 1);
-	this->videoCard[strlen(videoCard)] = '\0';
+	this->videoCard = videoCart;
 }
-char* Laptop::getVideoCart() const
+string Laptop::getVideoCart() const
 {
 	return this->videoCard;
 }
 
 std::istream& operator>>(std::istream& in, Laptop& laptop)
 {
-	char procecors[100];
-	char videoCart[100];
+	string procecors;
+	string videoCart;
 	int ramMemory;
 	double price;
-	char name[50];
+	string name;
 
 	in.clear();
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
-	in.get(name,50);
+	getline(in, name);
 	cout << endl;
-	laptop.setName(name);
+	laptop.setName("");
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
+	
 	cout << "Price: ";
 	in >> price;
 	cout << endl;
 	laptop.setPrice(price);
 
+
 	in.clear();
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Video card: ";
-	in.get(videoCart, 50);
+	getline(in,videoCart);
 	cout << endl;
 	laptop.setVideoCart(videoCart);
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Processor: ";
-	in.get(procecors, 50);
+	getline(in,procecors);
 	cout << endl;
 	laptop.setProcessor(procecors);
 

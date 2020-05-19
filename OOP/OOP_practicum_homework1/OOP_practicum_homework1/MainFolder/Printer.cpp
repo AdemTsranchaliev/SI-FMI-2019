@@ -1,65 +1,35 @@
-
 #include <iostream>
-#include <cstring>
+#include <string>
 #pragma warning (disable:4996)
 #include "Printer.hpp"
-
-using namespace std;
-
 
 //Constructors
 Printer::Printer() 
 {
-	this->printingTechnology = new char[1];
-	this->printingTechnology[0] = '\0';
+	this->printingTechnology = "";
 
-	this->mainPrintingFormat = new char[1];
-	this->mainPrintingFormat[0] = '\0';
+	this->mainPrintingFormat = "";
 
 	oneOrManyColor = false;
 }
 
-Printer::Printer(const char* printingTechnology, const char* mainPrintingFormat, bool oneOrManyColor, int id, const char* name, double price)
+Printer::Printer(string printingTechnology, string mainPrintingFormat, bool oneOrManyColor, int id, string name, double price) : Product(id,price,name)
 {
+	this->printingTechnology = printingTechnology;
 
-	this->setId(id);
-	this->setName(name);
-	this->setPrice(price);
-
-	this->printingTechnology = new char[strlen(printingTechnology)+1];
-	strncpy(this->printingTechnology,printingTechnology, strlen(printingTechnology) + 1);
-	this->printingTechnology[strlen(printingTechnology)] = '\0';
-
-	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
-	strncpy(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
-	this->mainPrintingFormat[strlen(mainPrintingFormat)] = '\0';
-
+	this->mainPrintingFormat = mainPrintingFormat;
 
 	this->oneOrManyColor = oneOrManyColor;
 }
 
-Printer::Printer(const Printer& printer)
+Printer::Printer(const Printer& printer) : Product(printer)
 {
-	this->setId(printer.getId());
-	this->setName(printer.getName());
-	this->setPrice(printer.getPrice());
 
-	this->printingTechnology = new char[strlen(printer.printingTechnology) + 1];
-	strncpy(this->printingTechnology, printer.printingTechnology, strlen(printer.printingTechnology) + 1);
-	this->printingTechnology[strlen(printer.printingTechnology)] = '\0';
+	this->printingTechnology = printer.printingTechnology;
 
-	this->mainPrintingFormat = new char[strlen(printer.mainPrintingFormat) + 1];
-	strncpy(this->mainPrintingFormat, printer.mainPrintingFormat, strlen(printer.mainPrintingFormat) + 1);
-	this->mainPrintingFormat[strlen(printer.mainPrintingFormat)] = '\0';
+	this->mainPrintingFormat = printer.mainPrintingFormat;
 
 	this->oneOrManyColor = printer.getOneOrManyColors();
-}
-
-//Destructor
-Printer::~Printer()
-{
-	delete[] this->printingTechnology;
-	delete[] this->mainPrintingFormat;
 }
 
 //Assignment operator
@@ -67,20 +37,13 @@ Printer& Printer::operator=(const Printer& print)
 {
 	if (this != &print)
 	{
-		delete[] this->printingTechnology;
-		delete[] this->mainPrintingFormat;
-
 		this->setId(print.getId());
 		this->setName(print.getName());
 		this->setPrice(print.getPrice());
 
-		this->printingTechnology = new char[strlen(print.printingTechnology) + 1];
-		strncpy(this->printingTechnology, print.printingTechnology, strlen(print.printingTechnology) + 1);
-		this->printingTechnology[strlen(print.printingTechnology)] = '\0';
+		this->printingTechnology = print.printingTechnology;
 
-		this->mainPrintingFormat = new char[strlen(print.mainPrintingFormat) + 1];
-		strncpy(this->mainPrintingFormat, print.mainPrintingFormat, strlen(print.mainPrintingFormat) + 1);
-		this->mainPrintingFormat[strlen(print.mainPrintingFormat)] = '\0';
+		this->mainPrintingFormat = print.mainPrintingFormat;
 
 		this->oneOrManyColor = print.getOneOrManyColors();
 
@@ -94,28 +57,22 @@ bool Printer::operator==(const Printer& printer)
 }
 
 //Mutators
-void Printer::setPrintingTechnology(const char* printingTechnology)
+void Printer::setPrintingTechnology(string printingTechnology)
 {
-	delete[] this->printingTechnology;
-	this->printingTechnology = new char[strlen(printingTechnology) + 1];
-	strncpy(this->printingTechnology, printingTechnology, strlen(printingTechnology) + 1);
-	this->printingTechnology[strlen(printingTechnology)] = '\0';
+	this->printingTechnology = printingTechnology;
 
 }
-char* Printer::getPrintingTechnology() const
+string Printer::getPrintingTechnology() const
 {
 	return this->printingTechnology;
 }
 
-void Printer::setMainPrintingFormat(const char* mainPrintingFormat)
+void Printer::setMainPrintingFormat(string mainPrintingFormat)
 {
-	delete[] this->mainPrintingFormat;
-	this->mainPrintingFormat = new char[strlen(mainPrintingFormat) + 1];
-	strncpy(this->mainPrintingFormat, mainPrintingFormat, strlen(mainPrintingFormat) + 1);
-	this->mainPrintingFormat[strlen(mainPrintingFormat)] = '\0';
+	this->mainPrintingFormat = mainPrintingFormat;
 
 }
-char* Printer::getMainPrintingFormat() const
+string Printer::getMainPrintingFormat() const
 {
 	return this->mainPrintingFormat;
 }
@@ -144,22 +101,19 @@ void Printer::print()
 }
 std::istream& operator>>(std::istream& in, Printer& printer)
 {
-	char printingTechnology[100];
-	char mainPrintingFormat[100];
+	string printingTechnology;
+	string mainPrintingFormat;
 	bool oneOrManyColors;
 	double price;
-	char name[50];
+	string name;
 
 	in.clear();
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
-	in.get(name, 50);
+	getline(in,name);
 	cout << endl;
 	printer.setName(name);
-
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Price: ";
 	in >> price;
@@ -170,20 +124,14 @@ std::istream& operator>>(std::istream& in, Printer& printer)
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Main printing format: ";
-	in.get(mainPrintingFormat, 50);
+	getline(in,mainPrintingFormat);
 	cout << endl;
 	printer.setMainPrintingFormat(mainPrintingFormat);
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Printing technology: ";
-	in.get(printingTechnology, 50);
+	getline(in,printingTechnology);
 	cout << endl;
 	printer.setPrintingTechnology(printingTechnology);
-
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "One or many colors(1 for one,0 for many): ";
 	in >> oneOrManyColors;

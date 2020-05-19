@@ -1,11 +1,9 @@
 #include <iostream>
+#include <string>
 
 #include "ShoppingCart.hpp";
 
 #pragma warning (disable:4996)
-
-using namespace std;
-
 
 //Constructor
 ShoppingCart::ShoppingCart()
@@ -15,15 +13,12 @@ ShoppingCart::ShoppingCart()
 	this->price = 0;
 	this->productCategory = 0;
 
-	this->name = new char[1];
-	this->name[0] = '\0';
+	this->name = "";
 }
 
-ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, double price,char* name)
+ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, double price,string name)
 {
-	this->name = new char[strlen(name) + 1];
-	strncpy(this->name, name, strlen(name) + 1);
-	this->name[strlen(name)] = '\0';
+	this->name = name;
 
 	this->productCategory = productCategory;
 	this->productId = productId;
@@ -33,9 +28,7 @@ ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, dou
 
 ShoppingCart::ShoppingCart(const ShoppingCart& shoppingCart)
 {
-	this->name = new char[strlen(shoppingCart.name) + 1];
-	strncpy(this->name, shoppingCart.name, strlen(shoppingCart.name) + 1);
-	this->name[strlen(shoppingCart.name)] = '\0';
+	this->name = shoppingCart.name;
 
 	this->productCategory = shoppingCart.productCategory;
 	this->setPrice(shoppingCart.getPrice());
@@ -43,23 +36,12 @@ ShoppingCart::ShoppingCart(const ShoppingCart& shoppingCart)
 	this->setQuantity(shoppingCart.getQuantity());
 }
 
-//Destructor
-ShoppingCart::~ShoppingCart()
-{
-	delete[] this->name;
-}
-
 //Assignment operator
 ShoppingCart& ShoppingCart::operator=(const ShoppingCart& prod)
 {
 	if (this != &prod)
 	{
-		delete[] this->name;
-
-		this->name = new char[strlen(prod.name) + 1];
-		strncpy(this->name, prod.name, strlen(prod.name) + 1);
-		this->name[strlen(prod.name)] = '\0';
-
+		this->name = prod.name;
 
 		this->productCategory = prod.productCategory;
 		this->setPrice(prod.getPrice());
@@ -101,15 +83,12 @@ double ShoppingCart::getPrice() const
 	return this->price;
 }
 
-void ShoppingCart::setName(char* name)
+void ShoppingCart::setName(string name)
 {
-	delete[] this->name;
-	this->name = new char[strlen(name) + 1];
-	strncpy(this->name, name, strlen(name) + 1);
-	this->name[strlen(name)] = '\0';
+	this->name = name;
 
 }
-char* ShoppingCart::getName() const
+string ShoppingCart::getName() const
 {
 	return this->name;
 }

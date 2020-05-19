@@ -1,5 +1,6 @@
 #pragma once
 
+using namespace std;
 
 class ShoppingCart
 {
@@ -7,12 +8,12 @@ private:
 	int productCategory;//1-Laptop, 1-Phone ...
 	int productId;
 	int quantity;
-	char* name;
+	string name;
 	double price;
 public:
 
 	ShoppingCart();
-	ShoppingCart(int productCategory,int productId,int quantity,double price,char* name);
+	ShoppingCart(int productCategory,int productId,int quantity,double price, string name);
 	ShoppingCart(const ShoppingCart& shoppingCart);
 	~ShoppingCart();
 	ShoppingCart& operator=(const ShoppingCart& shoppingCart);
@@ -26,8 +27,8 @@ public:
 	int getQuantity() const;
 	void setPrice(double);
 	double getPrice() const;
-	void setName(char*);
-	char* getName() const;
+	void setName(string);
+	string getName() const;
 
 	void print();
 

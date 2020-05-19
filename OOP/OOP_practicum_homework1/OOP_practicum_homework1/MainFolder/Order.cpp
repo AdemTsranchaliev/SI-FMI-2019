@@ -1,63 +1,44 @@
 #include <iostream>
+#include <string>
 #include "Order.hpp"
 
 #pragma warning (disable:4996)
-using namespace std;
 
 //Constructors
 Order::Order()
 {
 	this->id=0;
 
-	this->name = new char[1];
-	this->name[0] = '\0';
+	this->name = "";
 
-	this->surname = new char[1];
-	this->surname[0] = '\0';
+	this->surname = "";
 
-	this->phoneNumber = new char[1];
-	this->phoneNumber[0] = '\0';
+	this->phoneNumber = "";
 
-	this->addressToDelivery = new char[1];
-	this->addressToDelivery[0] = '\0';
+	this->addressToDelivery = "";
 
-	this->populatedPlace = new char[1];
-	this->populatedPlace[0] = '\0';
+	this->populatedPlace = "";
 
-	this->email = new char[1];
-	this->email[0] = '\0';
+	this->email = "";
 
 	this->isConfirmed = false;
 }
 
-Order::Order(int id,const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace,const char* email)
+Order::Order(int id,string name, string surname, string phone, string address, string populatedPlace,string email)
 {
 	this->id = id;
 
-	this->name = new char[strlen(name) + 1];
-	strncpy(this->name,name,strlen(name)+1);
-	this->name[strlen(name)] = '\0';
+	this->name = name;
 
-	this->surname = new char[strlen(surname) + 1];
-	strncpy(this->surname, surname, strlen(surname) + 1);
-	this->surname[strlen(surname)] = '\0';
+	this->surname = surname;
 
-	this->phoneNumber = new char[strlen(phone) + 1];
-	strncpy(this->phoneNumber, phone, strlen(phone) + 1);
-	this->phoneNumber[strlen(phoneNumber)] = '\0';
+	this->phoneNumber = phone;
 
-	this->addressToDelivery = new char[strlen(address) + 1];
-	strncpy(this->addressToDelivery, address, strlen(address) + 1);
-	this->addressToDelivery[strlen(address)] = '\0';
+	this->addressToDelivery = address;
 
-	this->populatedPlace = new char[strlen(populatedPlace) + 1];
-	strncpy(this->populatedPlace, populatedPlace, strlen(populatedPlace) + 1);
-	this->populatedPlace[strlen(populatedPlace)] = '\0';
+	this->populatedPlace = populatedPlace;
 
-
-	this->email = new char[strlen(email) + 1];
-	strncpy(this->email, email, strlen(email) + 1);
-	this->email[strlen(email)] = '\0';
+	this->email = email;
 
 	this->isConfirmed = false;
 
@@ -68,84 +49,42 @@ Order::Order(const Order& order)
 {
 	this->id = order.id;
 
-	this->name = new char[strlen(order.name) + 1];
-	strncpy(this->name, order.name, strlen(order.name) + 1);
-	this->name[strlen(order.name)] = '\0';
+	this->name = order.name;
 
-	this->surname = new char[strlen(order.surname) + 1];
-	strncpy(this->surname, order.surname, strlen(order.surname) + 1);
-	this->name[strlen(order.surname)] = '\0';
+	this->surname = order.surname;
 
-	this->phoneNumber = new char[strlen(order.phoneNumber) + 1];
-	strncpy(this->phoneNumber, order.phoneNumber, strlen(order.phoneNumber) + 1);
-	this->name[strlen(order.phoneNumber)] = '\0';
+	this->phoneNumber = order.phoneNumber;
 
-	this->addressToDelivery = new char[strlen(order.addressToDelivery) + 1];
-	strncpy(this->addressToDelivery, order.addressToDelivery, strlen(order.addressToDelivery) + 1);
-	this->name[strlen(order.addressToDelivery)] = '\0';
+	this->addressToDelivery = order.addressToDelivery;
 
-	this->populatedPlace = new char[strlen(order.populatedPlace) + 1];
-	strncpy(this->populatedPlace, order.populatedPlace, strlen(order.populatedPlace) + 1);
-	this->name[strlen(order.populatedPlace)] = '\0';
+	this->populatedPlace = order.populatedPlace;
 
-	this->email = new char[strlen(order.email) + 1];
-	strncpy(this->email, order.email, strlen(order.email) + 1);
-	this->name[strlen(order.email)] = '\0';
+	this->email = order.email;
 
 	this->isConfirmed = order.isConfirmed;
 
 }
 
 
-//Destructor
-Order::~Order()
-{
-	delete[] this->name;
-	delete[] this->surname;
-	delete[] this->phoneNumber;
-	delete[] this->addressToDelivery;
-	delete[] this->populatedPlace;
-	delete[] this->email;
-
-}
 
 //Assignment operator
 Order& Order::operator=(const Order& order)
 {
 	if (this!=&order)
 	{
-		delete[] this->name;
-		delete[] this->surname;
-		delete[] this->phoneNumber;
-		delete[] this->addressToDelivery;
-		delete[] this->populatedPlace;
-		delete[] this->email;
-
 		this->id = order.id;
 
-		this->name = new char[strlen(order.name) + 1];
-		strncpy(this->name, order.name, strlen(order.name) + 1);
-		this->name[strlen(order.name)] = '\0';
+		this->name = order.name;
 
-		this->surname = new char[strlen(order.surname) + 1];
-		strncpy(this->surname, order.surname, strlen(order.surname) + 1);
-		this->surname[strlen(order.surname)] = '\0';
+		this->surname = order.surname;
 
-		this->phoneNumber = new char[strlen(order.phoneNumber) + 1];
-		strncpy(this->phoneNumber, order.phoneNumber, strlen(order.phoneNumber) + 1);
-		this->phoneNumber[strlen(order.phoneNumber)] = '\0';
+		this->phoneNumber = order.phoneNumber;
 
-		this->addressToDelivery = new char[strlen(order.addressToDelivery) + 1];
-		strncpy(this->addressToDelivery, order.addressToDelivery, strlen(order.addressToDelivery) + 1);
-		this->addressToDelivery[strlen(order.addressToDelivery)] = '\0';
+		this->addressToDelivery = order.addressToDelivery;
 
-		this->populatedPlace = new char[strlen(order.populatedPlace) + 1];
-		strncpy(this->populatedPlace, order.populatedPlace, strlen(order.populatedPlace) + 1);
-		this->populatedPlace[strlen(order.populatedPlace)] = '\0';
+		this->populatedPlace = order.populatedPlace;
 
-		this->email = new char[strlen(order.email) + 1];
-		strncpy(this->email, order.email, strlen(order.email) + 1);
-		this->email[strlen(order.email)] = '\0';
+		this->email = order.email;
 
 		this->isConfirmed=order.isConfirmed;
 	}
@@ -164,74 +103,56 @@ int Order::getId() const
 	return this->id;
 }
 
-void Order::setName(char* name)
+void Order::setName(string name)
 {
-	delete[] this->name;
-	this->name = new char[strlen(name)+1];
-	strncpy(this->name, name, strlen(name) + 1);
-	this->name[strlen(name)] = '\0';
+	this->name = name;
 }
-char* Order::getName() const
+string Order::getName() const
 {
 	return this->name;
 }
 
-void Order::setSurname(char* surname)
+void Order::setSurname(string surname)
 {
-	delete[] this->surname;
-	this->surname = new char[strlen(surname) + 1];
-	strncpy(this->surname, surname, strlen(surname) + 1);
-	this->surname[strlen(surname)] = '\0';
+	this->surname =surname;
 }
-char* Order::getSurname() const
+string Order::getSurname() const
 {
 	return this->surname;
 }
 
-void Order::setPhoneNumber(char* phone)
+void Order::setPhoneNumber(string phone)
 {
-	delete[] this->phoneNumber;
-	this->phoneNumber = new char[strlen(phone) + 1];
-	strncpy(this->phoneNumber, phone, strlen(phone) + 1);
-	this->phoneNumber[strlen(phone)] = '\0';
+	this->phoneNumber = phone;
 }
-char* Order::getPhoneNumber() const
+string Order::getPhoneNumber() const
 {
 	return this->phoneNumber;
 }
 
-void Order::setAddressToDelivery(char* address)
+void Order::setAddressToDelivery(string address)
 {
-	delete[] this->addressToDelivery;
-	this->addressToDelivery = new char[strlen(address) + 1];
-	strncpy(this->addressToDelivery, address, strlen(address) + 1);
-	this->addressToDelivery[strlen(address)] = '\0';
+	this->addressToDelivery = address;
 }
-char* Order::getAddressToDelivery()const
+string Order::getAddressToDelivery()const
 {
 	return this->addressToDelivery;
 }
 
-void Order::setPopulatedPlace(char* populatedPlace)
+void Order::setPopulatedPlace(string populatedPlace)
 {
-	delete[] this->populatedPlace;
-	this->populatedPlace = new char[strlen(populatedPlace) + 1];
-	strncpy(this->populatedPlace, populatedPlace, strlen(populatedPlace) + 1);
-	this->populatedPlace[strlen(populatedPlace)] = '\0';
+	this->populatedPlace = populatedPlace;
 }
-char* Order::getPopulatedPlace() const
+string Order::getPopulatedPlace() const
 {
 	return this->populatedPlace;
 }
 
-void Order::setEmail(char* email)
+void Order::setEmail(string email)
 {
-	delete[] this->email;
-	this->email = new char[strlen(email) + 1];
-	strncpy(this->email, email, strlen(email) + 1);
-	this->email[strlen(email)] = '\0';
+	this->email = email;
 }
-char* Order::getEmail() const
+string Order::getEmail() const
 {
 	return this->email;
 }
@@ -277,58 +198,43 @@ void Order::printDetail()
 
 std::istream& operator>>(std::istream& in, Order& order)
 {
-	char name[40];
-	char surname[40];
-	char phoneNumber[40];
-	char addressToDelivery[40];
-	char populatedPlace[40];
-	char email[40];
+	string name;
+	string surname;
+	string phoneNumber;
+	string addressToDelivery;
+	string populatedPlace;
+	string email;
 
 	in.clear();
 	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Name: ";
-	in.get(name,39);
+	getline(in,name);
 	order.setName(name);
 	cout << endl;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Surname: ";
-	in.get(surname, 39);
+	getline(in,surname);
 	order.setSurname(surname);
 	cout << endl;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Phone: ";
-	in.get(phoneNumber, 39);
+	getline(in,phoneNumber);
 	order.setPhoneNumber(phoneNumber);
 	cout << endl;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Town/vilage: ";
-	in.get(populatedPlace, 39);
+	getline(in,populatedPlace);
 	order.setPopulatedPlace(populatedPlace);
 	cout << endl;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Address: ";
-	in.get(addressToDelivery, 39);
+	getline(in,addressToDelivery);
 	order.setAddressToDelivery(addressToDelivery);
 	cout << endl;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Email: ";
-	in.get(email, 39);
+	getline(in,email);
 	order.setEmail(email);
 	cout << endl;
 

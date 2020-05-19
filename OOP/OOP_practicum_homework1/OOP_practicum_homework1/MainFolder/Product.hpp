@@ -1,4 +1,5 @@
 #pragma once
+using namespace std;
 
 
 class Product
@@ -6,21 +7,21 @@ class Product
 private:
 	int id;
 	double price;
-	char* name;
+	string name;
 public:
 
 	Product();
-	Product(int, double,const char*);
+	Product(int, double,string);
 	Product(const Product& product);
-	~Product();
+
 	Product& operator=(const Product& product);
 
 	void setId(int);
 	int getId() const;
 	void setPrice(double);
 	double getPrice() const;
-	void setName(const char*);
-	char* getName() const;
+	void setName(string);
+	string getName() const;
 
 
 

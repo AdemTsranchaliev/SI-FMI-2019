@@ -3,12 +3,12 @@
 #include "Phone.hpp"
 #include "Laptop.hpp"
 #include "Printer.hpp"
-#include "SmartWatch.hpp"
 #include "ShoppingCart.hpp"
 #include "List.hpp"
 #include "ShoppingCart.hpp"
 #include "Order.hpp"
 #include "User.hpp"
+using namespace std;
 
 class Shop
 {
@@ -16,7 +16,6 @@ private:
 	List<Laptop> laptops;
 	List<Phone> phones;
 	List<Printer> printers;
-	List<SmartWatch> smarthWatches;
 	List<ShoppingCart> shoppingCart;
 	List<Order> orders;
 	List<User> users;
@@ -26,7 +25,7 @@ private:
 
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, int category);
-	bool checkIfUsernameIsUnique(const char* username);
+	bool checkIfUsernameIsUnique(string username);
 	void ClearShoppingCart();
 public:
 
@@ -40,10 +39,10 @@ public:
 	void PrintCategory(int);
 	void PrintCategoryName(int);
 	int AddProductInShoppingCart(int productId, int category);
-	bool Authenticate(const char* username, const char* password);
+	bool Authenticate(string username, string password);
 
-	char* getAuthenticateUserUsername();
-	char* getAuthenticateUserRole();
+	string getAuthenticateUserUsername();
+	string getAuthenticateUserRole();
 	bool isAuthenticated();
 	bool isAuthorized(const char* role);
 	void registation();

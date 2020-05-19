@@ -1,17 +1,18 @@
 #pragma once
 #include "ShoppingCart.hpp"
 #include "List.hpp"
+using namespace std;
 
 class Order
 {
 private:
 	int id;
-	char* name;
-	char* surname;
-	char* phoneNumber;
-	char* addressToDelivery;
-	char* populatedPlace;
-	char* email;
+	string name;
+	string surname;
+	string phoneNumber;
+	string addressToDelivery;
+	string populatedPlace;
+	string email;
 	bool isConfirmed;
 
 	List<ShoppingCart> products;
@@ -19,26 +20,25 @@ private:
 public:
 
 	Order();
-	Order(int id,const char* name, const char* surname, const char* phone, const char* address, const char* populatedPlace, const char* email);
+	Order(int id,string name, string surname, string phone, string address, string populatedPlace, string email);
 	Order(const Order& order);
-	~Order();
 	Order& operator=(const Order& order);
 
 
 	void setId(int);
 	int getId() const;
-	void setName(char*);
-	char* getName() const;
-	void setSurname(char*);
-	char* getSurname() const;
-	void setPhoneNumber(char*);
-	char* getPhoneNumber() const;
-	void setAddressToDelivery(char*);
-	char* getAddressToDelivery() const;
-	void setPopulatedPlace(char*);
-	char* getPopulatedPlace() const;
-	void setEmail(char*);
-	char* getEmail() const;
+	void setName(string);
+	string getName() const;
+	void setSurname(string);
+	string getSurname() const;
+	void setPhoneNumber(string);
+	string getPhoneNumber() const;
+	void setAddressToDelivery(string);
+	string getAddressToDelivery() const;
+	void setPopulatedPlace(string);
+	string getPopulatedPlace() const;
+	void setEmail(string);
+	string getEmail() const;
 	
 	void confirmOrder();
 	bool getIsConfirmed() const;
