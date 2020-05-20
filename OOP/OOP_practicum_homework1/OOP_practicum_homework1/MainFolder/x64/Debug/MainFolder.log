@@ -1,11 +1,2 @@
-﻿  Shop.cpp
-  Source.cpp
-  Generating Code...
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\Shop.cpp(411): warning C4715: 'Shop::seeOrder': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(145): warning C4715: 'List<Laptop>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(145): warning C4715: 'List<Printer>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(145): warning C4715: 'List<Phone>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(145): warning C4715: 'List<ShoppingCart>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(145): warning C4715: 'List<User>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(145): warning C4715: 'List<Order>::getAt': not all control paths return a value
+﻿  Source.cpp
   MainFolder.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\x64\Debug\MainFolder.exe

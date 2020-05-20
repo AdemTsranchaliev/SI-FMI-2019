@@ -11,25 +11,27 @@ Shop::Shop()
 
 void Shop::InsertData()
 {
-	Phone phone1("X", "Black", 2019, 1, "Iphone", 1100,"Phone");
-	Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
-	Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
-	Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
-	phones.add(phone1);
-	phones.add(phone2);
-	phones.add(phone3);
-	phones.add(phone4);
+	static Phone phone1("X", "Black", 2019, 1, "Iphone", 1100,"Phone");
+	static Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
+	static Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
+	static Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
+	
+	products.add(&phone1);
+	products.add(&phone2);
+	products.add(&phone3);
+	products.add(&phone4);
+	
+	static Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
+	static Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
+	
+	products.add(&printer1);
+	products.add(&printer2);
 
-	Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
-	Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
-
-	printers.add(printer1);
-	printers.add(printer2);
-
-	Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
-	Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
-	laptops.add(laptop1);
-	laptops.add(laptop2);
+    static Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
+	static Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
+	
+	products.add(&laptop1);
+	products.add(&laptop2);
 
 	User user1(2, "admin", "12345", "ROLE_ADMIN");
 	users.add(user1);
@@ -42,8 +44,7 @@ void Shop::InsertData()
 }
 
 
-
-int Shop::AddProductInShoppingCart(int productId, int category)
+int Shop::AddProductInShoppingCart(int productId, string category)
 {
 
 	int productIndex = CheckIfProductExistInGivenCategory(productId, category);
@@ -58,19 +59,20 @@ int Shop::AddProductInShoppingCart(int productId, int category)
 		else
 		{
 			ShoppingCart cart;
-			if (category == 1)
+			if (category == "Laptop")
 			{
-
-				cart = ShoppingCart(category, productId, 1, laptops.getAt(productIndex).getPrice(), laptops.getAt(productIndex).getName());
-
+				Laptop* laptop= ((Laptop*)products.getAt(productIndex));
+				cart = ShoppingCart((*laptop).getCategory(), productId, 1, (*laptop).getPrice(), (*laptop).getName());
 			}
-			else if (category == 2)
+			else if (category == "Phone")
 			{
-				cart = ShoppingCart(category, productId, 1, phones.getAt(productIndex).getPrice(), phones.getAt(productIndex).getName());
+				Phone phone = *((Phone*)products.getAt(productIndex));
+				cart = ShoppingCart(category, productId, 1, phone.getPrice(), phone.getName());
 			}
-			else if (category == 3)
+			else if (category == "Printer")
 			{
-				cart = ShoppingCart(category, productId, 1, printers.getAt(productIndex).getPrice(), printers.getAt(productIndex).getName());
+				Printer printer = *((Printer*)products.getAt(productIndex));
+				cart = ShoppingCart(category, productId, 1, printer.getPrice(), printer.getName());
 
 			}
 		
@@ -81,15 +83,13 @@ int Shop::AddProductInShoppingCart(int productId, int category)
 	}
 	else
 	{
-		cout << "In ";
-		PrintCategoryName(category);
-		cout << "s wasn't found product with given index!" << endl;
+		cout << "In "<< category << "s wasn't found product with given index!" << endl;
 	}
 	return 0;
 }
 
 
-void Shop::PrintCategory(int category)
+void Shop::PrintCategory(string category)
 {
 	cout << "To go back in main page ENTER 'b'" << endl;
 	cout << "To sort products by price ENTER 'sort'" << endl;
@@ -97,74 +97,102 @@ void Shop::PrintCategory(int category)
 	cout << "To add product in shopping cart ENTER 'add" << endl;
 	cout << "============================================================================================================" << endl;
 
-	if (category == 1)
+	if (category == "Laptop")
 	{
 		cout << "Laptops" << endl;
 		cout << "No | Name | Ram memory | Processor | Video cart | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
 
-		for (int i = 0; i < laptops.Count(); i++)
+		for (int i = 0; i < products.Count(); i++)
 		{
-			laptops.getAt(i).print();
+			if ((products.getAt(i))->getCategory()=="Laptop")
+			{
+				((Laptop*)(products.getAt(i)))->print();
+			}
+			
 		}
 	}
-	else if (category == 2)
+	else if (category == "Phone")
 	{
 
 		cout << "Phones" << endl;
 		cout << "No | Name | Color | Model | Year of production | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < phones.Count(); i++)
+		for (int i = 0; i < products.Count(); i++)
 		{
-			phones.getAt(i).print();
+			if ((products.getAt(i))->getCategory() == "Phone")
+			{
+				((Phone*)(products.getAt(i)))->print();
+			}
 		}
 
 	}
-	else if (category == 3)
+	else if (category == "Printer")
 	{
 		cout << "Printers" << endl;
 		cout << "No | Name | Printing technology | Main format | Printning colors | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < printers.Count(); i++)
+		for (int i = 0; i < products.Count(); i++)
 		{
-			printers.getAt(i).print();
+			if (products.getAt(i)->getCategory() == "Printer")
+			{
+				((Phone*)(products.getAt(i)))->print();
+			}
 		}
 
 	}
 }
+string Shop::GetCategoryByNum(int categorySelected)
+{
+	string result;
+	if (categorySelected == 1)
+	{
+		result="Laptop";
+
+	}
+	else if (categorySelected == 2)
+	{
+		result = "Phone";
+
+	}
+	else if (categorySelected == 3)
+	{
+		result = "Printer";
+	}
+	return result;
+}
 
 
-
-int Shop::CheckIfProductExistInGivenCategory(int productId, int category)
+int Shop::CheckIfProductExistInGivenCategory(int productId, string category)
 {
 	int index = -1;
-	if (category == 1)
+	if (category == "Laptop")
 	{
-		for (int i = 0; i < laptops.Count(); i++)
+		for (int i = 0; i < products.Count(); i++)
 		{
-			if (laptops.getAt(i).getId() == productId)
+			if (products.getAt(i)->getId() == productId)
 			{
 				index = i;
 				break;
 			}
 		}
 	}
-	else if (category == 2)
+	else if (category == "Phone")
 	{
-		for (int i = 0; i < phones.Count(); i++)
+		for (int i = 0; i < products.Count(); i++)
 		{
-			if (phones.getAt(i).getId() == productId)
+			if (products.getAt(i)->getId() == productId)
 			{
 				index = i;
 				break;
 			}
 		}
 	}
-	else if (category == 3)
+	else if (category == "Printer")
 	{
-		for (int i = 0; i < printers.Count(); i++)
+		for (int i = 0; i < products.Count(); i++)
 		{
-			if (printers.getAt(i).getId() == productId)
+			if (products.getAt(i)->getId() == productId)
 			{
 				index = i;
 				break;
@@ -241,46 +269,25 @@ void Shop::ShowShoppingCart()
 
 }
 
-void Shop::PrintCategoryName(int category)
-{
-	if (category == 1)
-	{
-		cout << "Laptop";
-	}
-	else if (category == 2)
-	{
-
-		cout << "Phone";
-
-
-	}
-	else if (category == 3)
-	{
-		cout << "Printer";
-	}
-
-}
-
-
-void Shop::SortAndPrint(int category)
+void Shop::SortAndPrint(string category)
 {
 	system("cls");
 	cout << "SORTED" << endl;
-	if (category == 1)
+	if (category == "Laptop")
 	{
-		this->laptops.Sort();
-		PrintCategory(1);
+		this->products.Sort();
+		PrintCategory(category);
 
 	}
-	else if (category == 2)
+	else if (category == "Phone")
 	{
-		this->phones.Sort();
-		PrintCategory(2);
+		this->products.Sort();
+		PrintCategory(category);
 	}
-	else if (category == 3)
+	else if (category == "Pritner")
 	{
-		this->printers.Sort();
-		PrintCategory(3);
+		this->products.Sort();
+		PrintCategory(category);
 	}
 
 }
@@ -537,25 +544,25 @@ void Shop::addLaptop()
 {
 	Laptop laptop;
 	cin >> laptop;
-	laptop.setId(laptops.getAt(laptops.Count()-1).getId()+1);
-	laptops.add(laptop);
+	laptop.setId(products.getAt(products.Count()-1)->getId()+1);
+	products.add(&laptop);
 }
 void Shop::addPhone()
 {
 	Phone phone;
 	cin >> phone;
-	phone.setId(phones.getAt(phones.Count() - 1).getId() + 1);
+	phone.setId(products.getAt(products.Count() - 1)->getId() + 1);
 
-	phones.add(phone);
+	products.add(&phone);
 	string a = "";
 }
 void Shop::addPrinter()
 {
 	Printer printer;
 	cin >> printer;
-	printer.setId(printers.getAt(printers.Count() - 1).getId() + 1);
+	printer.setId(products.getAt(products.Count() - 1)->getId() + 1);
 
-	printers.add(printer);
+	products.add(&printer);
 }
 
 

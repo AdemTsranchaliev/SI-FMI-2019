@@ -109,8 +109,6 @@ int main()
 		{	
 			SeeOrders(shop);
 
-			GetCommandPressAnyKeyToContiniue();
-
 			system("cls");
 
 			continue;
@@ -166,10 +164,12 @@ int main()
 
 			continue;
 		}
-		else if (command[0]>='1'&&command[0]<='4'&&command[1]=='\0')
+		else if (command[0]>='1'&&command[0]<='3'&&command[1]=='\0')
 		{
 			categorySelected = command[0] - '0';
-			shop.PrintCategory(categorySelected);
+			string category = shop.GetCategoryByNum(categorySelected);
+			shop.PrintCategory(category);
+		
 		}
 		else
 		{
@@ -207,7 +207,9 @@ int main()
 			cin.clear();
 			cin.ignore(numeric_limits < streamsize > ::max(), '\n');
 
-			shop.AddProductInShoppingCart(productId, categorySelected);
+			string category = shop.GetCategoryByNum(categorySelected);
+
+			shop.AddProductInShoppingCart(productId, category);
 			
 
 			cout << "Press any key to continiue to categories" << endl;
@@ -215,9 +217,15 @@ int main()
 		}
 		else if (command== "sort")
 		{
-			shop.SortAndPrint(categorySelected);
+			string category = shop.GetCategoryByNum(categorySelected);
+
+			shop.SortAndPrint(category);
 
 			GetCommandPressAnyKeyToContiniue();
+		}
+		else
+		{
+			system("cls");
 		}
 
 	}
@@ -313,17 +321,19 @@ void SeeOrders(Shop& shop)
 				cout << "That order is not confirmed, if you want to confirm it press '1'"<<endl;
 				cout << "If you want to go back press any other key" << endl;
 
-				int n;
+				string n;
 		
+				getline(cin,n);
 
-				cin >> n;
 
-				cin.clear();
-				cin.ignore(numeric_limits < streamsize > ::max(), '\n');
-
-				if (n==1)
+				if (n=="1")
 				{
 					shop.seeOrder(tempCommand[0] - '0').confirmOrder();
+				}
+				else
+				{
+					system("cls");
+					continue;
 				}
 
 			}

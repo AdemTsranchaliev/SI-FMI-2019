@@ -19,7 +19,7 @@ Laptop::Laptop(string processor, int ramMemory, string videoCart, int id, string
 
 	this->processor = processor;
 
-	this->videoCard = videoCard;
+	this->videoCard = videoCart;
 }
 
 Laptop::Laptop(const Laptop& laptop) : Product(laptop)

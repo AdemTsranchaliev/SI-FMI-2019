@@ -163,7 +163,7 @@ void  List<T>::Sort()
 	for (i = 0; i < this->Count() - 1; i++) {
 		for (j = 0; j < this->Count() - i - 1; j++)
 		{
-			if (this->getAt(j).getPrice() > getAt(j + 1).getPrice())
+			if (this->getAt(j)->getPrice() > getAt(j + 1)->getPrice())
 			{
 				T temp;
 				temp = (this->getAt(j));

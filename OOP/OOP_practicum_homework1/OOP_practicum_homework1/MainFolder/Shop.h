@@ -14,9 +14,7 @@ using namespace std;
 class Shop
 {
 private:
-	List<Laptop> laptops;
-	List<Phone> phones;
-	List<Printer> printers;
+	List<Product*> products;
 
 	List<ShoppingCart> shoppingCart;
 	List<Order> orders;
@@ -26,7 +24,7 @@ private:
 
 
 	int CheckIfProductExistInShoppingCart(int productId);
-	int CheckIfProductExistInGivenCategory(int productId, int category);
+	int CheckIfProductExistInGivenCategory(int productId, string category);
 	bool checkIfUsernameIsUnique(string username);
 	void ClearShoppingCart();
 public:
@@ -34,13 +32,13 @@ public:
 	Shop();
 
 	void InsertData();
-	void SortAndPrint(int);
+	void SortAndPrint(string);
 	void ShowShoppingCart();
 	void MakeOrder();
+	string GetCategoryByNum(int);
 
-	void PrintCategory(int);
-	void PrintCategoryName(int);
-	int AddProductInShoppingCart(int productId, int category);
+	void PrintCategory(string);
+	int AddProductInShoppingCart(int productId, string category);
 	bool Authenticate(string username, string password);
 
 	string getAuthenticateUserUsername();

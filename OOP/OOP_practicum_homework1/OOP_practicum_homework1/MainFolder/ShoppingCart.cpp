@@ -11,15 +11,14 @@ ShoppingCart::ShoppingCart()
 	this->productId = 0;
 	this->quantity = 0;
 	this->price = 0;
-	this->productCategory = 0;
+	this->productCategory = "";
 
 	this->name = "";
 }
 
-ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, double price,string name)
+ShoppingCart::ShoppingCart(string productCategory, int productId, int quantity, double price,string name)
 {
 	this->name = name;
-
 	this->productCategory = productCategory;
 	this->productId = productId;
 	this->quantity = quantity;
@@ -29,7 +28,6 @@ ShoppingCart::ShoppingCart(int productCategory, int productId, int quantity, dou
 ShoppingCart::ShoppingCart(const ShoppingCart& shoppingCart)
 {
 	this->name = shoppingCart.name;
-
 	this->productCategory = shoppingCart.productCategory;
 	this->setPrice(shoppingCart.getPrice());
 	this->setProductId(shoppingCart.getProductId());
@@ -53,12 +51,12 @@ ShoppingCart& ShoppingCart::operator=(const ShoppingCart& prod)
 }
 
 //Mutators
-void ShoppingCart::setProductCategory(int productCategory)
+void ShoppingCart::setProductCategory(string productCategory)
 {
 	this->productCategory=productCategory;
 
 }
-int ShoppingCart::getProductCategory() const
+string ShoppingCart::getProductCategory() const
 {
 	return this->productCategory;
 }

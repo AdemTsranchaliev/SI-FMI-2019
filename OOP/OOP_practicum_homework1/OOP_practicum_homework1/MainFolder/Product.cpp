@@ -9,9 +9,11 @@ Product::Product()
 	this->id = 0;
 	this->price = 0;
 	this->name = "";
+	this->category = "";
+
 }
 
-Product::Product(int id, double price, string name,string cateogry)
+Product::Product(int id, double price, string name,string category)
 {
 	this->id = id;
 	this->price = price;
