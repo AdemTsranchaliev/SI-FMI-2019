@@ -136,7 +136,6 @@ T& List<T>::getAt(int position)
 	if (!checkIndex(position))
 	{
 		cout << "Invalid index!" << endl;
-
 	}
 	else
 	{

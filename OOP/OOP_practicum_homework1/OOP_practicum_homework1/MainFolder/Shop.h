@@ -8,6 +8,8 @@
 #include "ShoppingCart.hpp"
 #include "Order.hpp"
 #include "User.hpp"
+#include "Security.h"
+
 #include <string>
 using namespace std;
 
@@ -15,19 +17,17 @@ class Shop
 {
 private:
 	List<Product*> products;
-
 	List<ShoppingCart> shoppingCart;
 	List<Order> orders;
 	List<User> users;
-
-	User authenticatedUser;
-
 
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, string category);
 	bool checkIfUsernameIsUnique(string username);
 	void ClearShoppingCart();
+
 public:
+	Security security;
 
 	Shop();
 
@@ -39,19 +39,13 @@ public:
 
 	void PrintCategory(string);
 	int AddProductInShoppingCart(int productId, string category);
-	bool Authenticate(string username, string password);
 
-	string getAuthenticateUserUsername();
-	string getAuthenticateUserRole();
-	bool isAuthenticated();
-	bool isAuthorized(string role);
 	void registation();
-	void logOut();
+	void login();
 
 	//Only for users with role ROLE_ADMIN
 	void seeAllOrders();
 	void makeUserAdminOrUser(int id);
-
 
 	bool checkIfOrderExist(int id);
 	void seeAllUsers();

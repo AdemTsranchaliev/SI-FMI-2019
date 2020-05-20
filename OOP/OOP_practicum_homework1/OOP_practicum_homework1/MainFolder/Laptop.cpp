@@ -97,7 +97,7 @@ std::istream& operator>>(std::istream& in, Laptop& laptop)
 	cout << "Name: ";
 	getline(in, name);
 	cout << endl;
-	laptop.setName("");
+	laptop.setName(name);
 
 	
 	cout << "Price: ";
@@ -114,6 +114,14 @@ std::istream& operator>>(std::istream& in, Laptop& laptop)
 	cout << endl;
 	laptop.setVideoCart(videoCart);
 
+	cout << "Ram memory: ";
+	in >> ramMemory;
+	cout << endl;
+	laptop.setRamMemory(ramMemory);
+
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "Processor: ";
 	getline(in,procecors);

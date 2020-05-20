@@ -89,9 +89,10 @@ string Phone::getModel() const
 	return this->model;
 }
 
-void Phone::print()
+string Phone::print()
 {
-	cout << this->getId() << " | " << this->getName() << " | " << this->getModel() << " | " << this->getColor() << " | " << this->getYearOfProduction() << " | " << this->getPrice()<<" leva"<<endl;
+	string str = to_string(this->getId()) + " | " + this->getName() + " | " + this->getModel() + " | " + this->getColor() + " | " + to_string(this->getYearOfProduction()) + " | " +to_string(this->getPrice()) + " leva"+"\n";
+	return str;
 }
 
 std::istream& operator>>(std::istream& in, Phone& phone)
@@ -129,6 +130,9 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 	in >> yearOfProduction;
 	cout << endl;
 	phone.setYearOfProduction(yearOfProduction);
+
+	in.clear();
+	in.ignore(numeric_limits < streamsize > ::max(), '\n');
 
 	cout << "You added successfully the product, press any key to continiue" << endl;
 

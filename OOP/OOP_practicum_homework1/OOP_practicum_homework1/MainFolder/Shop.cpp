@@ -2,7 +2,7 @@
 
 
 #include "Shop.h"
-
+#include "Database.h"
 
 Shop::Shop()
 {
@@ -33,13 +33,18 @@ void Shop::InsertData()
 	products.add(&laptop1);
 	products.add(&laptop2);
 
-	User user1(2, "admin", "12345", "ROLE_ADMIN");
+	string password = security.encryptPassword("12345");
+	User user1(2, "admin", password, "ROLE_ADMIN");
 	users.add(user1);
-	User user2(3, "user", "12345", "ROLE_USER");
+	User user2(3, "user", password, "ROLE_USER");
 	users.add(user2);
 
 	Order order(0,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
 	orders.add(order);
+
+	Database dat;
+	dat.SaveToDatabase(phone1);
+
 
 }
 
@@ -220,8 +225,6 @@ int Shop::CheckIfProductExistInShoppingCart(int productId)
 
 void Shop::ShowShoppingCart()
 {
-
-
 	if (shoppingCart.Count() == 0)
 	{
 		cout << "There are no products in Shopping Cart" << endl;
@@ -292,42 +295,6 @@ void Shop::SortAndPrint(string category)
 
 }
 
-bool Shop::Authenticate(string username, string password)
-{
-	for (int i = 0; i < users.Count(); i++)
-	{
-		if (users.getAt(i).getUsername()==username)
-		{
-			if (users.getAt(i).getPassword()==password)
-			{
-				authenticatedUser = users.getAt(i);
-				return true;
-			}
-			return false;
-		}
-	}
-	return false;
-}
-
-bool Shop::isAuthenticated()
-{
-	if (this->authenticatedUser.getId()==0)
-	{
-		return false;
-
-	}
-	return true;
-}
-bool Shop::isAuthorized(string role)
-{
-	if (this->authenticatedUser.getRole()==role)
-	{
-		return true;
-
-	}
-	return false;
-}
-
 void Shop::registation()
 {
 	system("cls");
@@ -338,11 +305,11 @@ void Shop::registation()
 	cin >> newUser;
 	newUser.setRole("ROLE_USER");
 	newUser.setId(users.getAt(users.Count()-1).getId()+1);
+	newUser.setPassword(security.encryptPassword(newUser.getPassword()));
 	if (checkIfUsernameIsUnique(newUser.getUsername()))
 	{
-		this->authenticatedUser = newUser;
 		users.add(newUser);
-		cout << "You registered successfully! Press any key to continiue.";
+		cout << "You registered successfully! Press any key to continiue. Please now login with your infomration!";
 	}
 	else
 	{
@@ -350,6 +317,49 @@ void Shop::registation()
 	}
 
 }
+
+void Shop::login()
+{
+	system("cls");
+	string username;
+	string password;
+	cout << "Login in your profile" << endl;
+	cout << "========================================" << endl << endl;
+
+	while (true)
+	{
+		cout << "Enter username:" << endl;
+		getline(cin, username);
+		cout << endl;
+
+		cout << "Enter password:" << endl;
+		getline(cin, password);
+
+		bool isAuthenticated = security.Authenticate(username, password,users);
+
+		if (isAuthenticated)
+		{
+			cout << "Wellcome, " << security.getAuthenticateUser().getUsername() << "!" << endl;
+			cout << "Press any key to continiue!" << endl;
+			break;
+		}
+		system("cls");
+
+		cout << "Wrong username or password." << endl;
+		cout << "Press 'G' to continiue like GUEST." << endl;
+		cout << "Press any other key to try again." << endl;
+
+		getline(cin, username);
+
+		if (username == "G")
+		{
+			break;
+		}
+
+		system("cls");
+	}
+}
+
 
 
 bool Shop::checkIfUsernameIsUnique(string username)
@@ -364,22 +374,6 @@ bool Shop::checkIfUsernameIsUnique(string username)
 	}
 
 	return temp;
-}
-
-string Shop::getAuthenticateUserUsername()
-{
-	return this->authenticatedUser.getUsername();
-}
-string Shop::getAuthenticateUserRole()
-{
-	return this->authenticatedUser.getRole();
-}
-
-void Shop::logOut()
-{
-	User user;
-	this->authenticatedUser = user;
-	cout << "Successfully logout, press any key to continiue";
 }
 
 
@@ -397,7 +391,7 @@ void Shop::seeAllUsers()
 	cout << "Id  |" << "Username |" << " Role " <<  endl;
 	for (int i = 0; i < users.Count(); i++)
 	{
-		if (this->authenticatedUser.getId()!= users.getAt(i).getId())
+		if (security.getAuthenticateUser().getId()!= users.getAt(i).getId())
 		{
 			users.getAt(i).print();
 		}
@@ -502,9 +496,9 @@ void Shop::MakeOrder()
 		order.addProductToShoppingCart(shoppingCart.getAt(i));
 	}
 
-	if (this->isAuthenticated())
+	if (security.isAuthenticated())
 	{
-		this->authenticatedUser.addNewOrder(order);
+		security.getAuthenticateUser().addNewOrder(order);
 	}
 	orders.add(order);
 	cout << "Your order was successfully send! Press any key to continiue!";
@@ -542,25 +536,32 @@ bool Shop::checkIfOrderExist(int id)
 
 void Shop::addLaptop()
 {
-	Laptop laptop;
+	static Laptop laptop;
 	cin >> laptop;
+
 	laptop.setId(products.getAt(products.Count()-1)->getId()+1);
+	laptop.setCategory("Laptop");
+
 	products.add(&laptop);
 }
 void Shop::addPhone()
 {
-	Phone phone;
+	static Phone phone;
 	cin >> phone;
+
 	phone.setId(products.getAt(products.Count() - 1)->getId() + 1);
+	phone.setCategory("Phone");
 
 	products.add(&phone);
 	string a = "";
 }
 void Shop::addPrinter()
 {
-	Printer printer;
+	static Printer printer;
 	cin >> printer;
+
 	printer.setId(products.getAt(products.Count() - 1)->getId() + 1);
+	printer.setCategory("Printer");
 
 	products.add(&printer);
 }

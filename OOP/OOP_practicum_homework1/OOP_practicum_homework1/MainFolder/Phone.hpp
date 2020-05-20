@@ -27,6 +27,6 @@ public:
 
 	friend std::istream& operator>>(std::istream& in, Phone& o);
 
-	void print();
+	string print();
 
 };

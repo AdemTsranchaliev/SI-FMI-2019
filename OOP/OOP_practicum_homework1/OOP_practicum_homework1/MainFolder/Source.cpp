@@ -5,17 +5,18 @@
 using namespace std;
 
 #include "Shop.h"
+#include "Database.h"
+
 string command;
 
 void GetCommandPressAnyKeyToContiniue();
-void Login(Shop& shop);
 void SeeOrders(Shop& shop);
 
 int main()
 {
 
 	Shop shop;
-
+	
 	cout << "=============================" << endl;
 	cout << "Welcome in the SMART SHOP" << endl;
 	cout << "=============================" << endl << endl;
@@ -29,7 +30,7 @@ int main()
 
 	if (command=="L")
 	{
-		Login(shop);
+		shop.login();
 		GetCommandPressAnyKeyToContiniue();
 	}
 	else if (command[0] == 'R')
@@ -45,20 +46,17 @@ int main()
 	int categorySelected = 0;
 	while (true)
 	{
-		if (shop.isAuthenticated())
+		if (shop.security.isAuthenticated())
 		{
 			cout << "---------------------------------------" << endl;
+			cout << "You are loged as " << shop.security.getAuthenticateUser().getUsername() << endl;
 
-			if (shop.isAuthorized("ROLE_USER"))
+			if (shop.security.isAuthorized("ROLE_USER"))
 			{
-				cout << "You are loged as " << shop.getAuthenticateUserUsername() << endl;
-			
 				cout << "To logout press 'e'" << endl;
-
 			}
 			else
 			{
-				cout << "You are loged as " << shop.getAuthenticateUserUsername() << endl;
 				cout << "To see orders press 'q'" << endl;
 				cout << "To see users 'u'" << endl;
 				cout << "To add new product 't'" << endl;
@@ -78,8 +76,6 @@ int main()
 		cout << "1 Laptops" << endl;
 		cout << "2 Phones" << endl;
 		cout << "3 Printers" << endl;
-		cout << "4 Smart Watches" << endl;
-
 		
 
 		getline(cin,command);
@@ -92,20 +88,20 @@ int main()
 					
 			continue;
 		}
-		else if (command == "L" && !shop.isAuthenticated())
+		else if (command == "L" && !shop.security.isAuthenticated())
 		{
-			Login(shop);
+			shop.login();
 			GetCommandPressAnyKeyToContiniue();
 			continue;
 		}
-		else if (command == "R" && !shop.isAuthenticated())
+		else if (command == "R" && !shop.security.isAuthenticated())
 		{
 			shop.registation();
 			GetCommandPressAnyKeyToContiniue();
 			system("cls");
 			continue;
 		}
-		else if (command== "q"&& shop.isAuthorized("ROLE_ADMIN"))
+		else if (command== "q"&& shop.security.isAuthorized("ROLE_ADMIN"))
 		{	
 			SeeOrders(shop);
 
@@ -113,7 +109,7 @@ int main()
 
 			continue;
 		}
-		else if (command == "u" && shop.isAuthorized("ROLE_ADMIN"))
+		else if (command == "u" && shop.security.isAuthorized("ROLE_ADMIN"))
 		{
 			cout << "All users"<<endl;
 			cout << "----------------------------" << endl;
@@ -147,7 +143,7 @@ int main()
 			}
 			continue;
 		}
-		else if (command== "t"&& shop.isAuthorized("ROLE_ADMIN"))
+		else if (command== "t"&& shop.security.isAuthorized("ROLE_ADMIN"))
 		{
 			shop.addProduct();
 			GetCommandPressAnyKeyToContiniue();
@@ -156,9 +152,9 @@ int main()
 		}
 	
 
-		else if (command== "e"&&shop.isAuthenticated())
+		else if (command== "e"&&shop.security.isAuthenticated())
 		{
-			shop.logOut();
+			shop.security.logOut();
 
 			GetCommandPressAnyKeyToContiniue();
 
@@ -234,48 +230,7 @@ int main()
 	return 0;
 }
 
-void Login(Shop& shop)
-{
-	system("cls");
-	string username;
-	string password;
-	cout << "Login in your profile" << endl;
-	cout << "========================================" << endl << endl;
 
-	while (true)
-	{
-		cout << "Enter username:" << endl;
-		getline(cin,username);
-		cout << endl;
-
-		cout << "Enter password:" << endl;
-		getline(cin,password);
-
-		bool isAuthenticated = shop.Authenticate(username, password);
-
-		if (isAuthenticated)
-		{
-			cout << "Wellcome, "<<shop.getAuthenticateUserUsername()<<"!"<<endl;
-			cout << "Press any key to continiue!"<<endl;
-			break;
-		}
-		system("cls");
-
-		cout << "Wrong username or password."<<endl;
-		cout << "Press 'G' to continiue like GUEST." << endl;
-		cout << "Press any other key to try again." << endl;
-
-		getline(cin,username);
-
-		if (username=="G")
-		{
-			break;
-		}
-
-		system("cls");
-	}
-
-}
 void SeeOrders(Shop& shop)
 {
 
@@ -314,9 +269,8 @@ void SeeOrders(Shop& shop)
 			cout << "====================================="<<endl<<endl;
 			shop.seeOrder(tempCommand[0] - '0').printDetail();
 
-			if (shop.seeOrder(tempCommand[0] - '0').getIsConfirmed()==false&&shop.isAuthorized("ROLE_ADMIN"))
+			if (shop.seeOrder(tempCommand[0] - '0').getIsConfirmed()==false&&shop.security.isAuthorized("ROLE_ADMIN"))
 			{
-	
 				cout << "==================================================================" << endl;
 				cout << "That order is not confirmed, if you want to confirm it press '1'"<<endl;
 				cout << "If you want to go back press any other key" << endl;
@@ -324,7 +278,6 @@ void SeeOrders(Shop& shop)
 				string n;
 		
 				getline(cin,n);
-
 
 				if (n=="1")
 				{
@@ -335,7 +288,6 @@ void SeeOrders(Shop& shop)
 					system("cls");
 					continue;
 				}
-
 			}
 			else
 			{
@@ -348,6 +300,7 @@ void SeeOrders(Shop& shop)
 		}
 	}
 }
+
 void GetCommandPressAnyKeyToContiniue()
 {
 	

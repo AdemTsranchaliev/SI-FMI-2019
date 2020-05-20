@@ -1,6 +1,21 @@
 #pragma once
+
+#include <iostream>
+#include <fstream>
+#include <string>
+
+
+#include "Phone.hpp"
+
+using namespace std;
+
 class Database
 {
-	//In process of developing
+public:
+
+	Database();
+
+	void SaveToDatabase(Phone& obj);
+
 };
 
