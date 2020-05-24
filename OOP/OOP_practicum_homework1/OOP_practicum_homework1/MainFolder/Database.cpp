@@ -1,40 +1,24 @@
 
-
-#include <iostream>
-#include <fstream>
-#include <string>
-
 #include "Database.h"
 
-using namespace std;
 
-
-
-Database::Database()
+List<string>& Database::split(string text, char separator)
 {
+    static List<string> list;
+	int  index = text.find(separator);
 
-}
-
-
-
-void Database::SaveToDatabase(Phone& obj)
-{
-
-	string className = ((string)(typeid(obj).name()));
-	string fileName = className.substr(className.find(" ") + 1) + ".txt";
-
-	fstream file(fileName, ios::out);
-
-	if (!file.is_open())
+	while (index!=-1)
 	{
-		ofstream newFile(fileName);
-		newFile.close();
-		file.open(fileName, ios::out);
+		string temp = text.substr(0,index);
+		list.add(temp);
+		text = text.substr(index + 1);
+		index = text.find(separator);
+	}
+	if (text.length()>0)
+	{
+		list.add(text);
 	}
 
-
-	file << obj.print();
-	file << obj.print();
-
-	file.close();
+	return list;
 }
+

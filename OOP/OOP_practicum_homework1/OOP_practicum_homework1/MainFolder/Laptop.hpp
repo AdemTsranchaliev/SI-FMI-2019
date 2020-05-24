@@ -26,6 +26,7 @@ public:
 	string getVideoCart() const;
 
 	friend std::istream& operator>>(std::istream& in, Laptop& laptop);
+	friend std::ostream& operator<<(std::ostream& out, Laptop& laptop);
 
 
 	void print();

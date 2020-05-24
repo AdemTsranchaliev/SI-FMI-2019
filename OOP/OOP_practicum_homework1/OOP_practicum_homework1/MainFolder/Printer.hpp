@@ -27,6 +27,7 @@ public:
 	bool getOneOrManyColors() const;
 
 	friend std::istream& operator>>(std::istream& in, Printer& o);
+	friend std::ostream& operator<<(std::ostream& in, Printer& o);
 
 	void print();
 };

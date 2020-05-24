@@ -139,5 +139,10 @@ std::istream& operator>>(std::istream& in, Printer& printer)
 
 	return in;
 }
+std::ostream& operator<<(std::ostream& out, Printer& printer)
+{
+	out << printer.getId() << "|" << printer.getName() << "|" << printer.getPrintingTechnology() << "|" << printer.getMainPrintingFormat() << "|"<< printer.getOneOrManyColors()<<"|" << printer.getPrice() << "\n";
+	return out;
+}
 
 

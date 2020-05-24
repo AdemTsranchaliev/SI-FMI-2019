@@ -46,6 +46,7 @@ public:
 	void addProductToShoppingCart(const ShoppingCart& product);
 
 	friend std::istream& operator>>(std::istream& in, Order& order);
+	friend std::ostream& operator<<(std::ostream& out, Order& order);
 
 	void print();
 	void printDetail();

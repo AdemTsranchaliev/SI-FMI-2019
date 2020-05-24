@@ -241,6 +241,18 @@ std::istream& operator>>(std::istream& in, Order& order)
 	return in;
 }
 
+std::ostream& operator<<(std::ostream& out, Order& order)
+{
+	out << "Name: " << order.name << " " << order.surname << "|";
+	out << "Phone: " << order.phoneNumber << "|";
+	out << "Town/Vilage to delivery: " << order.populatedPlace << "|";
+	out << "Address: " << order.addressToDelivery << "|";
+	out << "Email: " << order.email << "|";
+	out << "IsConfirmed: " << order.email << "\n";
+
+	return out;
+}
+
 void Order::confirmOrder()
 {
 	this->isConfirmed = true;

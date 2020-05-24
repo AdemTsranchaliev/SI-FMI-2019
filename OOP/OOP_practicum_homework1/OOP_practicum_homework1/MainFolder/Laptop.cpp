@@ -133,6 +133,11 @@ std::istream& operator>>(std::istream& in, Laptop& laptop)
 	return in;
 }
 
+std::ostream& operator<<(std::ostream& out, Laptop& laptop)
+{
+	out << laptop.getId() << "|" << laptop.getName() << "|" << laptop.getRamMemory() << "|" << laptop.getProcessor() << "|" << laptop.getVideoCart() << "|" << laptop.getPrice() << "\n";
+	return out;
+}
 
 
 //Functions

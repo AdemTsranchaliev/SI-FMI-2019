@@ -140,3 +140,9 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 
 	return in;
 }
+
+std::ostream& operator<<(std::ostream& out, Phone& o)
+{
+	out << to_string(o.getId()) + "|" + o.getName() + "|" + o.getModel() + "|" + o.getColor() + "|" + to_string(o.getYearOfProduction()) + "|" + to_string(o.getPrice()) + " leva" + "\n";
+	return out;
+}

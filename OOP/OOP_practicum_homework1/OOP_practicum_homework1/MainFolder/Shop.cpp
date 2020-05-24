@@ -15,23 +15,32 @@ void Shop::InsertData()
 	static Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
 	static Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
 	static Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
-	
+	Database dat;
 	products.add(&phone1);
 	products.add(&phone2);
 	products.add(&phone3);
 	products.add(&phone4);
+	//dat.SaveToDatabase(phone1);
+	//dat.SaveToDatabase(phone2);
+	//dat.SaveToDatabase(phone3);
+	//dat.SaveToDatabase(phone4);
+
 	
 	static Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
 	static Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
 	
 	products.add(&printer1);
 	products.add(&printer2);
+	//dat.SaveToDatabase(printer1);
+	//dat.SaveToDatabase(printer2);
 
     static Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
 	static Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
 	
 	products.add(&laptop1);
 	products.add(&laptop2);
+//	dat.SaveToDatabase(laptop1);
+//	dat.SaveToDatabase(laptop2);
 
 	string password = security.encryptPassword("12345");
 	User user1(2, "admin", password, "ROLE_ADMIN");
@@ -42,8 +51,8 @@ void Shop::InsertData()
 	Order order(0,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
 	orders.add(order);
 
-	Database dat;
-	dat.SaveToDatabase(phone1);
+	dat.ReadFromDb(laptop1);
+	
 
 
 }
