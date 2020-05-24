@@ -14,6 +14,8 @@ public:
 	List<T>();
 	List<T>(const List& list);
 	~List<T>();
+	List<T>& operator=(const List<T>&);
+
 
 	void add(const T& num);
 	void insertAt(int index, int value);
@@ -38,6 +40,23 @@ List<T>::List(const List& list)
 	this->capacity = list.capacity;
 	this->index = list.index;
 }
+
+template <class T>
+List<T>& List<T>::operator=(const List<T>& list)
+{
+	if (this!=&list)
+	{
+		this->capacity = list.capacity;
+		this->index = list.index;
+		for (int i = 0; i < i; i++)
+		{
+			this->arr[i] = list[i];
+		}
+	}
+	
+	return *this;
+}
+
 
 template <class T>
 List<T>::~List()

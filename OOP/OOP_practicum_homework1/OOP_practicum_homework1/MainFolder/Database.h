@@ -19,7 +19,7 @@ public:
 	template <typename T>
 	void ReadFromDb(T& obj);
 
-	List<string>& split(string text,char separator);
+	List<string>* split(string text,char separator);
 
 
 };
@@ -60,15 +60,26 @@ void Database::ReadFromDb(T& obj)
 	{
 		text += c;
 	}
-	List<string>& sepText = this->split(text,'\n');
+
+	List<string>* tempList = this->split(text,'\n');
 
 	if (className=="class Laptop")
 	{
-		static List<Laptop> laptops;
-		for (int i = 0; i < sepText.Count(); i++)
+	     List<Laptop> laptops;
+		for (int i = 0; i < tempList->Count(); i++)
 		{
-			List<string>& temp = this->split(sepText.getAt(i),'|');
-			Laptop laptop(temp.getAt(3), stoi(temp.getAt(2)), temp.getAt(4), stoi(temp.getAt(0)), temp.getAt(1), stod(temp.getAt(5)),"Laptop");
+			List<string> *temp = this->split(tempList->getAt(i),'|');
+			for (int i = 0; i < temp->Count(); i++)
+			{
+				cout << temp->getAt(i)<<endl;
+			}
+			string& processor = temp->getAt(3);
+			int memory = stoi(temp->getAt(2));
+			string videoCart = temp->getAt(4);
+			int id = stoi(temp->getAt(0));
+			string name = temp->getAt(1);
+			double price = stoi(temp->getAt(5));
+			Laptop laptop(processor, memory, videoCart, id, name, price,"Laptop");
 			laptops.add(laptop);
 		}
 	}
