@@ -1,6 +1,7 @@
 #pragma once
+#include <vector>
+
 #include "User.hpp"
-#include "List.hpp"
 
 using namespace std;
 class Security
@@ -12,7 +13,7 @@ public:
 
 	Security();
 
-	bool Authenticate(std::string username, std::string password, List<User>& users);
+	bool Authenticate(std::string username, std::string password, vector<User>& users);
 
 	User& getAuthenticateUser();
 

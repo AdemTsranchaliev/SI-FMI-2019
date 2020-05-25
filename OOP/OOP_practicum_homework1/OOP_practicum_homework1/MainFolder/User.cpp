@@ -100,9 +100,19 @@ std::istream& operator>>(std::istream& in, User& user)
 	return in;
 }
 
+std::ostream& operator<<(std::ostream& out, User& user)
+{
+	string userText = "";
+
+	userText += user.getId()+"|"+user.getUsername()+"|"+user.getPassword()+"|"+user.getRole()+"\n";
+	
+	return out;
+}
+
 void User::addNewOrder(const Order& order)
 {
-	this->orders.add(order);
+
+	this->orders.push_back(order);
 }
 
 void User::print()

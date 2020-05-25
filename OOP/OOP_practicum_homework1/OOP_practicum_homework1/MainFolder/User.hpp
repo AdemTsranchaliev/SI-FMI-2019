@@ -1,6 +1,7 @@
 #pragma once
+
+#include <vector>
 #include "Order.hpp"
-#include "List.hpp"
 using namespace std;
 
 class User 
@@ -11,7 +12,7 @@ private:
 	string password;
 	string role;
 
-	List<Order> orders;
+	vector<Order> orders;
 
 public:
 	User();
@@ -30,6 +31,7 @@ public:
 	void addNewOrder(const Order& order);
 
 	friend std::istream& operator>>(std::istream& in, User& user);
+	friend std::ostream& operator<<(std::ostream& out, User& user);
 
 	void print();
 

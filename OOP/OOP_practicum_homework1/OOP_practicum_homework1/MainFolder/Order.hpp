@@ -1,6 +1,6 @@
 #pragma once
+#include <vector>
 #include "ShoppingCart.hpp"
-#include "List.hpp"
 using namespace std;
 
 class Order
@@ -14,8 +14,9 @@ private:
 	string populatedPlace;
 	string email;
 	bool isConfirmed;
+	int userId;
 
-	List<ShoppingCart> products;
+	vector<ShoppingCart> products;
 
 public:
 
@@ -39,7 +40,11 @@ public:
 	string getPopulatedPlace() const;
 	void setEmail(string);
 	string getEmail() const;
-	
+	vector<ShoppingCart> getProducts() const;
+	void setUserId(int);
+	int getUserId() const;
+
+
 	void confirmOrder();
 	bool getIsConfirmed() const;
 

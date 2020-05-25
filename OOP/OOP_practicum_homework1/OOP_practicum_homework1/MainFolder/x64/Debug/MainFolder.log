@@ -1,13 +1,3 @@
-﻿  Database.cpp
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\Database.cpp(8,35): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\Database.cpp(15,31): warning C4267: '=': conversion from 'size_t' to 'int', possible loss of data
-  Shop.cpp
-  Source.cpp
-  Generating Code...
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\Shop.cpp(421): warning C4715: 'Shop::seeOrder': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(163): warning C4715: 'List<ShoppingCart>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(163): warning C4715: 'List<Product *>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(163): warning C4715: 'List<User>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(163): warning C4715: 'List<Order>::getAt': not all control paths return a value
-C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\List.hpp(163): warning C4715: 'List<std::basic_string<char,std::char_traits<char>,std::allocator<char> > >::getAt': not all control paths return a value
+﻿  Shop.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\MainFolder\Shop.cpp(448): warning C4715: 'Shop::seeOrder': not all control paths return a value
   MainFolder.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\OOP\OOP_practicum_homework1\OOP_practicum_homework1\x64\Debug\MainFolder.exe

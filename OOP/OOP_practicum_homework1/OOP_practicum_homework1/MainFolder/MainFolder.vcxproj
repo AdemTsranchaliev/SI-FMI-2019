@@ -131,7 +131,6 @@
     <ClInclude Include="Security.h" />
     <ClInclude Include="Database.h" />
     <ClInclude Include="Laptop.hpp" />
-    <ClInclude Include="List.hpp" />
     <ClInclude Include="Order.hpp" />
     <ClInclude Include="Phone.hpp" />
     <ClInclude Include="Printer.hpp" />

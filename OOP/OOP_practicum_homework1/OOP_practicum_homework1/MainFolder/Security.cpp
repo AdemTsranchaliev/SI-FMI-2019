@@ -17,16 +17,16 @@ User& Security::getAuthenticateUser()
 }
 
 
-bool Security::Authenticate(string username, string password, List<User>& users)
+bool Security::Authenticate(string username, string password, vector<User>& users)
 {
-	for (int i = 0; i < users.Count(); i++)
+	for (int i = 0; i < users.size(); i++)
 	{
-		if (users.getAt(i).getUsername() == username)
+		if (users[i].getUsername() == username)
 		{
 			
-			if (this->encryptPassword(users.getAt(i).getPassword()) == password)
+			if (this->encryptPassword(users[i].getPassword()) == password)
 			{
-				authenticatedUser = users.getAt(i);
+				authenticatedUser = users[i];
 				return true;
 			}
 			return false;

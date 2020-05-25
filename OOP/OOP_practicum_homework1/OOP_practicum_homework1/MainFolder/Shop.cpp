@@ -1,4 +1,5 @@
 #include <iostream>
+#include <vector>
 
 
 #include "Shop.h"
@@ -11,48 +12,74 @@ Shop::Shop()
 
 void Shop::InsertData()
 {
-	static Phone phone1("X", "Black", 2019, 1, "Iphone", 1100,"Phone");
-	static Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
-	static Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
-	static Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
+
 	Database dat;
-	products.add(&phone1);
-	products.add(&phone2);
-	products.add(&phone3);
-	products.add(&phone4);
+
+//	static Phone phone1("X", "Black", 2019, 1, "Iphone", 1100,"Phone");
+//	static Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
+//	static Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
+//	static Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
+	
+//products.push_back(&phone1);
+//products.push_back(&phone2);
+//products.push_back(&phone3);
+
+	static vector<Phone> phones = dat.GetFromDbAndConvertTextToClass<Phone>();
+
+	for (int i = 0; i < phones.size(); i++)
+	{
+		products.push_back(&phones[i]);
+	}
+
 	//dat.SaveToDatabase(phone1);
 	//dat.SaveToDatabase(phone2);
 	//dat.SaveToDatabase(phone3);
 	//dat.SaveToDatabase(phone4);
 
 	
-	static Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
-	static Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
+//	static Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
+//	static Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
+
+	static vector<Printer> printers = dat.GetFromDbAndConvertTextToClass<Printer>();
+
+	for (size_t i = 0; i < printers.size(); i++)
+	{
+		products.push_back(&printers[i]);
+	}
 	
-	products.add(&printer1);
-	products.add(&printer2);
 	//dat.SaveToDatabase(printer1);
 	//dat.SaveToDatabase(printer2);
 
-    static Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
-	static Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
+   // static Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
+	//static Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
 	
-	products.add(&laptop1);
-	products.add(&laptop2);
-//	dat.SaveToDatabase(laptop1);
-//	dat.SaveToDatabase(laptop2);
+
+	static vector<Laptop> laptops = dat.GetFromDbAndConvertTextToClass<Laptop>();
+	for (int i = 0; i < laptops.size(); i++)
+	{
+		products.push_back(&laptops[i]);
+	}
 
 	string password = security.encryptPassword("12345");
 	User user1(2, "admin", password, "ROLE_ADMIN");
-	users.add(user1);
+	users.push_back(user1);
 	User user2(3, "user", password, "ROLE_USER");
-	users.add(user2);
+	users.push_back(user2);
+	dat.SaveToDatabase(user1);
+	dat.SaveToDatabase(user2);
 
 	Order order(0,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
-	orders.add(order);
 
-	dat.ReadFromDb(laptop1);
+	ShoppingCart shp("Phone",2,2,120,"Iphone");
+	ShoppingCart shp2("Laptop", 2, 2, 120, "Iphone");
+
+	order.addProductToShoppingCart(shp);
+	order.addProductToShoppingCart(shp2);
+
 	
+	static vector<Order> oor=dat.GetFromDbAndConvertTextToClass<Order>();
+
+	orders.push_back(order);
 
 
 }
@@ -68,29 +95,29 @@ int Shop::AddProductInShoppingCart(int productId, string category)
 	{
 		if (index != -1)
 		{
-			shoppingCart.getAt(index).setQuantity(shoppingCart.getAt(index).getQuantity() + 1);
+			shoppingCart[index].setQuantity(shoppingCart[index].getQuantity() + 1);
 		}
 		else
 		{
 			ShoppingCart cart;
 			if (category == "Laptop")
 			{
-				Laptop* laptop= ((Laptop*)products.getAt(productIndex));
+				Laptop* laptop= ((Laptop*)products[productIndex]);
 				cart = ShoppingCart((*laptop).getCategory(), productId, 1, (*laptop).getPrice(), (*laptop).getName());
 			}
 			else if (category == "Phone")
 			{
-				Phone phone = *((Phone*)products.getAt(productIndex));
+				Phone phone = *((Phone*)products[productIndex]);
 				cart = ShoppingCart(category, productId, 1, phone.getPrice(), phone.getName());
 			}
 			else if (category == "Printer")
 			{
-				Printer printer = *((Printer*)products.getAt(productIndex));
+				Printer printer = *((Printer*)products[productIndex]);
 				cart = ShoppingCart(category, productId, 1, printer.getPrice(), printer.getName());
 
 			}
 		
-			shoppingCart.add(cart);
+			shoppingCart.push_back(cart);
 
 		}
 		cout << "The product was sucessfuly added to shopping cart!" << endl;
@@ -117,11 +144,11 @@ void Shop::PrintCategory(string category)
 		cout << "No | Name | Ram memory | Processor | Video cart | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
 
-		for (int i = 0; i < products.Count(); i++)
+		for (int i = 0; i < products.size(); i++)
 		{
-			if ((products.getAt(i))->getCategory()=="Laptop")
+			if ((products[i])->getCategory()=="Laptop")
 			{
-				((Laptop*)(products.getAt(i)))->print();
+				((Laptop*)(products[i]))->print();
 			}
 			
 		}
@@ -132,11 +159,11 @@ void Shop::PrintCategory(string category)
 		cout << "Phones" << endl;
 		cout << "No | Name | Color | Model | Year of production | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < products.Count(); i++)
+		for (int i = 0; i < products.size(); i++)
 		{
-			if ((products.getAt(i))->getCategory() == "Phone")
+			if ((products[i])->getCategory() == "Phone")
 			{
-				((Phone*)(products.getAt(i)))->print();
+				((Phone*)(products[i]))->print();
 			}
 		}
 
@@ -146,11 +173,11 @@ void Shop::PrintCategory(string category)
 		cout << "Printers" << endl;
 		cout << "No | Name | Printing technology | Main format | Printning colors | Price" << endl;
 		cout << "-----------------------------------------------------------" << endl;
-		for (int i = 0; i < products.Count(); i++)
+		for (int i = 0; i < products.size(); i++)
 		{
-			if (products.getAt(i)->getCategory() == "Printer")
+			if (products[i]->getCategory() == "Printer")
 			{
-				((Phone*)(products.getAt(i)))->print();
+				((Phone*)(products[i]))->print();
 			}
 		}
 
@@ -182,9 +209,9 @@ int Shop::CheckIfProductExistInGivenCategory(int productId, string category)
 	int index = -1;
 	if (category == "Laptop")
 	{
-		for (int i = 0; i < products.Count(); i++)
+		for (int i = 0; i < products.size(); i++)
 		{
-			if (products.getAt(i)->getId() == productId)
+			if (products[i]->getId() == productId)
 			{
 				index = i;
 				break;
@@ -193,9 +220,9 @@ int Shop::CheckIfProductExistInGivenCategory(int productId, string category)
 	}
 	else if (category == "Phone")
 	{
-		for (int i = 0; i < products.Count(); i++)
+		for (int i = 0; i < products.size(); i++)
 		{
-			if (products.getAt(i)->getId() == productId)
+			if (products[i]->getId() == productId)
 			{
 				index = i;
 				break;
@@ -204,9 +231,9 @@ int Shop::CheckIfProductExistInGivenCategory(int productId, string category)
 	}
 	else if (category == "Printer")
 	{
-		for (int i = 0; i < products.Count(); i++)
+		for (int i = 0; i < products.size(); i++)
 		{
-			if (products.getAt(i)->getId() == productId)
+			if (products[i]->getId() == productId)
 			{
 				index = i;
 				break;
@@ -220,9 +247,9 @@ int Shop::CheckIfProductExistInShoppingCart(int productId)
 {
 	int index = -1;
 
-	for (int i = 0; i < shoppingCart.Count(); i++)
+	for (int i = 0; i < shoppingCart.size(); i++)
 	{
-		if (shoppingCart.getAt(i).getProductId() == productId)
+		if (shoppingCart[i].getProductId() == productId)
 		{
 			index = i;
 			break;
@@ -234,7 +261,7 @@ int Shop::CheckIfProductExistInShoppingCart(int productId)
 
 void Shop::ShowShoppingCart()
 {
-	if (shoppingCart.Count() == 0)
+	if (shoppingCart.size() == 0)
 	{
 		cout << "There are no products in Shopping Cart" << endl;
 		cout << "Press any key to continiue to categories" << endl;
@@ -254,10 +281,10 @@ void Shop::ShowShoppingCart()
 		cout << "---------------------------------------------" << endl;
 		cout << "No | Category | Name | Price per one | Quantity | Total" << endl;
 
-		for (int i = 0; i < shoppingCart.Count(); i++)
+		for (int i = 0; i < shoppingCart.size(); i++)
 		{
-			totalForCart += shoppingCart.getAt(i).getPrice()*shoppingCart.getAt(i).getQuantity();
-			shoppingCart.getAt(i).print();
+			totalForCart += shoppingCart[i].getPrice()*shoppingCart[i].getQuantity();
+			shoppingCart[i].print();
 
 			
 		}
@@ -284,23 +311,23 @@ void Shop::ShowShoppingCart()
 void Shop::SortAndPrint(string category)
 {
 	system("cls");
-	cout << "SORTED" << endl;
-	if (category == "Laptop")
-	{
-		this->products.Sort();
-		PrintCategory(category);
-
-	}
-	else if (category == "Phone")
-	{
-		this->products.Sort();
-		PrintCategory(category);
-	}
-	else if (category == "Pritner")
-	{
-		this->products.Sort();
-		PrintCategory(category);
-	}
+	//cout << "SORTED" << endl;
+	//if (category == "Laptop")
+	//{
+	//	this->products.();
+	//	PrintCategory(category);
+	//
+	//}
+	//else if (category == "Phone")
+	//{
+	//	this->products.Sort();
+	//	PrintCategory(category);
+	//}
+	//else if (category == "Pritner")
+	//{
+	//	this->products.Sort();
+	//	PrintCategory(category);
+	//}
 
 }
 
@@ -313,11 +340,11 @@ void Shop::registation()
 	User newUser;
 	cin >> newUser;
 	newUser.setRole("ROLE_USER");
-	newUser.setId(users.getAt(users.Count()-1).getId()+1);
+	newUser.setId(users[users.size()-1].getId()+1);
 	newUser.setPassword(security.encryptPassword(newUser.getPassword()));
 	if (checkIfUsernameIsUnique(newUser.getUsername()))
 	{
-		users.add(newUser);
+		users.push_back(newUser);
 		cout << "You registered successfully! Press any key to continiue. Please now login with your infomration!";
 	}
 	else
@@ -374,9 +401,9 @@ void Shop::login()
 bool Shop::checkIfUsernameIsUnique(string username)
 {
 	bool temp = true;
-	for (int i = 0; i < users.Count(); i++)
+	for (int i = 0; i < users.size(); i++)
 	{
-		if (users.getAt(i).getUsername()==username)
+		if (users[i].getUsername()==username)
 		{
 			temp = false;
 		}
@@ -389,20 +416,20 @@ bool Shop::checkIfUsernameIsUnique(string username)
 void Shop::seeAllOrders()
 {
 	cout << "No  |" << "Ordered name |" << " Delivery to |" << " Status"<<endl;
-	for (int i = 0; i < orders.Count(); i++)
+	for (int i = 0; i < orders.size(); i++)
 	{
-		orders.getAt(i).print();
+		orders[i].print();
 	}
 }
 
 void Shop::seeAllUsers()
 {
 	cout << "Id  |" << "Username |" << " Role " <<  endl;
-	for (int i = 0; i < users.Count(); i++)
+	for (int i = 0; i < users.size(); i++)
 	{
-		if (security.getAuthenticateUser().getId()!= users.getAt(i).getId())
+		if (security.getAuthenticateUser().getId()!= users[i].getId())
 		{
-			users.getAt(i).print();
+			users[i].print();
 		}
 	}
 }
@@ -410,11 +437,11 @@ void Shop::seeAllUsers()
 
 Order& Shop::seeOrder(int id)
 {
-	for (int i = 0; i < orders.Count(); i++)
+	for (int i = 0; i < orders.size(); i++)
 	{
-		if ((id-1)==orders.getAt(i).getId())
+		if ((id-1)==orders[i].getId())
 		{
-			return orders.getAt(i);				
+			return orders[i];				
 		}
 	}
 
@@ -459,20 +486,20 @@ void Shop::makeUserAdminOrUser(int id)
 {
 	User user;
 
-	for (int i = 0; i < users.Count(); i++)
+	for (int i = 0; i < users.size(); i++)
 	{
-		if (users.getAt(i).getId()==id)
+		if (users[i].getId()==id)
 		{
-			user = users.getAt(i);
-			if (users.getAt(i).getRole()== "ROLE_ADMIN")
+			user = users[i];
+			if (users[i].getRole()== "ROLE_ADMIN")
 			{
-				users.getAt(i).setRole("ROLE_USER");
+				users[i].setRole("ROLE_USER");
 				
-				cout << users.getAt(i).getUsername() << " role was changed from ROLE_ADMIN to ROLE_USER"<<endl;
+				cout << users[i].getUsername() << " role was changed from ROLE_ADMIN to ROLE_USER"<<endl;
 			}
 			else
 			{
-				users.getAt(i).setRole("ROLE_ADMIN");
+				users[i].setRole("ROLE_ADMIN");
 		
 				cout << user.getUsername() << " role was changed from ROLE_USER to ROLE_ADMIN"<<endl;
 			}
@@ -497,43 +524,44 @@ void Shop::MakeOrder()
 	Order order;
 
 	cin >> order;
-	order.setId(this->orders.getAt(this->orders.Count()-1).getId()+1);
+	order.setId(this->orders[this->orders.size()-1].getId()+1);
 	
-
-	for (int i = 0; i < shoppingCart.Count(); i++)
+	
+	for (int i = 0; i < shoppingCart.size(); i++)
 	{
-		order.addProductToShoppingCart(shoppingCart.getAt(i));
+		order.addProductToShoppingCart(shoppingCart[i]);
 	}
 
 	if (security.isAuthenticated())
 	{
+		order.setUserId(security.getAuthenticateUser().getId());
 		security.getAuthenticateUser().addNewOrder(order);
 	}
-	orders.add(order);
+	orders.push_back(order);
 	cout << "Your order was successfully send! Press any key to continiue!";
 
 	ClearShoppingCart();
 
 	string temp;
-
+	cout << order;
 	getline(cin,temp);
 
 }
 
 void Shop::ClearShoppingCart()
 {
-	while (this->shoppingCart.Count()!=0)
+	while (this->shoppingCart.size()!=0)
 	{
-		this->shoppingCart.removeAt(0);
+		this->shoppingCart.erase(shoppingCart.begin()+0);
 	}
 }
 
 bool Shop::checkIfOrderExist(int id)
 {
 	id = id - 1;
-	for (int i = 0; i < orders.Count(); i++)
+	for (int i = 0; i < orders.size(); i++)
 	{
-		if (this->orders.getAt(i).getId()==id)
+		if (this->orders[i].getId()==id)
 		{
 			return true;
 		}
@@ -548,20 +576,20 @@ void Shop::addLaptop()
 	static Laptop laptop;
 	cin >> laptop;
 
-	laptop.setId(products.getAt(products.Count()-1)->getId()+1);
+	laptop.setId(products[products.size()-1]->getId()+1);
 	laptop.setCategory("Laptop");
 
-	products.add(&laptop);
+	products.push_back(&laptop);
 }
 void Shop::addPhone()
 {
 	static Phone phone;
 	cin >> phone;
 
-	phone.setId(products.getAt(products.Count() - 1)->getId() + 1);
+	phone.setId(products[products.size() - 1]->getId() + 1);
 	phone.setCategory("Phone");
 
-	products.add(&phone);
+	products.push_back(&phone);
 	string a = "";
 }
 void Shop::addPrinter()
@@ -569,10 +597,10 @@ void Shop::addPrinter()
 	static Printer printer;
 	cin >> printer;
 
-	printer.setId(products.getAt(products.Count() - 1)->getId() + 1);
+	printer.setId(products[products.size() - 1]->getId() + 1);
 	printer.setCategory("Printer");
 
-	products.add(&printer);
+	products.push_back(&printer);
 }
 
 

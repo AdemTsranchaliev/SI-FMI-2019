@@ -39,10 +39,7 @@ Laptop& Laptop::operator=(const Laptop& laptop)
 {
 	if (this != &laptop)
 	{
-
-		this->setId(laptop.getId());
-		this->setName(laptop.getName());
-		this->setPrice(laptop.getPrice());
+		Product::operator=(laptop);
 
 		this->ramMemory = laptop.getRamMemory();
 

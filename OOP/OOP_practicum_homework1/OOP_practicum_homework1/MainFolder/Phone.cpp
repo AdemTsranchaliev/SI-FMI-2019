@@ -89,10 +89,10 @@ string Phone::getModel() const
 	return this->model;
 }
 
-string Phone::print()
+void Phone::print()
 {
 	string str = to_string(this->getId()) + " | " + this->getName() + " | " + this->getModel() + " | " + this->getColor() + " | " + to_string(this->getYearOfProduction()) + " | " +to_string(this->getPrice()) + " leva"+"\n";
-	return str;
+	cout<< str;
 }
 
 std::istream& operator>>(std::istream& in, Phone& phone)
@@ -143,6 +143,6 @@ std::istream& operator>>(std::istream& in, Phone& phone)
 
 std::ostream& operator<<(std::ostream& out, Phone& o)
 {
-	out << to_string(o.getId()) + "|" + o.getName() + "|" + o.getModel() + "|" + o.getColor() + "|" + to_string(o.getYearOfProduction()) + "|" + to_string(o.getPrice()) + " leva" + "\n";
+	out << to_string(o.getId()) + "|" + o.getName() + "|" + o.getModel() + "|" + o.getColor() + "|" + to_string(o.getYearOfProduction()) + "|" + to_string(o.getPrice()) + "\n";
 	return out;
 }

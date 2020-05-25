@@ -28,6 +28,6 @@ public:
 	friend std::istream& operator>>(std::istream& in, Phone& o);
 	friend std::ostream& operator<<(std::ostream& in, Phone& o);
 
-	string print();
+	void print();
 
 };

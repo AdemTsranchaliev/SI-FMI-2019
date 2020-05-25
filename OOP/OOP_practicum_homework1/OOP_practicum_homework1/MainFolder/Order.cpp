@@ -22,6 +22,8 @@ Order::Order()
 	this->email = "";
 
 	this->isConfirmed = false;
+
+	this->userId = -1;
 }
 
 Order::Order(int id,string name, string surname, string phone, string address, string populatedPlace,string email)
@@ -42,7 +44,7 @@ Order::Order(int id,string name, string surname, string phone, string address, s
 
 	this->isConfirmed = false;
 
-
+	this->userId = -1;
 }
 
 Order::Order(const Order& order)
@@ -62,6 +64,9 @@ Order::Order(const Order& order)
 	this->email = order.email;
 
 	this->isConfirmed = order.isConfirmed;
+
+	this->userId = order.userId;
+
 
 }
 
@@ -87,6 +92,9 @@ Order& Order::operator=(const Order& order)
 		this->email = order.email;
 
 		this->isConfirmed=order.isConfirmed;
+
+		this->userId = order.userId;
+
 	}
 
 	return *this;
@@ -156,6 +164,18 @@ string Order::getEmail() const
 {
 	return this->email;
 }
+vector<ShoppingCart> Order::getProducts() const
+{
+	return this->products;
+}
+void Order::setUserId(int id)
+{
+	this->id = id;
+}
+int Order::getUserId() const
+{
+	return this->id;
+}
 
 //Functions
 void Order::print()
@@ -189,9 +209,9 @@ void Order::printDetail()
 	}
 	cout << "============================================="<<endl;
 	cout << "Ordered items" << endl << endl;
-	for (int i = 0; i < this->products.Count(); i++)
+	for (int i = 0; i < this->products.size(); i++)
 	{
-		this->products.getAt(i).print();
+		this->products[i].print();
 	}
 
 }
@@ -243,15 +263,24 @@ std::istream& operator>>(std::istream& in, Order& order)
 
 std::ostream& operator<<(std::ostream& out, Order& order)
 {
-	out << "Name: " << order.name << " " << order.surname << "|";
-	out << "Phone: " << order.phoneNumber << "|";
-	out << "Town/Vilage to delivery: " << order.populatedPlace << "|";
-	out << "Address: " << order.addressToDelivery << "|";
-	out << "Email: " << order.email << "|";
-	out << "IsConfirmed: " << order.email << "\n";
-
+	out << order.id<<"!";
+	out << order.name << "!" << order.surname << "!";
+	out <<  order.phoneNumber << "!";
+	out <<  order.populatedPlace << "!";
+	out << order.addressToDelivery << "!";
+	out << order.email << "!";
+	out << order.userId << "!";
+	vector<ShoppingCart> products = order.getProducts();
+	for (int i = 0; i < products.size(); i++)
+	{
+		out << products[i].getName() << "/" << products[i].getProductCategory() << "/" << products[i].getQuantity() << "/" << products[i].getPrice() << "/" << products[i].getProductId()<<"!";
+	}
+	out << "\n";
 	return out;
 }
+
+
+
 
 void Order::confirmOrder()
 {
@@ -264,6 +293,6 @@ bool Order::getIsConfirmed() const
 
 void Order::addProductToShoppingCart(const ShoppingCart& product)
 {
-	this->products.add(product);
+	this->products.push_back(product);
 }
 

@@ -1,10 +1,9 @@
 #pragma once
-
+#include <vector>
 #include "Phone.hpp"
 #include "Laptop.hpp"
 #include "Printer.hpp"
 #include "ShoppingCart.hpp"
-#include "List.hpp"
 #include "ShoppingCart.hpp"
 #include "Order.hpp"
 #include "User.hpp"
@@ -16,10 +15,10 @@ using namespace std;
 class Shop
 {
 private:
-	List<Product*> products;
-	List<ShoppingCart> shoppingCart;
-	List<Order> orders;
-	List<User> users;
+	vector<Product*> products;
+	vector<ShoppingCart> shoppingCart;
+	vector<Order> orders;
+	vector<User> users;
 
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, string category);
