@@ -4,7 +4,7 @@
 #include <string>
 #include <vector>
 
-
+#include "Security.h"
 #include "Phone.hpp"
 #include "Laptop.hpp"
 #include "Printer.hpp"
@@ -42,6 +42,9 @@ public:
 	vector<Order> GetFromDbAndConvertTextToClass();
 
 	vector<string> split(string text,char separator);
+	void  fillWithDefaultInfoFiles();
+	bool  checkIfFilesExistAndCreateThem();
+
 };
 
 
@@ -60,12 +63,8 @@ void Database::SaveToDatabase(T& obj)
 	string className = ((string)(typeid(obj).name()));
 	string fileName = className.substr(className.find(" ") + 1) + ".txt";
 	fstream file;
-	file.open(fileName, ios::app);
-	if (!file.is_open())
-	{
-		file.open(fileName, ios::out);
-
-	}
+	file.open(fileName,ios::app);
+	
 	file << obj;
 	
 	file.close();
@@ -209,7 +208,7 @@ vector<Order> Database::GetFromDbAndConvertTextToClass()
 		int userId = stoi(temp[7]);
 		
 		Order order(id,name,surname,phone,address,populatedPlace,email);
-
+	    vector<ShoppingCart> carts;
 		for (size_t i = 8; i < temp.size(); i++)
 		{
 			vector<string> tempCart = split(temp[i], '/');
@@ -219,9 +218,12 @@ vector<Order> Database::GetFromDbAndConvertTextToClass()
 			int quantity= stoi(tempCart[2]);
 			double price= stod(tempCart[3]);
 			int productId = stoi(tempCart[4]);
-			ShoppingCart shop(category,productId,quantity,price,name);
-
-			order.addProductToShoppingCart(shop);
+		    ShoppingCart shop(category,productId,quantity,price,name);
+			carts.push_back(shop);
+		}
+		for (int i = 0; i < carts.size(); i++)
+		{
+			order.addProductToShoppingCart(carts[i]);
 		}
 		orders.push_back(order);
 

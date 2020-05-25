@@ -103,9 +103,9 @@ std::istream& operator>>(std::istream& in, User& user)
 std::ostream& operator<<(std::ostream& out, User& user)
 {
 	string userText = "";
-
-	userText += user.getId()+"|"+user.getUsername()+"|"+user.getPassword()+"|"+user.getRole()+"\n";
 	
+	userText += to_string(user.getId())+"|"+user.getUsername()+"|"+user.getPassword()+"|"+user.getRole()+"\n";
+	out << userText;
 	return out;
 }
 

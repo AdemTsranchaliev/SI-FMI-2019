@@ -67,6 +67,11 @@ Order::Order(const Order& order)
 
 	this->userId = order.userId;
 
+	for (int i = 0; i < order.products.size(); i++)
+	{
+		this->addProductToShoppingCart(order.products[i]);
+	}
+
 
 }
 
@@ -94,6 +99,11 @@ Order& Order::operator=(const Order& order)
 		this->isConfirmed=order.isConfirmed;
 
 		this->userId = order.userId;
+
+		for (int i = 0; i < order.products.size(); i++)
+		{
+			this->products.push_back(order.products[i]);
+		}
 
 	}
 

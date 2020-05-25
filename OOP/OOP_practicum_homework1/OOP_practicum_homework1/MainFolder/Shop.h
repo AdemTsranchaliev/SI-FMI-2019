@@ -19,7 +19,7 @@ private:
 	vector<ShoppingCart> shoppingCart;
 	vector<Order> orders;
 	vector<User> users;
-
+	
 	int CheckIfProductExistInShoppingCart(int productId);
 	int CheckIfProductExistInGivenCategory(int productId, string category);
 	bool checkIfUsernameIsUnique(string username);

@@ -12,17 +12,12 @@ Shop::Shop()
 
 void Shop::InsertData()
 {
-
 	Database dat;
-
-//	static Phone phone1("X", "Black", 2019, 1, "Iphone", 1100,"Phone");
-//	static Phone phone2("Galaxy S4", "White", 2016, 2, "Samsung", 700, "Phone");
-//	static Phone phone3("PRO 20", "Black", 2017, 3, "Huawei", 200, "Phone");
-//	static Phone phone4("4", "Pink", 2011, 4, "Iphone", 450, "Phone");
-	
-//products.push_back(&phone1);
-//products.push_back(&phone2);
-//products.push_back(&phone3);
+	bool isAllFileOpen=dat.checkIfFilesExistAndCreateThem();
+	if (!isAllFileOpen)
+	{
+		dat.fillWithDefaultInfoFiles();
+	}
 
 	static vector<Phone> phones = dat.GetFromDbAndConvertTextToClass<Phone>();
 
@@ -31,15 +26,6 @@ void Shop::InsertData()
 		products.push_back(&phones[i]);
 	}
 
-	//dat.SaveToDatabase(phone1);
-	//dat.SaveToDatabase(phone2);
-	//dat.SaveToDatabase(phone3);
-	//dat.SaveToDatabase(phone4);
-
-	
-//	static Printer printer1("RA", "A", true, 5, "ASUS", 200, "Printer");
-//	static Printer printer2("Laser", "B", true, 6, "HP", 220, "Printer");
-
 	static vector<Printer> printers = dat.GetFromDbAndConvertTextToClass<Printer>();
 
 	for (size_t i = 0; i < printers.size(); i++)
@@ -47,11 +33,8 @@ void Shop::InsertData()
 		products.push_back(&printers[i]);
 	}
 	
-	//dat.SaveToDatabase(printer1);
-	//dat.SaveToDatabase(printer2);
 
-   // static Laptop laptop1("Intel", 4, "NVidia", 7, "Lenovo", 799, "Laptop");
-	//static Laptop laptop2("Intel Core i7", 4, "NVidia GEFORCE 940mx", 8, "Asus", 799, "Laptop");
+
 	
 
 	static vector<Laptop> laptops = dat.GetFromDbAndConvertTextToClass<Laptop>();
@@ -60,27 +43,31 @@ void Shop::InsertData()
 		products.push_back(&laptops[i]);
 	}
 
-	string password = security.encryptPassword("12345");
-	User user1(2, "admin", password, "ROLE_ADMIN");
-	users.push_back(user1);
-	User user2(3, "user", password, "ROLE_USER");
-	users.push_back(user2);
-	dat.SaveToDatabase(user1);
-	dat.SaveToDatabase(user2);
-
-	Order order(0,"Adem","Tsranchaliev","+359892609802","Mihail Takev 26","Peshtera","ademcran4aliev@abv.bg");
-
-	ShoppingCart shp("Phone",2,2,120,"Iphone");
-	ShoppingCart shp2("Laptop", 2, 2, 120, "Iphone");
-
-	order.addProductToShoppingCart(shp);
-	order.addProductToShoppingCart(shp2);
-
 	
 	static vector<Order> oor=dat.GetFromDbAndConvertTextToClass<Order>();
+	for (int i = 0; i < oor.size(); i++)
+	{
+		
+		this->orders.push_back(oor[i]);
 
-	orders.push_back(order);
+	}
+	static vector<User> userFromDb = dat.GetFromDbAndConvertTextToClass<User>();
+	for (int i = 0; i < userFromDb.size(); i++)
+	{
+		users.push_back(userFromDb[i]);
 
+	}
+
+	for (int i = 0; i < users.size(); i++)
+	{
+		for (int j = 0; j < orders.size(); j++)
+		{
+			if (orders[j].getUserId()==users[i].getId())
+			{
+				users[i].addNewOrder(orders[j]);
+			}
+		}
+	}
 
 }
 
@@ -334,7 +321,7 @@ void Shop::SortAndPrint(string category)
 void Shop::registation()
 {
 	system("cls");
-
+	Database data;
 	cout << "Registration"<<endl;
 	cout << "=============================="<<endl;
 	User newUser;
@@ -344,6 +331,7 @@ void Shop::registation()
 	newUser.setPassword(security.encryptPassword(newUser.getPassword()));
 	if (checkIfUsernameIsUnique(newUser.getUsername()))
 	{
+		data.SaveToDatabase(newUser);
 		users.push_back(newUser);
 		cout << "You registered successfully! Press any key to continiue. Please now login with your infomration!";
 	}
@@ -517,7 +505,7 @@ void Shop::makeUserAdminOrUser(int id)
 void Shop::MakeOrder()
 {
 	system("cls");
-
+	Database data;
 	cout << "FINISHING ORDER" << endl;
 	cout << "====================================" << endl;
 
@@ -537,6 +525,7 @@ void Shop::MakeOrder()
 		order.setUserId(security.getAuthenticateUser().getId());
 		security.getAuthenticateUser().addNewOrder(order);
 	}
+	data.SaveToDatabase(order);
 	orders.push_back(order);
 	cout << "Your order was successfully send! Press any key to continiue!";
 
@@ -573,33 +562,39 @@ bool Shop::checkIfOrderExist(int id)
 
 void Shop::addLaptop()
 {
+	Database data;
+
 	static Laptop laptop;
 	cin >> laptop;
 
 	laptop.setId(products[products.size()-1]->getId()+1);
 	laptop.setCategory("Laptop");
-
+	data.SaveToDatabase(laptop);
 	products.push_back(&laptop);
 }
 void Shop::addPhone()
 {
+	Database data;
+
 	static Phone phone;
 	cin >> phone;
 
 	phone.setId(products[products.size() - 1]->getId() + 1);
 	phone.setCategory("Phone");
-
+	data.SaveToDatabase(phone);
 	products.push_back(&phone);
-	string a = "";
+	
 }
 void Shop::addPrinter()
 {
+	Database data;
+
 	static Printer printer;
 	cin >> printer;
 
 	printer.setId(products[products.size() - 1]->getId() + 1);
 	printer.setCategory("Printer");
-
+	data.SaveToDatabase(printer);
 	products.push_back(&printer);
 }
 
