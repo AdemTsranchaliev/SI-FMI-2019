@@ -53,6 +53,7 @@ int main()
 
 			if (shop.security.isAuthorized("ROLE_USER"))
 			{
+				cout << "To see your orders 'myorders'" << endl;
 				cout << "To logout press 'e'" << endl;
 			}
 			else
@@ -86,6 +87,12 @@ int main()
 		{
 			shop.ShowShoppingCart();
 					
+			continue;
+		}
+		else if (command == "myorders" && shop.security.isAuthenticated())
+		{
+			shop.seeMyOrders();
+			GetCommandPressAnyKeyToContiniue();
 			continue;
 		}
 		else if (command == "L" && !shop.security.isAuthenticated())
@@ -150,8 +157,6 @@ int main()
 
 			continue;
 		}
-	
-
 		else if (command== "e"&&shop.security.isAuthenticated())
 		{
 			shop.security.logOut();
@@ -281,7 +286,7 @@ void SeeOrders(Shop& shop)
 
 				if (n=="1")
 				{
-					shop.seeOrder(tempCommand[0] - '0').confirmOrder();
+					shop.confrimOrder(tempCommand[0] - '0');
 				}
 				else
 				{

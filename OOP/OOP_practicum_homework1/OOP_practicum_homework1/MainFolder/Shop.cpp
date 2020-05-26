@@ -400,6 +400,36 @@ bool Shop::checkIfUsernameIsUnique(string username)
 	return temp;
 }
 
+void Shop::seeMyOrders()
+{
+	cout << "My orders" << endl;
+	cout << "==========================================" << endl;
+
+	if (security.getAuthenticateUser().getOrders().size()==0)
+	{
+		cout << "You have no orders, press any key to continiue;"<<endl;
+	}
+	else
+	{
+		for (int i = 0; i < security.getAuthenticateUser().getOrders().size(); i++)
+		{
+			security.getAuthenticateUser().getOrders()[i].print();
+		}
+	}
+
+}
+
+
+void Shop::confrimOrder(int id)
+{
+	Database data;
+	data.TruncData("Order.txt");
+	this->seeOrder(id).confirmOrder();
+	for (int i = 0; i < orders.size(); i++)
+	{
+		data.SaveToDatabase(orders[i]);
+	}
+}
 
 void Shop::seeAllOrders()
 {
@@ -473,7 +503,7 @@ void Shop::addProduct()
 void Shop::makeUserAdminOrUser(int id)
 {
 	User user;
-
+	Database data;
 	for (int i = 0; i < users.size(); i++)
 	{
 		if (users[i].getId()==id)
@@ -491,12 +521,20 @@ void Shop::makeUserAdminOrUser(int id)
 		
 				cout << user.getUsername() << " role was changed from ROLE_USER to ROLE_ADMIN"<<endl;
 			}
+			data.TruncData("User.txt");
 		}
 	}
 
 	if (user.getId()==0)
 	{
 		cout << "User with given id wasn't found!"<<endl;
+	}
+	else
+	{
+		for (int i = 0; i < users.size(); i++)
+		{
+			data.SaveToDatabase(users[i]);
+		}
 	}
 	
 	
@@ -532,7 +570,6 @@ void Shop::MakeOrder()
 	ClearShoppingCart();
 
 	string temp;
-	cout << order;
 	getline(cin,temp);
 
 }

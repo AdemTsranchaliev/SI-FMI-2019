@@ -180,12 +180,17 @@ vector<ShoppingCart> Order::getProducts() const
 }
 void Order::setUserId(int id)
 {
-	this->id = id;
+	this->userId = id;
 }
 int Order::getUserId() const
 {
-	return this->id;
+	return this->userId;
 }
+void Order::setCofirmation(bool conf)
+{
+	this->isConfirmed = conf;
+}
+
 
 //Functions
 void Order::print()
@@ -235,9 +240,6 @@ std::istream& operator>>(std::istream& in, Order& order)
 	string populatedPlace;
 	string email;
 
-	in.clear();
-	in.ignore(numeric_limits < streamsize > ::max(), '\n');
-
 	cout << "Name: ";
 	getline(in,name);
 	order.setName(name);
@@ -285,6 +287,7 @@ std::ostream& operator<<(std::ostream& out, Order& order)
 	{
 		out << products[i].getName() << "/" << products[i].getProductCategory() << "/" << products[i].getQuantity() << "/" << products[i].getPrice() << "/" << products[i].getProductId()<<"!";
 	}
+	out << to_string(order.getIsConfirmed());
 	out << "\n";
 	return out;
 }

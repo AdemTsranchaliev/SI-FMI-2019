@@ -45,6 +45,9 @@ public:
 	//Only for users with role ROLE_ADMIN
 	void seeAllOrders();
 	void makeUserAdminOrUser(int id);
+	void confrimOrder(int id);
+
+	void seeMyOrders();
 
 	bool checkIfOrderExist(int id);
 	void seeAllUsers();

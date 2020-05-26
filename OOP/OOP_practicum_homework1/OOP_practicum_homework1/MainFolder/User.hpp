@@ -28,6 +28,7 @@ public:
 	void setRole(string);
 	string getRole() const;
 
+	vector<Order>& getOrders();
 	void addNewOrder(const Order& order);
 
 	friend std::istream& operator>>(std::istream& in, User& user);

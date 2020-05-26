@@ -43,6 +43,7 @@ public:
 	vector<ShoppingCart> getProducts() const;
 	void setUserId(int);
 	int getUserId() const;
+	void setCofirmation(bool conf);
 
 
 	void confirmOrder();

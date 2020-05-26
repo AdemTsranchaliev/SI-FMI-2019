@@ -21,7 +21,7 @@ public:
 	template <typename T>
 	void SaveToDatabase(T& obj);
 	
-	string ReadFromDb(string path);
+
 
 	template <typename T>
 	vector<T> GetFromDbAndConvertTextToClass();
@@ -41,9 +41,11 @@ public:
 	template <>
 	vector<Order> GetFromDbAndConvertTextToClass();
 
+	string ReadFromDb(string path);
 	vector<string> split(string text,char separator);
 	void  fillWithDefaultInfoFiles();
 	bool  checkIfFilesExistAndCreateThem();
+	void TruncData(string file);
 
 };
 
@@ -206,10 +208,11 @@ vector<Order> Database::GetFromDbAndConvertTextToClass()
 		string address = temp[5];
 		string email = temp[6];
 		int userId = stoi(temp[7]);
-		
+		bool isConfirmed = "1" == temp[temp.size() - 1];
 		Order order(id,name,surname,phone,address,populatedPlace,email);
+		order.setUserId(userId);
 	    vector<ShoppingCart> carts;
-		for (size_t i = 8; i < temp.size(); i++)
+		for (size_t i = 8; i < temp.size()-1; i++)
 		{
 			vector<string> tempCart = split(temp[i], '/');
 
@@ -225,6 +228,7 @@ vector<Order> Database::GetFromDbAndConvertTextToClass()
 		{
 			order.addProductToShoppingCart(carts[i]);
 		}
+		order.setCofirmation(isConfirmed);
 		orders.push_back(order);
 
 	}

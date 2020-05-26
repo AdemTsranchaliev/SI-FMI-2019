@@ -29,12 +29,19 @@ User& User::operator=(const User& user)
 {
 	if (this!=&user)
 	{
+		vector<Order> newOrders;
+		this->orders = newOrders;
 		this->id = user.id;
 		this->username = user.username;
 
 		this->password = user.password;
 
 		this->role = user.role;
+
+		for (int i = 0; i < user.orders.size(); i++)
+		{
+			this->orders.push_back(user.orders[i]);
+		}
 
 	}
 	return *this;
@@ -77,6 +84,12 @@ string User::getRole() const
 {
 	return this->role;
 }
+
+vector<Order>& User::getOrders()
+{
+	return orders;
+}
+
 
 std::istream& operator>>(std::istream& in, User& user)
 {

@@ -147,3 +147,11 @@ bool Database::checkIfFilesExistAndCreateThem()
 
 	return isAllOpen;
 }
+
+void Database::TruncData(string path)
+{
+	ofstream file(path,ios::trunc);
+	file << "";
+	file.close();
+
+}
