@@ -1,0 +1,2 @@
+2|admin|psrut|ROLE_ADMIN
+3|user|psrut|ROLE_USER

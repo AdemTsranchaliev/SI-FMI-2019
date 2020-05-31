@@ -1,0 +1,2 @@
+7|Lenovo|4|Intel|NVidia|799
+8|Asus|4|Intel Core i7|NVidia GEFORCE 940mx|799

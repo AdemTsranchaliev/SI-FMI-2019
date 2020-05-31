@@ -1,0 +1,4 @@
+1|Iphone|Black|X|2019|1100.000000
+2|Samsung|White|Galaxy S4|2016|700.000000
+3|Huawei|Black|PRO 20|2017|200.000000
+4|Iphone|Pink|4|2011|450.000000
