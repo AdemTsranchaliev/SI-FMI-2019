@@ -1,2 +1,14 @@
-﻿  Source.cpp
-  Ex2.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Debug\Ex2.exe
+﻿  Date.cpp
+  File.cpp
+  FileSystem.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\FileSystem.cpp(7,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\FileSystem.cpp(29,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\FileSystem.cpp(36,22): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\FileSystem.cpp(64,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\FileSystem.cpp(66,21): warning C4018: '<': signed/unsigned mismatch
+  Folder.cpp
+  Image.cpp
+  Music.cpp
+  Source.cpp
+  Generating Code...
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\Music.cpp : fatal error C1090: PDB API call failed, error code '3': C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex2\Debug\vc142.pdb

@@ -1,0 +1,289 @@
+﻿  Course.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(12,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(12,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(27,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(27,29): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(28,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(28,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(28,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(28,29): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(747,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(634): message : see reference to class template instantiation 'std::allocator<Student &>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(690): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+          with
+          [
+              _Alloc=std::allocator<Student &>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(418): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+          with
+          [
+              _Alloc=std::allocator<Student &>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(418): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<Student &>,_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(18): message : see reference to class template instantiation 'std::vector<Student &,std::allocator<Student &>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(748,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(764,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(768,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(778,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(783,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(788,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(636,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(637,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(655,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(660,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(722,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(435): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Student &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(722,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(723,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(436,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(720,1): error C2535: 'void std::vector<Student &,std::allocator<Student &>>::push_back(_Ty)': member function already defined or declared
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(716): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(804,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(800): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1401,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1405,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(732,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(366): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(1321): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1749): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<Student &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(733,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(30,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.cpp(26): message : see reference to class template instantiation 'std::initializer_list<_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(31,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(35,1): error C2528: '_First_arg': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(35,1): error C2528: '_Last_arg': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(38,1): error C2528: 'begin': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(42,1): error C2528: 'end': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(51,1): error C2528: '_First': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\initializer_list(52,1): error C2528: '_Last': pointer to reference is illegal
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.cpp(81,34): error C2664: 'void std::vector<Student &,std::allocator<Student &>>::push_back(_Ty)': cannot convert argument 1 from 'const Student' to '_Ty'
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.cpp(81,27): message : Conversion loses qualifiers
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(716,10): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::push_back'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.cpp(84,1): error C2556: 'std::vector<Student,std::allocator<Student>> &Course::getStudents(void)': overloaded function differs only by return type from 'std::vector<Student,std::allocator<Student>> Course::getStudents(void)'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(39): message : see declaration of 'Course::getStudents'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.cpp(83,26): error C2040: 'Course::getStudents': 'std::vector<Student,std::allocator<Student>> &(void)' differs in levels of indirection from 'std::vector<Student,std::allocator<Student>> (void)'
+  Source.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(12,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(12,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(27,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(27,29): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(28,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(28,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(28,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(28,29): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(747,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(634): message : see reference to class template instantiation 'std::allocator<Student &>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(690): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+          with
+          [
+              _Alloc=std::allocator<Student &>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(418): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+          with
+          [
+              _Alloc=std::allocator<Student &>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(418): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<Student &>,_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(18): message : see reference to class template instantiation 'std::vector<Student &,std::allocator<Student &>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(748,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(764,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(768,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(778,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(783,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(788,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(636,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(637,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(655,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(660,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(722,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(435): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Student &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(722,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(723,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(436,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(720,1): error C2535: 'void std::vector<Student &,std::allocator<Student &>>::push_back(_Ty)': member function already defined or declared
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(716): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(804,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(800): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1401,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1405,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(732,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(366): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(1321): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1749): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<Student &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(733,1): error C2528: 'abstract declarator': pointer to reference is illegal
+  Student.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(11,13): error C3646: 'name': unknown override specifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(11,13): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(12,15): error C3646: 'degree': unknown override specifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(12,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,8): error C2143: syntax error: missing ';' before '<'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(13,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(17,36): error C2061: syntax error: identifier 'string'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(17,36): error C2535: 'Teacher::Teacher(void)': member function already defined or declared
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(16): message : see declaration of 'Teacher::Teacher'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(22,22): error C2061: syntax error: identifier 'string'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(23,16): error C3646: 'getName': unknown override specifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(23,16): error C2059: syntax error: '('
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(23,24): error C2238: unexpected token(s) preceding ';'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(25,24): error C2061: syntax error: identifier 'string'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(26,18): error C3646: 'getDegree': unknown override specifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(26,18): error C2059: syntax error: '('
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(26,26): error C2238: unexpected token(s) preceding ';'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(28,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(28,29): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,8): error C2143: syntax error: missing ';' before '<'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,15): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Teacher.h(29,30): error C2238: unexpected token(s) preceding ';'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(18,9): error C2065: 'Student': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(18,17): error C2059: syntax error: '>'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(38,31): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(38,31): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(39,9): error C2065: 'Student': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(39,2): error C2923: 'std::vector': 'Student' is not a valid template type argument for parameter '_Ty'
+  Teacher.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(12,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(12,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(27,29): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(27,29): error C2143: syntax error: missing ',' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(28,9): error C2065: 'Course': undeclared identifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Student.h(28,2): error C2923: 'std::vector': 'Course' is not a valid template type argument for parameter '_Ty'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(17,17): error C3646: 'teacher': unknown override specifier
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(17,17): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(747,1): error C2528: 'pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(634): message : see reference to class template instantiation 'std::allocator<Student &>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(690): message : see reference to class template instantiation 'std::_Default_allocator_traits<_Alloc>' being compiled
+          with
+          [
+              _Alloc=std::allocator<Student &>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(418): message : see reference to class template instantiation 'std::allocator_traits<_Alloc>' being compiled
+          with
+          [
+              _Alloc=std::allocator<Student &>
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(418): message : see reference to alias template instantiation 'std::_Rebind_alloc_t<std::allocator<Student &>,_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(18): message : see reference to class template instantiation 'std::vector<Student &,std::allocator<Student &>>' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(748,1): error C2528: 'const_pointer': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(764,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(768,1): error C2528: 'address': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(778,1): error C2528: '_Ptr': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(783,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(788,1): error C2528: 'allocate': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(636,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(637,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(655,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(660,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(722,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(435): message : see reference to variable template 'const bool _Is_simple_alloc_v<std::allocator<Student &> >' being compiled
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(722,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(723,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(723,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(436,1): error C2528: '<template-parameter>': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(720,1): error C2535: 'void std::vector<Student &,std::allocator<Student &>>::push_back(_Ty)': member function already defined or declared
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(716): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::push_back'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(804,1): error C2535: 'std::_Vector_iterator<std::_Vector_val<std::_Simple_types<_Ty>>> std::vector<_Ty,std::allocator<_Ty>>::insert(std::_Vector_const_iterator<std::_Vector_val<std::_Simple_types<_Ty>>>,_Ty)': member function already defined or declared
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(800): message : see declaration of 'std::vector<Student &,std::allocator<Student &>>::insert'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1401,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1405,1): error C2528: 'data': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(732,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(366): message : see reference to class template instantiation 'std::_Simple_types<_Ty>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(1321): message : see reference to class template instantiation 'std::_Vector_val<std::_Simple_types<_Ty>>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\vector(1749): message : see reference to class template instantiation 'std::_Compressed_pair<std::allocator<Student &>,std::_Vector_val<std::_Simple_types<_Ty>>,true>' being compiled
+          with
+          [
+              _Ty=Student &
+          ]
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.25.28610\include\xmemory(733,1): error C2528: 'abstract declarator': pointer to reference is illegal
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(21,58): error C2061: syntax error: identifier 'Teacher'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(35,25): error C2061: syntax error: identifier 'Teacher'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(36,9): error C2143: syntax error: missing ';' before '&'
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(36,9): error C4430: missing type specifier - int assumed. Note: C++ does not support default-int
+C:\Users\Asus\Desktop\SI-FMI-2019\OOP\Homework3_OOP\Homework3_OOP\Ex3\Course.h(36,23): error C2238: unexpected token(s) preceding ';'
+  Generating Code...

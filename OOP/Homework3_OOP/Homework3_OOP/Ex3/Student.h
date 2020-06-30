@@ -14,6 +14,9 @@ private:
 public:
 	Student();
 	Student(string name,int identityNumber);
+	Student(const Student& student);
+
+	Student& operator= (const Student& student);
 
 	void setName(string name);
 	string getName() const;
@@ -25,7 +28,7 @@ public:
 	vector<Course>& getCourses();
 
 	void addGrade(int course);
-	vector<int>& getGrade();
+	vector<int>& getGrades();
 
 };
 

@@ -15,11 +15,13 @@ private:
 	string type;
 	int code;
 	Teacher teacher;
-	vector<Student> students;
+	vector<Student&> students;
 public:
 	Course();
 	Course(string name,string type,int code,Teacher teacher);
 	Course(const Course& course);
+
+	Course& operator=(const Course& course);
 
 	void setName(string name);
 	string getName() const;
@@ -33,7 +35,7 @@ public:
 	void setTeacher(Teacher& teacher);
 	Teacher& getTeacher();
 
-	void setStudent(string name);
-	vector<Student>& getStudent();
+	void addStudent(const Student& student);
+	vector<Student> getStudents();
 };
 

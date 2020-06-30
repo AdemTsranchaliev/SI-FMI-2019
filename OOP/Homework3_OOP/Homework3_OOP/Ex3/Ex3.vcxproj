@@ -139,17 +139,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Course.cpp" />
+    <ClCompile Include="Source.cpp" />
     <ClCompile Include="Student.cpp" />
     <ClCompile Include="Teacher.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Course.h" />
-    <ClInclude Include="resource.h" />
     <ClInclude Include="Student.h" />
     <ClInclude Include="Teacher.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="Ex3.rc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
