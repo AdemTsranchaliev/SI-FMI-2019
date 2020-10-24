@@ -1,0 +1,4 @@
+﻿  Source.cpp
+C:\Users\Asus\Desktop\SI-FMI-2019\Data structures and algorithms\Homework1\ArrayProblem1\Source.cpp(8,10): warning C4477: 'scanf_s' : format string '%lld' requires an argument of type '__int64 *', but variadic argument 1 has type 'long *'
+C:\Users\Asus\Desktop\SI-FMI-2019\Data structures and algorithms\Homework1\ArrayProblem1\Source.cpp(8,10): message : consider using '%ld' in the format string
+  ArrayProblem1.vcxproj -> C:\Users\Asus\Desktop\SI-FMI-2019\Data structures and algorithms\Homework1\Debug\ArrayProblem1.exe
